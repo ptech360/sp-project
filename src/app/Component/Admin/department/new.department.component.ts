@@ -48,7 +48,8 @@ export class NewDepartment{
     if(this.newDepartment.value['parentDepartmentId'] == -1){
       delete this.newDepartment.value['parentDepartmentId'];
     }
-    this.adminService.addDepartment(this.newDepartment.value).subscribe(res =>{      
+    this.adminService.addDepartment(this.newDepartment.value).subscribe(res =>{ 
+      this.departments.push(res);     
       $('#deptModal').modal('show');
       this.newDepartment.reset();
       console.log(res);
