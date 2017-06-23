@@ -1,0 +1,93 @@
+<div class="background row">
+  <h2>Add Employee</h2>
+  <form [formGroup]="newEmployee" (submit)="onSubmit()">
+    <div class="row">
+      <div class="col-lg-4 form-group">
+        <label for="fName">First Name</label>
+        <input type="text" class="form-control" formControlName="firstName" id="fName" aria-describedby="fnameHelp" placeholder="First Name">
+        <small id="fnameHelp" class="form-text text-muted">*required field</small>
+      </div>
+      <div class="col-lg-4 form-group">
+        <label for="mName">Middle Name</label>
+        <input type="text" class="form-control" formControlName="middleName" id="mName" aria-describedby="mnameHelp" placeholder="First Name">
+      </div>
+      <div class="col-lg-4 form-group">
+        <label for="lName">Last Name</label>
+        <input type="text" class="form-control" formControlName="lastName" id="lName" aria-describedby="lnameHelp" placeholder="First Name">
+        <small id="lnameHelp" class="form-text text-muted">*required field</small>
+      </div>  
+    </div>
+    <fieldset class="form-group row">
+      <label class="col-lg-2">Gender</label>
+      <div class="col-lg-2 form-check ">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="gender" formControlName="gender" id="optionsRadios1" value="male" checked>
+          Male
+        </label>
+      </div>
+      <div class="col-lg-2 form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="gender" formControlName="gender" id="optionsRadios2" value="female">
+          Female
+        </label>
+      </div>
+    </fieldset>  
+    <div class="row">
+      <div class="col-lg-6 form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">*required field</small>
+      </div>
+      <div class="col-lg-6 form-group">
+        <label for="contactNo" >Contact No</label>
+        <input class="form-control" type="tel" formControlName="contactNo" id="contactNo">
+      </div> 
+    </div>
+    <div class="row">
+      <div class="col-lg-6 form-group">
+        <label for="joiningDate">Date</label>
+        <input class="form-control" type="date" value="2011-08-19" formControlName="joiningDate" id="joiningDate">
+      </div>   
+      <div class="col-lg-6 form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1" placeholder="Password">
+      </div>
+    </div>
+    <div class="row" formArrayName="employeeRoles" *ngFor="let er of newEmployee.controls.employeeRoles.controls; let i = index;" >
+      <div [formGroupName]="i">
+        <div class="col-lg-6 form-group">
+          <label for="exampleSelect1">Select Role</label>
+          <select class="form-control" formControlName="roleId"  id="exampleSelect1">
+            <option *ngFor="let role of roles;let r = index" value={{role.id}}>{{role.role}}</option>
+          </select>
+        </div>
+        <div class="col-lg-6 form-group">
+          <label for="exampleSelect2">Select Department</label>
+          <select class="form-control" formControlName="departmentId" id="exampleSelect2">
+          <option *ngFor="let dept of departments;let d = index;" value={{dept.departmentId}}>{{dept.department}}</option>
+        </select>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="newEmployee.invalid">Submit</button>
+  </form>
+</div>
+<div class="modal fade" id="empModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        You have successfully added a new Employee.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/admin-home']">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" >Add More</button>
+      </div>
+    </div>
+  </div>
+</div>

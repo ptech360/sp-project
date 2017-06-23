@@ -1,0 +1,11 @@
+<div class="background row">
+  <h2>View Department</h2>
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="exampleSelect1">Departments</label>
+    <div class="col-sm-10">
+      <select class="form-control" id="exampleSelect1">
+        <option *ngFor="let dept of departments;let d = index;" value={{dept.id}}>{{dept.department}}</option>
+      </select>
+    </div>
+  </div>
+</div>

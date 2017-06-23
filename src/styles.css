@@ -8,7 +8,7 @@ body{
 
 /* Modal */
 /*.modal-header{
-background: #ea212e;
+background: #8585ec;
 }*/
 .modal-title{
     float: left;
@@ -16,29 +16,29 @@ background: #ea212e;
 
 /* Active list color */
 ul.nav.nav-tabs{
-    border: 1px solid #ea212e !important;
+    border: 1px solid #8585ec !important;
 }
 ul.nav.nav-tabs li a{
     color:black;
 }
 li.active a{
-    background: #ea212e !important;
+    background: #8585ec !important;
     color:white !important;
     font-weight:bold;
 }
 .nav>li>a:focus, .nav>li>a:hover{
-    background: #ea212e !important; /* Light Red Color */
+    background: #8585ec !important; /* Light Red Color */
     color:white !important;
 }
 .panel-default>.panel-heading{
     color: #fff;
-    background-color: #ea212e;
+    background-color: #8585ec;
 }
 .pagination>li>a, .pagination>li>span{
-    color:#ea212e;
+    color:#8585ec;
 }
 a{
-    color:#ea212e;
+    color:#8585ec;
 }
 
 /*modal css*/
@@ -69,7 +69,7 @@ a{
 }
 
 .modal-header{
-    background:#ea212e;
+    background:#8585ec;
     color:white;
     box-shadow: 0 0 10px black;
 }
@@ -92,7 +92,7 @@ a{
     padding-right: 10px;
 }
 .badge{
-    background-color: #ea212e;
+    background-color: #8585ec;
 }
 .img-center{
     position:absolute;
@@ -155,7 +155,7 @@ a{
     padding-right: 2%;
 }
 .expand:hover{
-    color:#ea212e;
+    color:#8585ec;
 }
 
 .name{
