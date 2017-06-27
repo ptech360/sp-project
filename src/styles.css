@@ -1,6 +1,11 @@
 /*loader*/
 
 /*===============*/
+:root
+{
+    --main-color:#2b3643;
+    --shodow-color:#ea212e;
+}
 
 body{
     background: #ddd;
@@ -16,23 +21,23 @@ background: #8585ec;
 
 /* Active list color */
 ul.nav.nav-tabs{
-    border: 1px solid #8585ec !important;
+    border: 1px solid var(--main-color)!important;
 }
 ul.nav.nav-tabs li a{
-    color:black;
+    color:white;
 }
 li.active a{
-    background: #8585ec !important;
+    background:linear-gradient(#36c6d3,#36c6d3),#36c6d3 !important;
     color:white !important;
     font-weight:bold;
 }
 .nav>li>a:focus, .nav>li>a:hover{
-    background: #8585ec !important; /* Light Red Color */
+    background: #0c0a0a !important; /* Light Red Color */
     color:white !important;
 }
 .panel-default>.panel-heading{
     color: #fff;
-    background-color: #8585ec;
+    background-color: #0c0a0a;
 }
 .pagination>li>a, .pagination>li>span{
     color:#8585ec;
