@@ -28,7 +28,9 @@ export class Login{
     });
   }
   ngOnInit() {
-    
+    if (localStorage.getItem('user_roleInfo')) {
+      this.router.navigateByUrl("/"+this.commonService.getData('user_roleInfo')[0].role);
+    }
   }
   ngAfterViewChecked() {
     $("#login-button").click(function(event:any) {

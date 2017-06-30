@@ -1,14 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
-export class CommonService {
+export class CommonService{
   private url:string = "http://planning.ind-cloud.everdata.com/api";
   // private url:string = "http://localhost:8080/strategyPlanningV3";
   public baseUrl: string ;
-  
+  public hasRole:boolean;
   constructor() { 
-    this.baseUrl = this.url;
+    this.hasRole = !!localStorage.getItem('user_roleInfo');
+    if(this.hasRole)
+      this.baseUrl = this.url+ "/" + this.getData('user_roleInfo')[0].role;
+    else
+      this.baseUrl = this.url;
   }
 
   updateBaseUrl() {
