@@ -2,6 +2,10 @@ body{
     background: #ddd;
 }
 
+.main-content {
+  margin-top: 100px;
+}
+
 
 /* Active list color */
 ul.nav.nav-tabs{

@@ -12,7 +12,9 @@ import { AddRole } from './Component/Admin/employee/role/add.role.component';
 import { PlannerHome } from './Component/Planner/planner.home';
 import { InitialStetup } from './Component/Planner/initial-setup/initial.setup';
 import { CycleComponent } from './Component/Planner/cycle/cycle';
-import {ObjectiveComponent} from './Component/Planner/objective/objective';
+import { ObjectiveComponent} from './Component/Planner/objective/objective';
+import { CoordinatorHome } from './Component/Coordinator/coordinator.home';
+
 import { LoggedInGuard } from './Component/Login/login.guard';
 import { HaveCycle } from './Component/Planner/cycle/cycle.check';
 export const rootRouterConfig: Routes = [
@@ -34,6 +36,7 @@ export const rootRouterConfig: Routes = [
       { path: '', component:CycleComponent},
       { path: 'objective', component:ObjectiveComponent}
     ]
-  }
+  },
+  { path:'coordinator', component:CoordinatorHome, canActivate:[LoggedInGuard]}
   
 ];

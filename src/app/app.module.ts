@@ -19,6 +19,7 @@ import { PlannerHome } from './Component/Planner/planner.home';
 import { InitialStetup } from './Component/Planner/initial-setup/initial.setup';
 import { CycleComponent } from './Component/Planner/cycle/cycle';
 import { ObjectiveComponent } from './Component/Planner/objective/objective';
+import { CoordinatorHome } from './Component/Coordinator/coordinator.home';
 /* Providers */
 import { LoggedInGuard } from './Component/Login/login.guard';
 import { HaveCycle } from './Component/Planner/cycle/cycle.check';
@@ -33,7 +34,7 @@ import { CustomHttpService } from './providers/default.header.service';
     HttpModule,
     FormsModule, // <-- import the FormsModule before binding with [(ngModel)]
     RouterModule.forRoot(rootRouterConfig, { useHash: true })],
-  declarations: [AppComponent, Login, Home, AdminHome, NewUniversity, NewDepartment, NewEmployee, AddRole, ExistingDepartment, PlannerHome, InitialStetup, CycleComponent, ObjectiveComponent],
+  declarations: [AppComponent, Login, Home, AdminHome, NewUniversity, NewDepartment, NewEmployee, AddRole,                                ExistingDepartment, PlannerHome, InitialStetup, CycleComponent, ObjectiveComponent, CoordinatorHome],
   bootstrap: [AppComponent],
   providers: [LoggedInGuard, CredentialService, CommonService, AdminService, OrganizationService2, HaveCycle,
     {

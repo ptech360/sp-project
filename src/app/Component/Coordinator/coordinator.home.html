@@ -1,0 +1,101 @@
+<nav class="navbar navbar-default navbar-fixed-top header">
+  <div class="container">
+    <div class="navbar-header" id="toggle-header">
+      <a class="navbar-brand" href="">Strategic Planning</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="main-content">
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-info" *ngFor="let obj of assignedActivities; let i = index;">
+        <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" [attr.data-target]="'#obj' + i">
+          <b>{{i+1}}) Objective :</b> {{obj.objective}}
+        </div>
+
+        <div class="panel-collapse collapse" [attr.id]="'obj' + i" [ngClass]="{'in': i == 0}">
+          <div class="panel-body">
+            <p *ngIf="!obj.initiatives.length">No Initiative added yet for this Objective.</p>
+            <div class="panel-group" id="accordion2">
+              <div class="panel panel-default" *ngFor="let ini of obj.initiatives; let j = index;">
+                <div class="panel-heading" data-toggle="collapse" data-parent="#accordion2" [attr.data-target]="'#obj' + i + 'ini' + j"><b>{{i+1}}.{{j+1}}) Initiative :</b> {{ini.initiative}}
+                </div>
+                <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j" [ngClass]="{'in': j == 0}">
+                  <div class="panel-body">
+                    <p *ngIf="!ini.activities">No Activity added yet for this Initiative</p>
+                    <div class="panel-group" id="accordion3">
+                      <div class="panel panel-default" *ngFor="let act of ini.activities; let k = index;">
+                        <div class="panel-heading" data-toggle="collapse" data-parent="#accordion3" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k">
+                          <b>{{i+1}}.{{j+1}}.{{k+1}}) Activity :</b> {{act.activity}}
+                        </div>
+                        <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k" [ngClass]="{'in': k == 0}">
+                          <div class="panel-body">
+                            <p *ngIf="!act.activityMeasures">No Measure set yet for this Activities</p>
+                            <div class="panel-group" id="accordion4">
+                              <div class="panel panel-default" *ngFor="let measr of act.activityMeasures;let l = index;">
+                                <div class="panel-heading row" style="margin:0px !important;">
+                                  <div class="col-sm-6 col xs-6" style="padding:0px !important;" data-toggle="collapse" data-parent="#accordion4" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'measr' + l">
+                                    <b>{{i+1}}.{{j+1}}.{{k+1}}.{{l+1}}) Measure:</b> {{measr.measure}}
+                                  </div>
+                                  <div class="col-sm-6 col xs-6" >
+                                    <span class="label label-primary ">Estimated Cost <span class="">84000</span></span>
+                                    <span class="label label-info ">2017 <span class="">Q1</span></span>
+                                    <span class="label label-primary "><span class="">@</span> Inprogress</span>
+                                    <span class="label label-info ">Target <span class="">84</span></span>
+                                  </div>
+                                </div>
+                                <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k + 'measr' + l" [ngClass]="{'in': l == 0}">
+                                  <div class="panel-body">
+                                    <label>Current Level:</label> {{measr.currentLevel}}
+                                    <span class="glyphicon glyphicon-time pull-right"><label> {{measr.frequency}}</label></span>
+                                    <div class="panel panel-default">
+                                      <div class="panel-heading text-center"><b>Estimated Target</b></div>
+                                      <div class="panel-body">
+                                        <table class="table table-hover">
+                                          <thead>
+                                            <tr>
+                                              <th>Year</th>
+                                              <th>Estimated Cost</th>
+                                              <th>Quarter</th>
+                                              <th>Target</th>
+                                              <th>Audit Date</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody id="attachment-parent" *ngFor="let tdl of measr.annualTarget;let at = index;">
+                                            <tr>
+                                              <td style="vertical-align: middle;" [attr.rowspan]="tdl.levels.length + 2">{{ tdl.year }}</td>
+                                              <td style="vertical-align: middle;" [attr.rowspan]="tdl.levels.length + 2">{{tdl.estimatedCost}}</td>
+                                            </tr>
+                                            <tr *ngFor="let lev of tdl.levels; let in = index;" 
+                                            [ngClass]="{'current-quarter': at == 0 && in == 0}">
+                                              <td>{{lev.quarter}}</td>
+                                              <td>{{lev.estimatedTargetLevel}}</td>
+                                              <td>{{lev.startDate}} To {{lev.endDate}}</td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
