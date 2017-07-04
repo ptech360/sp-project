@@ -1,42 +1,17 @@
- .bg1{
-      background-image:url('https://digitalcreativeage.com/wp-content/themes/digital/assets/img/sliders/back3.jpg');
+ .bg1 {
+     background-image: url('https://digitalcreativeage.com/wp-content/themes/digital/assets/img/sliders/back3.jpg');
+ }
 
-
-
-
-}
-
-.formCard{
-    width: 100%;
-    background-color: white;
-    padding: 50px;
-    margin: 25px;
-    
-    
-}
-
-.formHeader {
-    padding: 10px;
-    border-bottom-color: grey;
-    line-height: 1.1;
-    margin: 10px;
-
-
-
-
-}
  .btn {
-    width: 90%;
-    background-color: #26ace3;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 14px 2px;
-    cursor: pointer;
-    
-
-}
+     width: 90%;
+     background-color: #26ace3;
+     border: none;
+     color: white;
+     padding: 15px 32px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 16px;
+     margin: 14px 2px;
+     cursor: pointer;
+ }

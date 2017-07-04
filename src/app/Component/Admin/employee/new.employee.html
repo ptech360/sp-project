@@ -1,5 +1,4 @@
 <div class="background row ">
-
   <div class="row">
     <div class="col-lg-12">
       <div class="formCard">
@@ -9,7 +8,7 @@
           </div>
         </div>
         <form [formGroup]="newEmployee" class="margin-top50" (submit)="onSubmit()">
-          <div class="row">
+          <div class="row ">
             <div class="col-lg-6">
               <div class="form-group">
                 <label class="sr-only" for="fName">Amount (in dollars)</label>
@@ -51,15 +50,15 @@
                 <label>Gender</label>
                 <span class=" form-check ">
                   <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="gender" formControlName="gender" id="optionsRadios1" value="male" checked>
-          Male
-        </label>
+                  <input type="radio" class="form-check-input" name="gender" formControlName="gender" id="optionsRadios1" value="male" checked>
+                  Male
+                  </label>
                 </span>
                 <span class="form-check">
                   <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="gender" formControlName="gender" id="optionsRadios2" value="female">
-          Female
-        </label>
+                  <input type="radio" class="form-check-input" name="gender" formControlName="gender" id="optionsRadios2" value="female">
+                  Female
+                  </label>
                 </span>
               </fieldset>
             </div>
@@ -81,9 +80,9 @@
                   </div>
                   <div class="row" formArrayName="employeeRoles" *ngFor="let er of newEmployee.controls.employeeRoles.controls; let i = index;">
                     <span [formGroupName]="i">
-                        <select class="form-control" formControlName="roleId" id="exampleSelect1">
-                                  <option *ngFor="let role of roles;let r = index" value={{role.id}}>{{role.role}}</option>
-                        </select>
+                      <select class="form-control" formControlName="roleId" id="exampleSelect1">
+                        <option *ngFor="let role of roles;let r = index" value={{role.id}}>{{role.role}}</option>
+                      </select>
                     </span>
                   </div>
                 </div>
@@ -95,10 +94,10 @@
                     </div>
                     <div class="row" formArrayName="employeeRoles" *ngFor="let er of newEmployee.controls.employeeRoles.controls; let i = index;">
                       <span [formGroupName]="i">
-                         <select class="form-control" formControlName="departmentId" id="exampleSelect2">
-                          <option *ngFor="let dept of departments;let d = index;" value={{dept.departmentId}}>{{dept.department}}</option>
+                        <select class="form-control" formControlName="departmentId" id="exampleSelect2">
+                        <option *ngFor="let dept of departments;let d = index;" value={{dept.departmentId}}>{{dept.department}}</option>
                         </select>
-                    </span>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -114,7 +113,7 @@
   </div>
 </div>
 
-
+<!-- --- Modal code --- -->
 <div class="modal fade" id="empModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -129,130 +128,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/admin-home']">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" >Add More</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Add More</button>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-<div class="background row ">
-  <div class="">
-    <div class="row">
-      <div class="col-md-12">
-        
-        <div class="formCard">
-          <div class="card-block">
-            <div class="formHeader">
-
-              <div class="form-header blue-gradient">
-                <h2>
-                  <u>Appication Form:</u>
-                </h2><br><br>
-              </div>
-
-              <form [formGroup]="newEmployee" (submit)="onSubmit()">
-              <div class="form-group">
-                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-user"></span>
-
-                  </div>
-                  <input type="text" class="form-control" id="exampleInputAmount" placeholder="Name">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-envelope"></span>
-
-                  </div>
-                  <input type="text" class="form-control" id="exampleInputAmount" placeholder="Email Address">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-education"></span>
-
-                  </div>
-                  <input type="text" class="form-control" id="exampleInputAmount" placeholder="University Name">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-
-                  </div>
-                  <input type="text" class="form-control" id="exampleInputAmount" placeholder="Date">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-thumbs-up"></span>
-
-                  </div>
-                  <input type="text" class="form-control" id="exampleInputAmount" placeholder="Role">
-                </div>
-              </div>
-            </div>
-             <div class="row">
-             <div class="col-md-6">  
-               <div class="form-group">
-                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-earphone"></span>
-
-                  </div>      
-                 <input type="number" class="form-control" id="exampleInputAmount" placeholder="contact">
-                </div>
-            <button class="btn btn-indigo center-block">Submit</button>
-            </form>
-             </div>
-          
-          </div>
-        </div>
-      </div>
-    </div>
-  
-  </div>
-</div>
--->
-<!--form1 end-->
-
-<!--form
-            <div class="md-form">
-               <label for="form2"> Name</label>
-               <div class="input-group-addon">
-              <i class="fa fa-user prefix"></i></div>
-              
-              <input type="text" id="form3" class="form-control">
-             
-            </div>
-            <div class="md-form">
-              <i class="fa fa-university prefix"></i>
-              <input type="text" id="form2" class="form-control">
-              <label for="form2">University Name</label>
-            </div>
--->
