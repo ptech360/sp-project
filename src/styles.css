@@ -1,6 +1,11 @@
 /*loader*/
 
 /*===============*/
+:root
+{
+    --main-color:#2b3643;
+    --shodow-color:#ea212e;
+}
 
 body{
     background: #ddd;
@@ -16,23 +21,23 @@ background: #8585ec;
 
 /* Active list color */
 ul.nav.nav-tabs{
-    border: 1px solid #8585ec !important;
+    border: 1px solid var(--main-color)!important;
 }
 ul.nav.nav-tabs li a{
-    color:black;
+    color:white;
 }
 li.active a{
-    background: #8585ec !important;
+    background:linear-gradient(#36c6d3,#36c6d3),#36c6d3 !important;
     color:white !important;
     font-weight:bold;
 }
 .nav>li>a:focus, .nav>li>a:hover{
-    background: #8585ec !important; /* Light Red Color */
+    background: #0c0a0a !important; /* Light Red Color */
     color:white !important;
 }
 .panel-default>.panel-heading{
     color: #fff;
-    background-color: #8585ec;
+    background-color: #0c0a0a;
 }
 .pagination>li>a, .pagination>li>span{
     color:#8585ec;
@@ -267,7 +272,7 @@ hr.style-line {
         width: 50px;
     }
   /* modal media query end*/
-
+}
 .footer{
     position:absolute;
     bottom:5px;
@@ -275,4 +280,57 @@ hr.style-line {
     text-align:center;
     font-weight:bold !important;
     color:white;
+}
+.margin-top50{
+margin-top: 50px;
+}
+.padding0{
+    padding: 0px !important;
+}
+
+.cardheader{
+ background-color: red;
+ width: 75%;
+ height: 50px;
+ position: absolute;
+    margin-top: -15px;
+    box-shadow: 0 5px 12px #ff9fa6;
+    
+
+
+}
+.headertext{
+        color: white;
+    padding: 10px;
+    text-align: -webkit-center;
+    font-weight: bold;
+    font-size: 20px;
+}
+.formHeader {
+    padding: 10px;
+    border-bottom-color: grey;
+    line-height: 1.1;
+    margin: 10px;
+
+
+
+
+}
+.formCard{
+    width: 100%;
+    background-color: white;
+  
+    padding:0 50px 0 50px;
+    margin: 25px;
+    
+    
+}
+.formCard{
+    width: 100%;
+    background-color: white;
+  
+    padding:0 50px 0 50px;
+    margin: 25px;
+    
+    
 }

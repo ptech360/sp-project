@@ -5,7 +5,7 @@ declare let $:any;
 @Component({
   selector:'existing-department',
   templateUrl:'./existing.department.component.html',
-  // styleUrls:['./existing.department.component.css']
+  styleUrls:['./existing.department.component.css']
 })
 export class ExistingDepartment{
   public departments:any[] = [];

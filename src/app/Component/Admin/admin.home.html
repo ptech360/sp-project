@@ -32,12 +32,43 @@
           </div>
         </a>
       </li>
-      <li routerLinkActive="active"><a [routerLink]="['/admin']"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-      <li routerLinkActive="active"><a [routerLink]="['/admin/new-university']"><span class="glyphicon glyphicon-refresh" aria-hidden="true" ></span>Add University</a></li>
-      <li routerLinkActive="active"><a [routerLink]="['/admin/new-department']"><span class="glyphicon glyphicon-italic" aria-hidden="true"></span>Add Department</a></li>
-      <li routerLinkActive="active"><a [routerLink]="['/admin/new-employee']"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span>Add Employee</a></li>
-      <li routerLinkActive="active"><a [routerLink]="['/admin/existing-department']"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span>Existing Department</a></li>
-      <li routerLinkActive="active"><a [routerLink]="['/admin/add-role']"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span>Add Role</a></li>
+     <li routerLinkActive="active" class="sidebar-items">
+        <a href="#"  [routerLink]="['/admin']">
+        <img class="sidebar-icon" src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-4/256/home-icon.png">
+         Home 
+        </a>
+     </li>
+      <li routerLinkActive="active" class="sidebar-items" >
+        <a href="#" [routerLink]="['/admin/new-university']">
+        <img class="sidebar-icon" src="https://vignette2.wikia.nocookie.net/uinfo/images/1/1a/Uni_icon_6.png/revision/latest?cb=20150825065702">
+        Add University
+        </a>
+      </li>
+     <li routerLinkActive="active" class="sidebar-items" >
+        <a href="#"[routerLink]="['/admin/new-department']">
+        <img class="sidebar-icon" src="http://faranoor.com/uploads/chart_organization_348.jpg">
+       Add Department
+        </a>
+     </li>
+      <li routerLinkActive="active" class="sidebar-items">
+        <a href="#"  [routerLink]="['/admin/new-employee']">
+        <img class="sidebar-icon" src="https://cdn4.iconfinder.com/data/icons/pretty_office_3/256/Add-Male-User.png">
+        Add employee
+        </a>
+      </li>
+      
+      <li routerLinkActive="active" class="sidebar-items">
+        <a href="#" [routerLink]="['/admin/existing-department']">
+        <img class="sidebar-icon" src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-4/256/home-icon.png">
+        Existing Department
+        </a>
+      </li>
+     <li routerLinkActive="active" class="sidebar-items">
+        <a href="#" [routerLink]="['/admin/add-role']">
+        <img class="sidebar-icon" src="https://openclipart.org/image/2400px/svg_to_png/211693/matt-icons_contact-add.png">
+          Add Role
+        </a>
+     </li>
       <li class="sidebar-items" (click)="logout()">
         <a href="#" routerLinkActive="active">
         <img class="sidebar-icon" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-9/256/Logout-icon.png">

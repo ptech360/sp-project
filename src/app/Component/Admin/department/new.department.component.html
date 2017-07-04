@@ -1,53 +1,80 @@
-<div class="background row">
-  <h2>Add Department</h2>
-  <form class="form-horizontal" [formGroup]="newDepartment" (submit)="onSubmit()">
-    <div class="form-group">
-      <label class="col-sm-2 control-label" for="exampleSelect1">Select University</label>
-      <div class="col-sm-10">
-        <select class="form-control" id="exampleSelect1" formControlName="universityId">
+<div class="background row ">
+  <div class="">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="formCard">
+          <div class="cardheader center-block">
+            <div class="headertext">
+              Add Department
+            </div>
+
+          </div>
+          <div class="formHeader">
+
+
+
+            <!--Body-->
+            <form class="form-horizontal margin-top50" [formGroup]="newDepartment" (submit)="onSubmit()">
+              <div class="form-group">
+                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-education"></span>
+
+                  </div>
+                  <select class="form-control" id="exampleSelect1" formControlName="universityId">
           <option *ngFor="let ut of universities;let u = index;" value={{ut.id}}>{{ut.university}}</option>
         </select>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-sm-2 control-label" for="exampleSelect2">Select Parent Department</label>
-      <div class="col-sm-10">
-        <select class="form-control" id="exampleSelect2" formControlName="parentDepartmentId">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="sr-only" for="exampleSelect2">Amount (in dollars)</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-education"></span>
+
+                  </div>
+                  <select class="form-control" id="exampleSelect2" formControlName="parentDepartmentId">
           <option value="-1">None</option>
           <option *ngFor="let dept of departments;let d = index;" [value]="dept.departmentId">{{dept.department}}</option>
         </select>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="name" class="col-sm-2 control-label">Name</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="name" formControlName="department">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-    </div>
-  </form>
-</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="Name">Amount (in dollars)</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-user"></span>
 
-<div class="modal fade" id="deptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        You have successfully added a new Department.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/admin']">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Add More</button>
+                  </div>
+                  <input type="text" class="form-control" id="name" formControlName="department">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
