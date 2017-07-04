@@ -1,0 +1,51 @@
+<h1>Initial Setup</h1>
+<hr>
+<form [formGroup]="cmvvForm" (submit)="onSubmit()">
+  <div class="row">
+    <span class="col-lg-12 col-sm-12 col-md-12"><h3>Cycle</h3></span>
+    <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+      <span>Start Date</span>
+      <input type="date" formControlName="startCycle" class="form-control" placeholder="Start Date">
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+      <span>End Date</span>
+      <input type="date" formControlName="endCycle" class="form-control" placeholder="End Date">
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+      <label><h3>Mission</h3></label>
+      <textarea formControlName="mission" class="form-control" placeholder="Add Misson Here"></textarea>
+      <span *ngIf="cmvvForm.controls.mission.invalid || cmvvForm.controls.mission.pristine">*required field</span>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+      <label><h3>Vision</h3></label>
+      <textarea formControlName="vision" class="form-control" placeholder="Add vision Here"></textarea>
+      <span *ngIf="cmvvForm.controls.vision.invalid || cmvvForm.controls.vision.pristine">*required field</span>
+    </div>
+    <div class="col-lg-12 col-sm-12 col-md-12">
+      <h3>Values</h3>
+    </div>
+    <div class="col-lg-12 col-sm-12 col-md-12">
+      <div class="row" formArrayName="values">
+        <div class="form-card col-lg-6 col-sm-12 col-md-6" *ngFor="let stu of cmvvForm.controls.values.controls; let j=index;">
+          <div [formGroupName]="j">
+            <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+              <label>Title</label>
+              <input type="text" formControlName="title" class="form-control" placeholder="Add Title Here">
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+              <label>Description</label>
+              <textarea formControlName="description" class="form-control" placeholder="Add Description Here"> </textarea>
+            </div>
+          </div>
+          <button type="button" class="col-lg-offset-6 col-md-offset-6 col-sm-6  btn btn-danger" (click)="removeValue(j)" *ngIf="cmvvForm.controls.values.controls.length > 1">Delete</button>
+        </div>
+        <div style="margin-top:70px" class="form-card col-lg-6 col-sm-12 col-md-6 center-block" *ngIf="cmvvForm.controls.values.valid">
+          <button type="button" class="btn btn-primary btn-lg btn-info center-block" (click)="addValue()">Add New Value</button>
+        </div>
+      </div>
+    </div>
+    <button type="submit" style="margin-top:20px" class="btn btn-success btn-lg" [disabled]="cmvvForm.invalid">
+      Submit
+    </button>
+  </div>
+</form>

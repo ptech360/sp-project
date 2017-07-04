@@ -21,6 +21,6 @@ export class AdminHome{
   }
 
   logout(){
-        localStorage.clear();
+      localStorage.clear();
   }
 }

@@ -1,0 +1,46 @@
+<h2 style="text-align: center;margin-bottom:20px;">Initial Setup</h2>
+<hr>
+<div class="form-card" style="background:white">
+  <img src="./app/img/cycle.png" class="center-box" width="100px">
+  <h3 class="center-align">
+    <span class="blue-text"> {{organizationInfo[0].cycles.startCycle}} </span>
+    <b> To </b>
+    <span class="red-text"> {{organizationInfo[0].cycles.endCycle}} </span>
+  </h3>
+  <a [routerLink]="['/planner/objective']" style="padding:5px;padding: 5px;float: right;margin-top: -30px;"><img src="./app/img/blue-circle.gif" width="20px" height="20px" style="    vertical-align: baseline;border-radius: 15px;">Objectives</a>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <b class="panel-title">Mission</b>
+    </div>
+    <div class="panel-body">
+      {{organizationInfo[0].mission}}
+    </div>
+  </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <b class="panel-title">Vision</b>
+    </div>
+    <div class="panel-body">
+      {{organizationInfo[0].vision}}
+    </div>
+  </div>
+  <!--<span class="text-primary center-align"><b>Values</b></span>-->
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-info" *ngFor="let val of organizationInfo[0].values;let i = index;">
+      <div class="panel-heading" role="tab" id="headingOne">
+        <h3 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{i}}" aria-expanded="true" aria-controls="collapseOne">
+                Value {{i+1}} - {{val.title}}</a>
+        </h3>
+      </div>
+      <div id="collapse{{i}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          {{val.description}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--<button type="button" class="btn btn-info btn-lg center-block" [routerLink]="['/strategic-goal']">
+        View\Add Objective
+      </button>-->
+</div>

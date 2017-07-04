@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Response, Http, Headers, RequestOptions} from '@angular/http';
 import { CommonService } from './common.service';
@@ -10,7 +10,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
 @Injectable()
-export class OrganizationService2 {
+export class OrganizationService2{
 
   private baseUrl: string = "";
 
@@ -21,12 +21,14 @@ export class OrganizationService2 {
   }
 
   public orgInitialSetup(data:any) {
+    this.baseUrl = this.con.baseUrl;
     return this.http.post(this.baseUrl + "/initialSetup", data)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
   public getUniversities(){
+    this.baseUrl = this.con.baseUrl;
     return this.http.get(this.baseUrl + "/university")
                     .map(this.extractData)
                     .catch(this.handleError);
@@ -40,24 +42,28 @@ export class OrganizationService2 {
   }
 
   public fetchObjectives(cycleId:any) {
+    this.baseUrl = this.con.baseUrl;
     return this.http.get(this.baseUrl + "/cycle/" + cycleId + "/objective")
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
   public addObjective(objective:any) {
+    this.baseUrl = this.con.baseUrl;
     return this.http.post(this.baseUrl + "/objective", objective)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
   public addInitiative(initiative:any) {
+    this.baseUrl = this.con.baseUrl;
     return this.http.post(this.baseUrl + "/initiative", initiative)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
   public fetchInitiative(goalId:any){
+    this.baseUrl = this.con.baseUrl;
     return this.http.get(this.baseUrl + "/objective/" + goalId + "/initiative")
                     .map(this.extractData)
                     .catch(this.handleError);
@@ -71,12 +77,14 @@ export class OrganizationService2 {
   }
 
   public saveQuarteResult(data:any, quarterId:any){
+    this.baseUrl = this.con.baseUrl;
     return this.http.post(this.baseUrl + "/result",data)
                     .map(this.extractData)
                     .catch(this.handleError); 
   }
 
   public saveEvidence(data:any, quarterId:any, resultId:any){
+    this.baseUrl = this.con.baseUrl;
     var options = new RequestOptions({
       headers: new Headers({
         'Authorization': 'Bearer ' + localStorage.getItem('access_token')
@@ -88,6 +96,7 @@ export class OrganizationService2 {
   }
 
   public saveComment(resultId:any,comment:any){
+    this.baseUrl = this.con.baseUrl;
     return this.http.post(this.baseUrl + "/result/" + resultId + "/discussion",comment)
                     .map(this.extractData)
                     .catch(this.handleError);
@@ -95,30 +104,35 @@ export class OrganizationService2 {
 
 
   public fetchDepartments(){
+    this.baseUrl = this.con.baseUrl;
     return this.http.get(this.baseUrl + "/university/1/department")
             .map(this.extractData)
             .catch(this.handleError);
   }
 
   public assignActivity(actId:any,departments:any){
+    this.baseUrl = this.con.baseUrl;
     return this.http.post(this.baseUrl+"/assign/activity/"+actId+"/departments",{'departments':departments})
       .map(this.extractData)
       .catch(this.handleError); 
   }
 
   public saveActivity(activity:any){
+    this.baseUrl = this.con.baseUrl;
     return this.http.post(this.baseUrl + "/activity",activity)
     .map(this.extractData)
     .catch(this.handleError);
   }
 
   public saveSpi(spi:any){
+    this.baseUrl = this.con.baseUrl;
     return this.http.post(this.baseUrl + "/spi",spi)
     .map(this.extractData)
     .catch(this.handleError);
   }
 
   public saveMeasure(measure:any){
+    this.baseUrl = this.con.baseUrl;
     return this.http.post(this.baseUrl + "/measures",measure)
     .map(this.extractData)
     .catch(this.handleError);
