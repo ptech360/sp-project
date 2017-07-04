@@ -272,7 +272,7 @@ hr.style-line {
         width: 50px;
     }
   /* modal media query end*/
-
+}
 .footer{
     position:absolute;
     bottom:5px;
@@ -280,4 +280,57 @@ hr.style-line {
     text-align:center;
     font-weight:bold !important;
     color:white;
+}
+.margin-top50{
+margin-top: 50px;
+}
+.padding0{
+    padding: 0px !important;
+}
+
+.cardheader{
+ background-color: red;
+ width: 75%;
+ height: 50px;
+ position: absolute;
+    margin-top: -15px;
+    box-shadow: 0 5px 12px #ff9fa6;
+    
+
+
+}
+.headertext{
+        color: white;
+    padding: 10px;
+    text-align: -webkit-center;
+    font-weight: bold;
+    font-size: 20px;
+}
+.formHeader {
+    padding: 10px;
+    border-bottom-color: grey;
+    line-height: 1.1;
+    margin: 10px;
+
+
+
+
+}
+.formCard{
+    width: 100%;
+    background-color: white;
+  
+    padding:0 50px 0 50px;
+    margin: 25px;
+    
+    
+}
+.formCard{
+    width: 100%;
+    background-color: white;
+  
+    padding:0 50px 0 50px;
+    margin: 25px;
+    
+    
 }
