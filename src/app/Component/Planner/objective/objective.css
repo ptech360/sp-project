@@ -42,3 +42,52 @@ tbody th, tbody td {
 tfoot th, tfoot td {
   text-align: center;
 }
+
+.add-button
+{
+  background-color: red;
+}
+
+.assign-button{
+
+margin-right: 20px;
+background-color: red;
+
+}
+
+.one-ob{
+      color: black;
+    background-color: #00695C;
+    border-color: #d6e9c6;
+}
+
+.two-ob
+{
+    color: black;
+    background-color: #00897B;
+    border-color: #d6e9c6;
+}
+
+.three-ob{
+    color: #0c480e;
+    background-color: #80CBC4;
+    border-color: #ddd;
+}
+
+.four-ob{
+    color: #652607;
+    background-color: #4DB6AC;
+    border-color: #ddd;
+}
+
+.five-ob{
+    color: #8a1a1a;
+    background-color: #B2DFDB;
+    border-color: #ddd;
+}
+
+.six-ob{
+  color: #333;
+    background-color: #E0F2F1;
+    border-color: #ddd;
+}
