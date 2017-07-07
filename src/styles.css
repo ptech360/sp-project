@@ -8,7 +8,7 @@ body{
 
 
 /* Active list color */
-ul.nav.nav-tabs{
+/*ul.nav.nav-tabs{
     border: 1px solid #8585ec !important;
 }
 ul.nav.nav-tabs li a{
@@ -20,7 +20,7 @@ li.active a{
     font-weight:bold;
 }
 .nav>li>a:focus, .nav>li>a:hover{
-    background: #8585ec !important; /* Light Red Color */
+    background: #8585ec !important; 
     color:white !important;
 }
 /*.panel-default>.panel-heading{

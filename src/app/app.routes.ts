@@ -14,6 +14,7 @@ import { InitialStetup } from './Component/Planner/initial-setup/initial.setup';
 import { CycleComponent } from './Component/Planner/cycle/cycle';
 import { ObjectiveComponent} from './Component/Planner/objective/objective';
 import { CoordinatorHome } from './Component/Coordinator/coordinator.home';
+import { HodHome } from './Component/Hod/hod.home';
 
 import { LoggedInGuard } from './Component/Login/login.guard';
 import { HaveCycle } from './Component/Planner/cycle/cycle.check';
@@ -37,6 +38,7 @@ export const rootRouterConfig: Routes = [
       { path: 'objective', component:ObjectiveComponent}
     ]
   },
-  { path:'coordinator', component:CoordinatorHome, canActivate:[LoggedInGuard]}
+  { path:'coordinator', component:CoordinatorHome, canActivate:[LoggedInGuard]},
+  { path:'hod', component:HodHome, canActivate:[LoggedInGuard]}
   
 ];

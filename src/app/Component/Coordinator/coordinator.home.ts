@@ -19,6 +19,18 @@ export class CoordinatorHome{
     })
   }
 
+  saveResult(e:any){
+    var result ={
+      "currentLevel":e.currentLevel,
+      "currentCost":e.currentCost,
+      "departmentId":this.cs.getData("user_roleInfo")[0].departmentId,
+      "quarterId":e.id
+    }
+    this.orgSer.saveQuarteResult(result,e.id).subscribe((res:any)=>{
+      console.log("success",res);
+    })
+  }
+
   logout(){
     localStorage.clear();
   }

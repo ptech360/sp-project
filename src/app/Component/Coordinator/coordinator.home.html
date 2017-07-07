@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default navbar-fixed-top header">
-  <div class="container">
+  <div class="container-fluid">
     <div class="navbar-header" id="toggle-header">
       <a class="navbar-brand" href="">Strategic Planning</a>
     </div>
@@ -10,8 +10,9 @@
     </div>
   </div>
 </nav>
-<div class="container">
+<div class="container-fluid">
   <div class="main-content">
+    <h1>Assigned Objectives</h1>
     <div class="panel-group" id="accordion">
       <div class="panel panel-info" *ngFor="let obj of assignedActivities; let i = index;">
         <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" [attr.data-target]="'#obj' + i">
@@ -42,7 +43,7 @@
                                   <div class="col-sm-6 col xs-6" style="padding:0px !important;" data-toggle="collapse" data-parent="#accordion4" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'measr' + l">
                                     <b>{{i+1}}.{{j+1}}.{{k+1}}.{{l+1}}) Measure:</b> {{measr.measure}}
                                   </div>
-                                  <div class="col-sm-6 col xs-6" >
+                                  <div class="col-sm-6 col xs-6 text-center">
                                     <span class="label label-primary ">Estimated Cost <span class="">84000</span></span>
                                     <span class="label label-info ">2017 <span class="">Q1</span></span>
                                     <span class="label label-primary "><span class="">@</span> Inprogress</span>
@@ -56,29 +57,50 @@
                                     <div class="panel panel-default">
                                       <div class="panel-heading text-center"><b>Estimated Target</b></div>
                                       <div class="panel-body">
-                                        <table class="table table-hover">
-                                          <thead>
-                                            <tr>
-                                              <th>Year</th>
-                                              <th>Estimated Cost</th>
-                                              <th>Quarter</th>
-                                              <th>Target</th>
-                                              <th>Audit Date</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody id="attachment-parent" *ngFor="let tdl of measr.annualTarget;let at = index;">
-                                            <tr>
-                                              <td style="vertical-align: middle;" [attr.rowspan]="tdl.levels.length + 2">{{ tdl.year }}</td>
-                                              <td style="vertical-align: middle;" [attr.rowspan]="tdl.levels.length + 2">{{tdl.estimatedCost}}</td>
-                                            </tr>
-                                            <tr *ngFor="let lev of tdl.levels; let in = index;" 
-                                            [ngClass]="{'current-quarter': at == 0 && in == 0}">
-                                              <td>{{lev.quarter}}</td>
-                                              <td>{{lev.estimatedTargetLevel}}</td>
-                                              <td>{{lev.startDate}} To {{lev.endDate}}</td>
-                                            </tr>
-                                          </tbody>
-                                        </table>
+                                        <div class="panel-group" id="accordionTable">
+                                          <table class="table table-hover">
+                                            <thead>
+                                              <tr>
+                                                <th>Year</th>
+                                                <th>Estimated Cost</th>
+                                                <th>Quarter</th>
+                                                <th>Target</th>
+                                                <th>Audit Date</th>
+                                                <th>Actual Level</th>
+                                                <th>Actual Cost</th>
+                                                <th></th>
+                                              </tr>
+                                            </thead>
+                                            <tbody *ngFor="let tdl of measr.annualTarget;let at = index;">
+                                              <tr>
+                                                <td style="vertical-align: middle;" [attr.rowspan]="tdl.levels.length + 2">{{ tdl.year }}</td>
+                                                <td style="vertical-align: middle;" [attr.rowspan]="tdl.levels.length + 2">{{tdl.estimatedCost}}</td>
+                                              </tr>
+                                              <template class="panel panel-info" let-lev ngFor [ngForOf]="tdl.levels" let-in="index">
+                                                <tr [ngClass]="{'current-quarter': at == 0 && in == 0}" data-toggle="collapse" [attr.data-target]="'#q'+l+at+in" data-parent="#accordionTable">
+                                                  <td>{{lev.quarter}}</td>
+                                                  <td>{{lev.estimatedTargetLevel}}</td>
+                                                  <td>{{lev.startDate}} To {{lev.endDate}}</td>
+                                                  <td *ngIf="lev.departments.length">{{lev.departments[0].results[0].currentLevel}}</td>
+                                                  <td *ngIf="!lev.departments.length"><input type="number" [(ngModel)]="lev.currentLevel"></td>
+                                                  <td *ngIf="!lev.departments.length"><input type="number" [(ngModel)]="lev.currentCost"></td>
+                                                  <td *ngIf="lev.departments.length">{{lev.departments[0].results[0].currentCost}}</td>
+                                                  <td><button type="submit" class="btn btn-success" (click)="saveResult(lev)" *ngIf="!edit">Save</button></td>
+                                                  <td *ngIf="edit"><button type="button" class="btn btn-danger" (click)="edit = true"> Edit</button></td>
+                                                  <td><i class="fa fa-sort-desc" aria-hidden="true"></i></td>
+                                                </tr>
+                                                <tr>
+                                                  <td class="panel-collapse status-color collapse" [attr.id]="'q'+l+at+in" colspan="5">
+                                                    <div class="panel-body">
+                                                      <b>Attachments :</b>
+                                                      <p>adfd fdsfdf dfsgf gfdgdfjgjdsk gdsgk</p>
+                                                    </div>                                                    
+                                                  </td>
+                                                </tr>
+                                              </template>
+                                            </tbody>
+                                          </table>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>

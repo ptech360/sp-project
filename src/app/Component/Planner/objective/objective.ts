@@ -85,6 +85,17 @@ export class ObjectiveComponent implements AfterViewInit{
     });
     return fa;
   }
+
+  addSpi(form:any) {
+    const control = <FormArray>form.controls['spis'];
+    control.push(this.inItSpi());
+  }
+
+  removeSpi(form:any, index:any) {
+    const control = <FormArray>form.controls['spis'];
+    control.removeAt(index);
+  }
+
   returnedObject:any;
   onSubmit() {
     this.objectiveForm.value["cycleId"] = this.commonService.getData('org_info')[0].cycles.id;
@@ -106,12 +117,12 @@ initForm(){
       "activities": this.formBuilder.array([this.setActivity()])
     });
   }
-  addActivity() {
-    const control = <FormArray>this.initiativeForm.controls['activities'];
+  addActivity(form:any) {
+    const control = <FormArray>form.controls['activities'];
     control.push(this.setActivity());
   }
-  removeActivity(initiativeForm:any, i:any) {
-    const control = <FormArray>this.initiativeForm.controls['activities'];
+  removeActivity(form:any, i:any) {
+    const control = <FormArray>form.controls['activities'];
     control.removeAt(i);
   }
   addMeasure(form:any) {
