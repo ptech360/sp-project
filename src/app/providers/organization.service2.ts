@@ -71,7 +71,7 @@ export class OrganizationService2{
 
   public fetchAssignedActivity(){
     this.baseUrl = this.con.baseUrl;
-    return this.http.get(this.baseUrl + "/department/" + this.con.getData('user_roleInfo')[0].departmentId+"/activity")
+    return this.http.get(this.baseUrl + "/department/" + this.con.getData('user_roleInfo')[0].departmentId+"/result")
                     .map(this.extractData)
                     .catch(this.handleError); 
   }

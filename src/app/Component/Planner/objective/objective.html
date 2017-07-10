@@ -246,9 +246,9 @@
                     <div class="panel-heading"><b>Add Measure</b></div>
                     <div class="panel-body" formArrayName="measures">
                       <ul class="nav nav-tabs">
-                        <li [ngClass]="{'active': ul == act.controls.measures.controls.length - 1}" *ngFor="let measureAct of act.controls.measures.controls;let ul= index;">
-                          <a data-toggle="tab" [attr.data-target]="'#measure' + ul">Measure {{ul+1}} 
-                        <button type="button" class="close" aria-label="Close" (click)="removeMeasure(act,ul)">
+                        <li [ngClass]="{'active': ulm == act.controls.measures.controls.length - 1}" *ngFor="let measureAct of act.controls.measures.controls;let ulm= index;">
+                          <a data-toggle="tab" [attr.data-target]="'#measure' + ulm">Measure {{ulm+1}} 
+                        <button type="button" class="close" aria-label="Close" (click)="removeMeasure(act,ulm)">
                           <span aria-hidden="true">&times;</span>
                         </button>
                         </a>
@@ -279,6 +279,16 @@
                             </div>
                           </div>
                           <div class="form-group row">
+                            <label class="col-lg-2 col-form-label">Select Direction</label>
+                            <div class="col-lg-10">
+                              <select class="form-control" formControlName="direction">
+                                <option value="" disabled selected>Choose Direction of measureUnit</option>
+                                <option value="positive">Positive</option>
+                                <option value="negative">Negative</option>
+                              </select>
+                            </div>
+                          </div>                          
+                          <div class="form-group row">
                             <label class="col-lg-2 col-form-label">Current Level</label>
                             <div class="col-lg-10">
                               <input type="number" min="0" step="1" class="form-control" formControlName="currentLevel">
@@ -288,10 +298,10 @@
                             <label class="col-lg-2 col-form-label">Frequency of Measurement</label>
                             <div class="col-lg-10">
                               <select class="form-control" formControlName="frequencyId" (ngModelChange)="setTargetTable(measureAct.controls.annualTarget.controls,$event)">
-                          <option value="1">Annually</option>
-                          <option value="2">Semi-Annual</option>      
-                          <option value="4">Quarterly</option> 
-                        </select>
+                                <option value="1">Annually</option>
+                                <option value="2">Semi-Annual</option>      
+                                <option value="4">Quarterly</option> 
+                              </select>
                             </div>
                           </div>
                           <div class="panel panel-default">
@@ -395,6 +405,16 @@
                     </div>
                   </div>
                   <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Select Direction</label>
+                    <div class="col-lg-10">
+                      <select class="form-control" formControlName="direction">
+                        <option value="" disabled selected>Choose Direction of measureUnit</option>
+                        <option value="positive">Positive</option>
+                        <option value="negative">Negative</option>
+                      </select>
+                    </div>
+                  </div>                  
+                  <div class="form-group row">
                     <label class="col-lg-2 col-form-label">Current Level</label>
                     <div class="col-lg-10">
                       <input type="number" min="0" step="1" class="form-control" formControlName="currentLevel">
@@ -478,6 +498,16 @@
                 <option value="" disabled selected>Choose Measurement Unit</option>
                 <option value="percentage">Percent</option>
                 <option value="decimal">Decimal</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-lg-2 col-form-label">Select Direction</label>
+            <div class="col-lg-10">
+              <select class="form-control" formControlName="direction">
+                <option value="" disabled selected>Choose Direction of measureUnit</option>
+                <option value="positive">Positive</option>
+                <option value="negative">Negative</option>
               </select>
             </div>
           </div>

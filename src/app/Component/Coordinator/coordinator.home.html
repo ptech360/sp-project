@@ -36,9 +36,9 @@
                         </div>
                         <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k" [ngClass]="{'in': k == 0}">
                           <div class="panel-body">
-                            <p *ngIf="!act.activityMeasures">No Measure set yet for this Activities</p>
+                            <p *ngIf="!act.measures">No Measure set yet for this Activities</p>
                             <div class="panel-group" id="accordion4">
-                              <div class="panel panel-default" *ngFor="let measr of act.activityMeasures;let l = index;">
+                              <div class="panel panel-default" *ngFor="let measr of act.measures;let l = index;">
                                 <div class="panel-heading row" style="margin:0px !important;">
                                   <div class="col-sm-6 col xs-6" style="padding:0px !important;" data-toggle="collapse" data-parent="#accordion4" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'measr' + l">
                                     <b>{{i+1}}.{{j+1}}.{{k+1}}.{{l+1}}) Measure:</b> {{measr.measure}}
@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k + 'measr' + l" [ngClass]="{'in': l == 0}">
                                   <div class="panel-body">
-                                    <label>Current Level:</label> {{measr.currentLevel}}
+                                    <label>Current Level:</label> {{measr.currentLevelOfMeasure}}
                                     <span class="glyphicon glyphicon-time pull-right"><label> {{measr.frequency}}</label></span>
                                     <div class="panel panel-default">
                                       <div class="panel-heading text-center"><b>Estimated Target</b></div>
@@ -71,32 +71,33 @@
                                                 <th></th>
                                               </tr>
                                             </thead>
-                                            <tbody *ngFor="let tdl of measr.annualTarget;let at = index;">
+                                            <tbody *ngFor="let tdl of measr.annualTargets;let at = index;">
                                               <tr>
-                                                <td style="vertical-align: middle;" [attr.rowspan]="tdl.levels.length + 2">{{ tdl.year }}</td>
-                                                <td style="vertical-align: middle;" [attr.rowspan]="tdl.levels.length + 2">{{tdl.estimatedCost}}</td>
+                                                <td style="vertical-align: middle;" [attr.rowspan]="tdl.target.quarterInfo.length + 2">{{ tdl.target.year }}</td>
+                                                <td style="vertical-align: middle;" [attr.rowspan]="tdl.target.quarterInfo.length + 2">{{tdl.target.estimatedCost}}</td>
                                               </tr>
-                                              <template class="panel panel-info" let-lev ngFor [ngForOf]="tdl.levels" let-in="index">
-                                                <tr [ngClass]="{'current-quarter': at == 0 && in == 0}" data-toggle="collapse" [attr.data-target]="'#q'+l+at+in" data-parent="#accordionTable">
+                                              <template class="panel panel-info" let-lev ngFor [ngForOf]="tdl.target.quarterInfo" let-in="index">
+                                                <!--<tr [ngClass]="{'current-quarter': at == 0 && in == 0}" data-toggle="collapse" [attr.data-target]="'#q'+l+at+in" data-parent="#accordionTable">-->
+                                                  <tr>
                                                   <td>{{lev.quarter}}</td>
-                                                  <td>{{lev.estimatedTargetLevel}}</td>
+                                                  <td>{{lev.estimatedLevel}}</td>
                                                   <td>{{lev.startDate}} To {{lev.endDate}}</td>
-                                                  <td *ngIf="lev.departments.length">{{lev.departments[0].results[0].currentLevel}}</td>
-                                                  <td *ngIf="!lev.departments.length"><input type="number" [(ngModel)]="lev.currentLevel"></td>
-                                                  <td *ngIf="!lev.departments.length"><input type="number" [(ngModel)]="lev.currentCost"></td>
-                                                  <td *ngIf="lev.departments.length">{{lev.departments[0].results[0].currentCost}}</td>
+                                                  <td >{{lev.currentLevel}}</td>
+                                                  <!--<td *ngIf="!lev.departments.length"><input type="number" [(ngModel)]="lev.currentLevel"></td>-->
+                                                  <!--<td *ngIf="!lev.departments.length"><input type="number" [(ngModel)]="lev.currentCost"></td>-->
+                                                  <td >{{lev.currentCost}}</td>
                                                   <td><button type="submit" class="btn btn-success" (click)="saveResult(lev)" *ngIf="!edit">Save</button></td>
                                                   <td *ngIf="edit"><button type="button" class="btn btn-danger" (click)="edit = true"> Edit</button></td>
                                                   <td><i class="fa fa-sort-desc" aria-hidden="true"></i></td>
                                                 </tr>
-                                                <tr>
+                                                <!--<tr>
                                                   <td class="panel-collapse status-color collapse" [attr.id]="'q'+l+at+in" colspan="5">
                                                     <div class="panel-body">
                                                       <b>Attachments :</b>
                                                       <p>adfd fdsfdf dfsgf gfdgdfjgjdsk gdsgk</p>
                                                     </div>                                                    
                                                   </td>
-                                                </tr>
+                                                </tr>-->
                                               </template>
                                             </tbody>
                                           </table>

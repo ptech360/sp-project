@@ -37,7 +37,7 @@ export class ObjectiveComponent implements AfterViewInit{
       }
       console.log(res);
     });
-    this.initializeGoalForm();
+    this.initObjectiveForm();
     this.initiativeForm = this.initForm();
     this.activityForm = this.setActivity();
     this.measureForm = this.setMeasure();
@@ -56,7 +56,7 @@ export class ObjectiveComponent implements AfterViewInit{
     });
   }
   /**Objective Component */
-  initializeGoalForm() {
+  initObjectiveForm() {
     this.objectiveForm = this.formBuilder.group({
       "objective": ['', [Validators.required]],
       "totalCost": ['', [Validators.required]],
@@ -103,7 +103,7 @@ export class ObjectiveComponent implements AfterViewInit{
       $('#objectiveModal').modal('hide');
       this.returnedObject = response;
       this.objectives.push(this.returnedObject);
-      this.initializeGoalForm();
+      this.initObjectiveForm();
     }, (error:any) => {
       console.log(error);
     });
@@ -144,6 +144,7 @@ initForm(){
       "measure": ['', [Validators.required]],
       "frequencyId": [1, [Validators.required]],
       "measureUnit": ['', [Validators.required]],
+      "direction": ['',[Validators]],
       "currentLevel": ['', [Validators.required]],
       "annualTarget": this.formBuilder.array(this.setAnnualTarget())
     });
