@@ -1,286 +1,330 @@
-<h1>Objectives
-  <button type="button" class="btn btn-danger pull-right " data-toggle="modal" data-target="#objectiveModal">Add Objective</button></h1>
-<div class="panel-group" id="accordion">
-  <div class="panel panel-info" *ngFor="let obj of objectives; let i = index;">
-    <div class="panel-heading row one-ob " style="margin:0px !important;">
-      <div class="col-sm-10 col xs-10" (click)="getObjElement($event)" data-toggle="collapse" data-parent="#accordion" [attr.data-target]="'#obj' + i">
-        <b>{{i+1}}) Objective :</b> {{obj.objective}}
+<div class="container-fluid">
+  <div class="custom-header">
+    <h1>
+      Objectives
+      <button data-toggle="modal" data-target="#objectiveModal" type="button" class="pull-right btn background-transparent btn-circle btn-lg right-margin"><i class="glyphicon glyphicon-plus"></i></button>
+    </h1>
+  </div>
+ <div class="panel-group  custom-panel" id="accordion">
+  <div class="panel panel-default" *ngFor="let obj of objectives; let i = index;">
+
+
+    <!-- Blue part -->
+    <div class="panel-heading objective-header" role="button" (click)="getObjElement($event)" data-toggle="collapse" data-parent="#accordion" [attr.data-target]="'#obj' + i">
+      <div class="objective-text">
+        <b>{{i+1}}. </b> {{obj.objective}}
       </div>
-      <div class="col-sm-2 col-xs-2 objective" [ngClass]="{'hideBtn': i != 0}">
-        <button class="btn btn-info pull-right " data-toggle="modal" (click)="objectiveId = obj.id" data-target="#initiativeModal">Add Initiative</button>
+    </div> <!-- end of blue part -->
+
+    <!-- Yellow Part -->
+      <div class="panel-collapse collapse" [attr.id]="'obj' + i" [ngClass]="{'in': i == 0}">
+    <div class="objective-Initiatives  panel-body custom-panel" >
+      <div class="text-center">
+        <span class="Initiatives-text">Initiatives</span>
+        <button type="button" class="pull-right btn background-transparent btn-circle btn-lg right-margin"><i class="glyphicon glyphicon-plus"></i></button>
       </div>
     </div>
+      </div><!-- End of yellow part -->
 
-    <div class="panel-collapse collapse" [attr.id]="'obj' + i" [ngClass]="{'in': i == 0}">
-      <div class="panel-body">
-        <p *ngIf="!obj.initiatives.length">No Initiative added yet for this Objective.</p>
-        <div class="panel-group" id="accordion2">
-        <div class="panel panel-success " *ngFor="let ini of obj.initiatives; let j = index;">
-          <div class="panel-heading row two-ob" style="margin:0px !important;">
-            <div class="col-sm-10 col xs-10" (click)="getIniElement($event)" data-toggle="collapse" data-parent="accordion2" [attr.data-target]="'#obj' + i + 'ini' + j">
-              <b>{{i+1}}.{{j+1}}) Initiative :</b> {{ini.initiative}}
-            </div>
-            <div class="col-sm-2 col-xs-2 initiative" [ngClass]="{'hideBtn': j != 0}">
-              <button class="btn btn-danger pull-right" data-toggle="modal" (click)="initiativeId = ini.id" data-target="#activityModal">Add Activity</button>
-            </div>
-          </div>
-          <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j" [ngClass]="{'in': j == 0}">
-            <div class="panel-body">
-              <p *ngIf="!ini.activities">No Activity added yet for this Initiative</p>
-              <div class="panel-group" id="accordion3">
-              <div class="panel panel-default" *ngFor="let act of ini.activities; let k = index;">
-                <div class="panel-heading row three-ob" style="margin:0px !important;">
-                  <div class="col-sm-8 col xs-8" (click)="getActElement($event)" data-toggle="collapse" data-parent="#accordion3"
-                    [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k">
-                    <b>{{i+1}}.{{j+1}}.{{k+1}}) Activity :</b> {{act.activity}}
-                  </div>
-                  <div class="col-sm-4 col-xs-4 activity" [ngClass]="{'hideBtn': k != 0}">
-                    <button class="btn btn--success pull-right add-button" data-toggle="modal" (click)="activityId = act.id" data-target="#measureModal">Add Measure</button>
-                    <button class="btn btn--warning pull-right assign-button" data-toggle="modal" (click)="selectedActivity = act;" data-target="#assignActivityModel">Assign</button>
-                  </div>
+  </div>
+
+</div>
+ 
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Original code ---->
+  <h1>Objectives
+    <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#objectiveModal">Add Objective</button></h1>
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-info" *ngFor="let obj of objectives; let i = index;">
+      <div class="panel-heading row one-ob " style="margin:0px !important;">
+        <div class="col-sm-10 col xs-10" (click)="getObjElement($event)" data-toggle="collapse" data-parent="#accordion" [attr.data-target]="'#obj' + i">
+          <b>{{i+1}}) Objective :</b> {{obj.objective}}
+        </div>
+        <div class="col-sm-2 col-xs-2 objective" [ngClass]="{'hideBtn': i != 0}">
+          <button class="btn btn-info pull-right " data-toggle="modal" (click)="objectiveId = obj.id" data-target="#initiativeModal">Add Initiative</button>
+        </div>
+      </div>
+
+      <div class="panel-collapse collapse" [attr.id]="'obj' + i" [ngClass]="{'in': i == 0}">
+        <div class="panel-body">
+          <p *ngIf="!obj.initiatives.length">No Initiative added yet for this Objective.</p>
+          <div class="panel-group" id="accordion2">
+            <div class="panel panel-success " *ngFor="let ini of obj.initiatives; let j = index;">
+              <div class="panel-heading row two-ob" style="margin:0px !important;">
+                <div class="col-sm-10 col xs-10" (click)="getIniElement($event)" data-toggle="collapse" data-parent="accordion2" [attr.data-target]="'#obj' + i + 'ini' + j">
+                  <b>{{i+1}}.{{j+1}}) Initiative :</b> {{ini.initiative}}
                 </div>
-
-
-                <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k" [ngClass]="{'in': k == 0}">
-                  <div class="panel-body">
-                    <div class="panel panel-default">
-                      <div class="panel-heading four-ob "><b>Assigned Departments</b></div>
-                      <div class="panel-body">
-                        <ul class="list-group">
-                          <li class="list-group-item" *ngFor="let dept of act.assignedDepartments;let d = index;">
-                            {{dept.department}}
-                          </li>
-                        </ul>
+                <div class="col-sm-2 col-xs-2 initiative" [ngClass]="{'hideBtn': j != 0}">
+                  <button class="btn btn-danger pull-right" data-toggle="modal" (click)="initiativeId = ini.id" data-target="#activityModal">Add Activity</button>
+                </div>
+              </div>
+              <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j" [ngClass]="{'in': j == 0}">
+                <div class="panel-body">
+                  <p *ngIf="!ini.activities">No Activity added yet for this Initiative</p>
+                  <div class="panel-group" id="accordion3">
+                    <div class="panel panel-default" *ngFor="let act of ini.activities; let k = index;">
+                      <div class="panel-heading row three-ob" style="margin:0px !important;">
+                        <div class="col-sm-8 col xs-8" (click)="getActElement($event)" data-toggle="collapse" data-parent="#accordion3" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k">
+                          <b>{{i+1}}.{{j+1}}.{{k+1}}) Activity :</b> {{act.activity}}
+                        </div>
+                        <div class="col-sm-4 col-xs-4 activity" [ngClass]="{'hideBtn': k != 0}">
+                          <button class="btn btn--success pull-right add-button" data-toggle="modal" (click)="activityId = act.id" data-target="#measureModal">Add Measure</button>
+                          <button class="btn btn--warning pull-right assign-button" data-toggle="modal" (click)="selectedActivity = act;" data-target="#assignActivityModel">Assign</button>
+                        </div>
                       </div>
-                    </div>
-                    <p *ngIf="!act.measures">No Measure set yet for this Activities</p>
-                    <div class="panel-group" id="accordion4">
-                    <div class="panel panel-default " *ngFor="let measr of act.measures;let l = index;">
-                      <div class="panel-heading five-ob" data-toggle="collapse" data-parent="#accordion4" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'measr' + l"><b>{{i+1}}.{{j+1}}.{{k+1}}.{{l+1}}) Measure</b> {{measr.measure}}</div>
-                      <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k + 'measr' + l" [ngClass]="{'in': l == 0}">
+
+
+                      <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k" [ngClass]="{'in': k == 0}">
                         <div class="panel-body">
-                          <label>Current Level:</label> {{measr.currentLevel}}
-                          <span class="glyphicon glyphicon-time pull-right"><label> {{measr.frequency}}</label></span>
-                          <div class="panel panel-default ">
-                            <div class="panel-heading text-center six-ob"><b>Estimated Target</b></div>
+                          <div class="panel panel-default">
+                            <div class="panel-heading four-ob "><b>Assigned Departments</b></div>
                             <div class="panel-body">
-                              <table class="table table-hover">
-                                <thead>
-                                  <tr>
-                                    <th>Year</th>
-                                    <th>Estimated Cost</th>
-                                    <th>Quarter</th>
-                                    <th>Target</th>
-                                    <th>Audit Date</th>
-                                  </tr>
-                                </thead>
-                                <tbody id="attachment-parent" *ngFor="let tdl of measr.annualTarget;let at = index;">
-                                  <tr>
-                                    <td style="vertical-align: middle;" [attr.rowspan]="tdl.levels.length + 2">{{ tdl.year }}</td>
-                                    <td style="vertical-align: middle;" [attr.rowspan]="tdl.levels.length + 2">{{tdl.estimatedCost}}</td>
-                                  </tr>
-                                  <tr *ngFor="let lev of tdl.levels; let in = index;">
-                                    <td>{{lev.quarter}}</td>
-                                    <td>{{lev.estimatedTargetLevel}}</td>
-                                    <td>{{lev.startDate}} To {{lev.endDate}}</td>
-                                  </tr>
-                                </tbody>
-                              </table>
+                              <ul class="list-group">
+                                <li class="list-group-item" *ngFor="let dept of act.assignedDepartments;let d = index;">
+                                  {{dept.department}}
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <p *ngIf="!act.measures">No Measure set yet for this Activities</p>
+                          <div class="panel-group" id="accordion4">
+                            <div class="panel panel-default " *ngFor="let measr of act.measures;let l = index;">
+                              <div class="panel-heading five-ob" data-toggle="collapse" data-parent="#accordion4" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'measr' + l"><b>{{i+1}}.{{j+1}}.{{k+1}}.{{l+1}}) Measure</b> {{measr.measure}}</div>
+                              <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k + 'measr' + l" [ngClass]="{'in': l == 0}">
+                                <div class="panel-body">
+                                  <label>Current Level:</label> {{measr.currentLevel}}
+                                  <span class="glyphicon glyphicon-time pull-right"><label> {{measr.frequency}}</label></span>
+                                  <div class="panel panel-default ">
+                                    <div class="panel-heading text-center six-ob"><b>Estimated Target</b></div>
+                                    <div class="panel-body">
+                                      <table class="table table-hover">
+                                        <thead>
+                                          <tr>
+                                            <th>Year</th>
+                                            <th>Estimated Cost</th>
+                                            <th>Quarter</th>
+                                            <th>Target</th>
+                                            <th>Audit Date</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody id="attachment-parent" *ngFor="let tdl of measr.annualTarget;let at = index;">
+                                          <tr>
+                                            <td style="vertical-align: middle;" [attr.rowspan]="tdl.levels.length + 2">{{ tdl.year }}</td>
+                                            <td style="vertical-align: middle;" [attr.rowspan]="tdl.levels.length + 2">{{tdl.estimatedCost}}</td>
+                                          </tr>
+                                          <tr *ngFor="let lev of tdl.levels; let in = index;">
+                                            <td>{{lev.quarter}}</td>
+                                            <td>{{lev.estimatedTargetLevel}}</td>
+                                            <td>{{lev.startDate}} To {{lev.endDate}}</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    </div>
                   </div>
                 </div>
               </div>
-              </div>
             </div>
           </div>
-        </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Objective Modal -->
-<div class="modal fade" id="objectiveModal" role="dialog">
-  <div class="modal-dialog modal-lg">
+  <!-- Objective Modal -->
+  <div class="modal fade" id="objectiveModal" role="dialog">
+    <div class="modal-dialog modal-lg">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Add Objective</h4>
-      </div>
-      <form [formGroup]="objectiveForm" (submit)="onSubmit()">
-        <div class="modal-body">
-          <div class="form-group row">
-            <label class="col-lg-2 col-form-label">Objective</label>
-            <div class="col-lg-10">
-              <textarea class="form-control" rows="3" formControlName="objective"></textarea>
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Objective</h4>
+        </div>
+        <form [formGroup]="objectiveForm" (submit)="onSubmit()">
+          <div class="modal-body">
+            <div class="form-group row">
+              <label class="col-lg-2 col-form-label">Objective</label>
+              <div class="col-lg-10">
+                <textarea class="form-control" rows="3" formControlName="objective"></textarea>
+              </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label class="col-lg-2 col-form-label">Estimated Cost</label>
-            <div class="col-lg-10">
-              <input type="number" class="form-control" placeholder="20000" formControlName="totalCost">
+            <div class="form-group row">
+              <label class="col-lg-2 col-form-label">Estimated Cost</label>
+              <div class="col-lg-10">
+                <input type="number" class="form-control" placeholder="20000" formControlName="totalCost">
+              </div>
             </div>
-          </div>
-          <div class="panel panel-default" formArrayName="spis">
-            <div class="panel-heading">Strategic Performance indicator</div>
-            <div class="panel-body">
+            <div class="panel panel-default" formArrayName="spis">
+              <div class="panel-heading">Strategic Performance indicator</div>
+              <div class="panel-body">
 
-              <div *ngFor="let s of objectiveForm.controls.spis.controls;let i = index;" [formGroupName]="i">
-                <div class="form-group row">
-                  <label class="col-lg-2 col-form-label">Enter SPI</label>
-                  <div class="col-lg-10">
-                    <textarea class="form-control" rows="3" formControlName="spi"></textarea>
+                <div *ngFor="let s of objectiveForm.controls.spis.controls;let i = index;" [formGroupName]="i">
+                  <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Enter SPI</label>
+                    <div class="col-lg-10">
+                      <textarea class="form-control" rows="3" formControlName="spi"></textarea>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-lg-2 col-form-label">Select MeasureUnit</label>
-                  <div class="col-lg-10">
-                    <select class="form-control" formControlName="measureUnit">
+                  <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Select MeasureUnit</label>
+                    <div class="col-lg-10">
+                      <select class="form-control" formControlName="measureUnit">
                         <option value="" disabled selected>Choose Measurement Unit</option>
                         <option value="percentage">Percent</option>
                         <option value="decimal">Decimal</option>
                       </select>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-lg-2 col-form-label">Current Level</label>
-                  <div class="col-lg-10">
-                    <input type="number" min="0" step="1" class="form-control" formControlName="currentLevel">
+                  <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Current Level</label>
+                    <div class="col-lg-10">
+                      <input type="number" min="0" step="1" class="form-control" formControlName="currentLevel">
+                    </div>
                   </div>
-                </div>
-                <div class="panel panel-default" formArrayName="targetDigital">
-                  <div class="panel-heading">Annuals Target</div>
-                  <div class="panel-body">
-                    <div class="form-group row">
-                      <div *ngFor="let td of objectiveForm.controls.spis.controls[i].controls.targetDigital.controls;let m = index;" [formGroupName]="m">
-                        <label for="example-text-input" class="col-lg-2 col-form-label">{{td.value.year}}</label>
-                        <div class="col-lg-10">
-                          <input type="number" min="0" step="1" class="form-control" formControlName="expectedLevel">
+                  <div class="panel panel-default" formArrayName="targetDigital">
+                    <div class="panel-heading">Annuals Target</div>
+                    <div class="panel-body">
+                      <div class="form-group row">
+                        <div *ngFor="let td of objectiveForm.controls.spis.controls[i].controls.targetDigital.controls;let m = index;" [formGroupName]="m">
+                          <label for="example-text-input" class="col-lg-2 col-form-label">{{td.value.year}}</label>
+                          <div class="col-lg-10">
+                            <input type="number" min="0" step="1" class="form-control" formControlName="expectedLevel">
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+
               </div>
-
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Submit</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </form>
-    </div>
-
-  </div>
-</div>
-
-<!-- Initiative Modal-->
-<div id="initiativeModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Add Initiative</h4>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </form>
       </div>
-      <form [formGroup]="initiativeForm" (submit)="submitInitiative()">
-        <div class="modal-body">
-          <div class="form-group row">
-            <label class="col-lg-2 col-form-label">Proposed Initiative</label>
-            <div class="col-lg-10">
-              <textarea class="form-control" rows="3" formControlName="initiative"></textarea>
+
+    </div>
+  </div>
+
+  <!-- Initiative Modal-->
+  <div id="initiativeModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Initiative</h4>
+        </div>
+        <form [formGroup]="initiativeForm" (submit)="submitInitiative()">
+          <div class="modal-body">
+            <div class="form-group row">
+              <label class="col-lg-2 col-form-label">Proposed Initiative</label>
+              <div class="col-lg-10">
+                <textarea class="form-control" rows="3" formControlName="initiative"></textarea>
+              </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label class="col-lg-2 col-form-label">Estimated Cost</label>
-            <div class="col-lg-10">
-              <input type="number" class="form-control" placeholder="20000" formControlName="totalCost">
+            <div class="form-group row">
+              <label class="col-lg-2 col-form-label">Estimated Cost</label>
+              <div class="col-lg-10">
+                <input type="number" class="form-control" placeholder="20000" formControlName="totalCost">
+              </div>
             </div>
-          </div>
-          <div class="panel panel-default" formArrayName="activities">
-            <div class="panel-heading">Proposed Activities</div>
-            <div class="panel-body">
-              <div *ngFor="let act of initiativeForm.controls.activities.controls;let l = index;" [formGroupName]="l">
-                <div class="form-group row">
-                  <label class="col-lg-2 col-form-label">Activity</label>
-                  <div class="col-lg-10">
-                    <textarea class="form-control" rows="3" formControlName="activity"></textarea>
+            <div class="panel panel-default" formArrayName="activities">
+              <div class="panel-heading">Proposed Activities</div>
+              <div class="panel-body">
+                <div *ngFor="let act of initiativeForm.controls.activities.controls;let l = index;" [formGroupName]="l">
+                  <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Activity</label>
+                    <div class="col-lg-10">
+                      <textarea class="form-control" rows="3" formControlName="activity"></textarea>
+                    </div>
                   </div>
-                </div>
-                <div class="panel panel-default" formArrayName="measures">
-                  <div class="panel-heading">Strategic Performance indicator</div>
-                  <div class="panel-body">
-                    <div *ngFor="let measureAct of act.controls.measures.controls;let m = index;" [formGroupName]="m">
-                      <div class="form-group row">
-                        <label class="col-lg-2 col-form-label">Measure</label>
-                        <div class="col-lg-10">
-                          <textarea class="form-control" rows="3" formControlName="measure"></textarea>
+                  <div class="panel panel-default" formArrayName="measures">
+                    <div class="panel-heading">Strategic Performance indicator</div>
+                    <div class="panel-body">
+                      <div *ngFor="let measureAct of act.controls.measures.controls;let m = index;" [formGroupName]="m">
+                        <div class="form-group row">
+                          <label class="col-lg-2 col-form-label">Measure</label>
+                          <div class="col-lg-10">
+                            <textarea class="form-control" rows="3" formControlName="measure"></textarea>
+                          </div>
                         </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="col-lg-2 col-form-label">Select MeasureUnit</label>
-                        <div class="col-lg-10">
-                          <select class="form-control" formControlName="measureUnit">
+                        <div class="form-group row">
+                          <label class="col-lg-2 col-form-label">Select MeasureUnit</label>
+                          <div class="col-lg-10">
+                            <select class="form-control" formControlName="measureUnit">
                             <option value="" disabled selected>Choose Measurement Unit</option>
                             <option value="percentage">Percent</option>
                             <option value="decimal">Decimal</option>
                           </select>
+                          </div>
                         </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="col-lg-2 col-form-label">Current Level</label>
-                        <div class="col-lg-10">
-                          <input type="number" min="0" step="1" class="form-control" formControlName="currentLevel">
+                        <div class="form-group row">
+                          <label class="col-lg-2 col-form-label">Current Level</label>
+                          <div class="col-lg-10">
+                            <input type="number" min="0" step="1" class="form-control" formControlName="currentLevel">
+                          </div>
                         </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="col-lg-2 col-form-label">Frequency of Measurement</label>
-                        <div class="col-lg-10">
-                          <select class="form-control" formControlName="frequencyId" (ngModelChange)="setTargetTable(measureAct.controls.annualTarget.controls,$event)">
+                        <div class="form-group row">
+                          <label class="col-lg-2 col-form-label">Frequency of Measurement</label>
+                          <div class="col-lg-10">
+                            <select class="form-control" formControlName="frequencyId" (ngModelChange)="setTargetTable(measureAct.controls.annualTarget.controls,$event)">
                           <option value="1">Annually</option>
                           <option value="2">Semi-Annual</option>      
                           <option value="4">Quarterly</option> 
                         </select>
+                          </div>
                         </div>
-                      </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading text-center">{{commonService.getData('org_info')[0].cycle[0]}} - {{commonService.getData('org_info')[0].cycle[commonService.getData('org_info')[0].cycle.length-1]}}
-                          Annual Target</div>
-                        <div class="panel-body">
-                          <table class="table table-striped">
-                            <thead>
-                              <tr>
-                                <th width="20%">Year</th>
-                                <th width="60%">Estimate Target</th>
-                                <th width="20%">Estimate Cost</th>
-                              </tr>
-                            </thead>
-                            <tbody formArrayName="annualTarget">
-                              <tr *ngFor="let td of measureAct.controls.annualTarget.controls;let n = index;" [formGroupName]="n">
-                                <td>{{td.value.year}}</td>
-                                <div style="display: inline-table;" formArrayName="levels">
-                                  <td *ngFor="let le of td.controls.levels.controls;let o = index;" [formGroupName]="o">
-                                    <input type="text" style="width:50%" formControlName="quarter" hidden>
-                                    <input type="text" style="width:50%" formControlName="startDate" hidden>
-                                    <input type="text" style="width:50%" formControlName="endDate" hidden>
-                                    <input type="text" style="width:50%" class="validate" formControlName="estimatedTargetLevel">
-                                  </td>
-                                </div>
-                                <td><input type="text" class="validate" formControlName="estimatedCost"></td>
-                              </tr>
-                            </tbody>
-                          </table>
+                        <div class="panel panel-default">
+                          <div class="panel-heading text-center">{{commonService.getData('org_info')[0].cycle[0]}} - {{commonService.getData('org_info')[0].cycle[commonService.getData('org_info')[0].cycle.length-1]}}
+                            Annual Target</div>
+                          <div class="panel-body">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th width="20%">Year</th>
+                                  <th width="60%">Estimate Target</th>
+                                  <th width="20%">Estimate Cost</th>
+                                </tr>
+                              </thead>
+                              <tbody formArrayName="annualTarget">
+                                <tr *ngFor="let td of measureAct.controls.annualTarget.controls;let n = index;" [formGroupName]="n">
+                                  <td>{{td.value.year}}</td>
+                                  <div style="display: inline-table;" formArrayName="levels">
+                                    <td *ngFor="let le of td.controls.levels.controls;let o = index;" [formGroupName]="o">
+                                      <input type="text" style="width:50%" formControlName="quarter" hidden>
+                                      <input type="text" style="width:50%" formControlName="startDate" hidden>
+                                      <input type="text" style="width:50%" formControlName="endDate" hidden>
+                                      <input type="text" style="width:50%" class="validate" formControlName="estimatedTargetLevel">
+                                    </td>
+                                  </div>
+                                  <td><input type="text" class="validate" formControlName="estimatedCost"></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -288,221 +332,220 @@
                 </div>
               </div>
             </div>
+
           </div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Submit</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </form>
-    </div>
-
-  </div>
-</div>
-
-<!-- Activity Modal -->
-<div id="activityModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Add Activity</h4>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </form>
       </div>
-      <form [formGroup]="activityForm" (submit)="submitActivity()">
-        <div class="modal-body">
-          <!--<p>Some text in the modal.</p>-->
-          <div class="form-group row">
-            <label class="col-lg-2 col-form-label">Activity</label>
-            <div class="col-lg-10">
-              <textarea class="form-control" rows="3" formControlName="activity"></textarea>
+
+    </div>
+  </div>
+
+  <!-- Activity Modal -->
+  <div id="activityModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Activity</h4>
+        </div>
+        <form [formGroup]="activityForm" (submit)="submitActivity()">
+          <div class="modal-body">
+            <!--<p>Some text in the modal.</p>-->
+            <div class="form-group row">
+              <label class="col-lg-2 col-form-label">Activity</label>
+              <div class="col-lg-10">
+                <textarea class="form-control" rows="3" formControlName="activity"></textarea>
+              </div>
             </div>
-          </div>
-          <div class="panel panel-default" formArrayName="measures">
-            <div class="panel-heading">Strategic Performance indicator</div>
-            <div class="panel-body">
-              <div *ngFor="let measureAct of activityForm.controls.measures.controls;let m = index;" [formGroupName]="m">
-                <div class="form-group row">
-                  <label class="col-lg-2 col-form-label">Measure</label>
-                  <div class="col-lg-10">
-                    <textarea class="form-control" rows="3" formControlName="measure"></textarea>
+            <div class="panel panel-default" formArrayName="measures">
+              <div class="panel-heading">Strategic Performance indicator</div>
+              <div class="panel-body">
+                <div *ngFor="let measureAct of activityForm.controls.measures.controls;let m = index;" [formGroupName]="m">
+                  <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Measure</label>
+                    <div class="col-lg-10">
+                      <textarea class="form-control" rows="3" formControlName="measure"></textarea>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-lg-2 col-form-label">Select MeasureUnit</label>
-                  <div class="col-lg-10">
-                    <select class="form-control" formControlName="measureUnit">
+                  <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Select MeasureUnit</label>
+                    <div class="col-lg-10">
+                      <select class="form-control" formControlName="measureUnit">
                       <option value="" disabled selected>Choose Measurement Unit</option>
                       <option value="percentage">Percent</option>
                       <option value="decimal">Decimal</option>
                     </select>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-lg-2 col-form-label">Current Level</label>
-                  <div class="col-lg-10">
-                    <input type="number" min="0" step="1" class="form-control" formControlName="currentLevel">
+                  <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Current Level</label>
+                    <div class="col-lg-10">
+                      <input type="number" min="0" step="1" class="form-control" formControlName="currentLevel">
+                    </div>
                   </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-lg-2 col-form-label">Frequency of Measurement</label>
-                  <div class="col-lg-10">
-                    <select class="form-control" formControlName="frequencyId" (ngModelChange)="setTargetTable(measureAct.controls.annualTarget.controls,$event)">
+                  <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Frequency of Measurement</label>
+                    <div class="col-lg-10">
+                      <select class="form-control" formControlName="frequencyId" (ngModelChange)="setTargetTable(measureAct.controls.annualTarget.controls,$event)">
                           <option value="1">Annually</option>
                           <option value="2">Semi-Annual</option>      
                           <option value="4">Quarterly</option> 
                         </select>
+                    </div>
                   </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading text-center">{{commonService.getData('org_info')[0].cycle[0]}} - {{commonService.getData('org_info')[0].cycle[commonService.getData('org_info')[0].cycle.length-1]}}
-                    Annual Target</div>
-                  <div class="panel-body" style="text-align: center;">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th width="20%">Year</th>
-                          <th width="60%">Estimate Target</th>
-                          <th width="20%">Estimate Cost</th>
-                        </tr>
-                      </thead>
-                      <tbody formArrayName="annualTarget">
-                        <tr *ngFor="let td of measureAct.controls.annualTarget.controls;let n = index;" [formGroupName]="n">
-                          <td>{{td.value.year}}</td>
-                          <div style="display: inline-table;" formArrayName="levels">
-                            <td *ngFor="let le of td.controls.levels.controls;let o = index;" [formGroupName]="o">
-                              <input type="text" style="width:50%" formControlName="quarter" hidden>
-                              <input type="text" style="width:50%" formControlName="startDate" hidden>
-                              <input type="text" style="width:50%" formControlName="endDate" hidden>
-                              <input type="text" style="width:50%" class="validate" formControlName="estimatedTargetLevel">
-                            </td>
-                          </div>
-                          <td><input type="text" class="validate" formControlName="estimatedCost"></td>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <div class="panel panel-default">
+                    <div class="panel-heading text-center">{{commonService.getData('org_info')[0].cycle[0]}} - {{commonService.getData('org_info')[0].cycle[commonService.getData('org_info')[0].cycle.length-1]}}
+                      Annual Target</div>
+                    <div class="panel-body" style="text-align: center;">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th width="20%">Year</th>
+                            <th width="60%">Estimate Target</th>
+                            <th width="20%">Estimate Cost</th>
+                          </tr>
+                        </thead>
+                        <tbody formArrayName="annualTarget">
+                          <tr *ngFor="let td of measureAct.controls.annualTarget.controls;let n = index;" [formGroupName]="n">
+                            <td>{{td.value.year}}</td>
+                            <div style="display: inline-table;" formArrayName="levels">
+                              <td *ngFor="let le of td.controls.levels.controls;let o = index;" [formGroupName]="o">
+                                <input type="text" style="width:50%" formControlName="quarter" hidden>
+                                <input type="text" style="width:50%" formControlName="startDate" hidden>
+                                <input type="text" style="width:50%" formControlName="endDate" hidden>
+                                <input type="text" style="width:50%" class="validate" formControlName="estimatedTargetLevel">
+                              </td>
+                            </div>
+                            <td><input type="text" class="validate" formControlName="estimatedCost"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Submit</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </form>
-    </div>
-
-  </div>
-</div>
-
-<!-- Measure Modal -->
-<div id="measureModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Add Measure</h4>
-      </div>
-      <form [formGroup]="measureForm" (submit)="submitMeasure()">
-        <div class="modal-body">
-          <div class="form-group row">
-            <label class="col-lg-2 col-form-label">Measure</label>
-            <div class="col-lg-10">
-              <textarea class="form-control" rows="3" formControlName="measure"></textarea>
-            </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
-          <div class="form-group row">
-            <label class="col-lg-2 col-form-label">Select MeasureUnit</label>
-            <div class="col-lg-10">
-              <select class="form-control" formControlName="measureUnit">
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Measure Modal -->
+  <div id="measureModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Measure</h4>
+        </div>
+        <form [formGroup]="measureForm" (submit)="submitMeasure()">
+          <div class="modal-body">
+            <div class="form-group row">
+              <label class="col-lg-2 col-form-label">Measure</label>
+              <div class="col-lg-10">
+                <textarea class="form-control" rows="3" formControlName="measure"></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-2 col-form-label">Select MeasureUnit</label>
+              <div class="col-lg-10">
+                <select class="form-control" formControlName="measureUnit">
                 <option value="" disabled selected>Choose Measurement Unit</option>
                 <option value="percentage">Percent</option>
                 <option value="decimal">Decimal</option>
               </select>
+              </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label class="col-lg-2 col-form-label">Current Level</label>
-            <div class="col-lg-10">
-              <input type="number" min="0" step="1" class="form-control" formControlName="currentLevel">
+            <div class="form-group row">
+              <label class="col-lg-2 col-form-label">Current Level</label>
+              <div class="col-lg-10">
+                <input type="number" min="0" step="1" class="form-control" formControlName="currentLevel">
+              </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label class="col-lg-2 col-form-label">Frequency of Measurement</label>
-            <div class="col-lg-10">
-              <select class="form-control" formControlName="frequencyId" (ngModelChange)="setTargetTable(measureForm.controls.annualTarget.controls,$event)">
+            <div class="form-group row">
+              <label class="col-lg-2 col-form-label">Frequency of Measurement</label>
+              <div class="col-lg-10">
+                <select class="form-control" formControlName="frequencyId" (ngModelChange)="setTargetTable(measureForm.controls.annualTarget.controls,$event)">
                 <option value="1">Annually</option>
                 <option value="2">Semi-Annual</option>      
                 <option value="4">Quarterly</option> 
               </select>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading text-center">{{commonService.getData('org_info')[0].cycle[0]}} - {{commonService.getData('org_info')[0].cycle[commonService.getData('org_info')[0].cycle.length-1]}}
+                Annual Target</div>
+              <div class="panel-body" style="text-align: center;">
+                <table class="table table-striped" formArrayName="annualTarget">
+                  <thead>
+                    <tr>
+                      <th width="20%">Year</th>
+                      <th width="60%">Estimate Target</th>
+                      <th width="20%">Estimate Cost</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let td of measureForm.controls.annualTarget.controls;let n = index;" [formGroupName]="n">
+                    <tr>
+                      <td>{{td.value.year}}</td>
+                      <div style="display: inline-table;" formArrayName="levels">
+                        <td *ngFor="let le of td.controls.levels.controls;let o = index;" [formGroupName]="o">
+                          <input type="text" style="width:50%" formControlName="quarter" hidden>
+                          <input type="text" style="width:50%" formControlName="startDate" hidden>
+                          <input type="text" style="width:50%" formControlName="endDate" hidden>
+                          <input type="text" style="width:50%" class="validate" formControlName="estimatedTargetLevel">
+                        </td>
+                      </div>
+                      <td><input type="text" class="validate" formControlName="estimatedCost"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
-          <div class="panel panel-default">
-            <div class="panel-heading text-center">{{commonService.getData('org_info')[0].cycle[0]}} - {{commonService.getData('org_info')[0].cycle[commonService.getData('org_info')[0].cycle.length-1]}}
-              Annual Target</div>
-            <div class="panel-body" style="text-align: center;">
-              <table class="table table-striped" formArrayName="annualTarget">
-                <thead>
-                  <tr>
-                    <th width="20%">Year</th>
-                    <th width="60%">Estimate Target</th>
-                    <th width="20%">Estimate Cost</th>
-                  </tr>
-                </thead>
-                <tbody *ngFor="let td of measureForm.controls.annualTarget.controls;let n = index;" [formGroupName]="n">
-                  <tr>
-                    <td>{{td.value.year}}</td>
-                    <div style="display: inline-table;" formArrayName="levels">
-                      <td *ngFor="let le of td.controls.levels.controls;let o = index;" [formGroupName]="o">
-                        <input type="text" style="width:50%" formControlName="quarter" hidden>
-                        <input type="text" style="width:50%" formControlName="startDate" hidden>
-                        <input type="text" style="width:50%" formControlName="endDate" hidden>
-                        <input type="text" style="width:50%" class="validate" formControlName="estimatedTargetLevel">
-                      </td>
-                    </div>
-                    <td><input type="text" class="validate" formControlName="estimatedCost"></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Submit</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Assign Activity Modal -->
-<div class="modal fade" id="assignActivityModel" role="dialog">
-  <div class="modal-dialog">
+  <!-- Assign Activity Modal -->
+  <div class="modal fade" id="assignActivityModel" role="dialog">
+    <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Assign Activity to further Departments</h4>
-      </div>
-      <div class="modal-body" *ngIf="selectedActivity">
-        <!--<p>Some text in the modal.</p>-->
-        <select multiple class="form-control" [(ngModel)]="department" (ngModelChange)="departmentIds = $event">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Assign Activity to further Departments</h4>
+        </div>
+        <div class="modal-body" *ngIf="selectedActivity">
+          <!--<p>Some text in the modal.</p>-->
+          <select multiple class="form-control" [(ngModel)]="department" (ngModelChange)="departmentIds = $event">
             <option *ngFor="let dept of selectedActivity.otherDepartments;" [value]="dept.departmentId">{{dept.department}}</option>
           </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="assignActivity(selectedActivity)">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="assignActivity(selectedActivity)">Submit</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
 
+    </div>
   </div>
-</div>

@@ -91,3 +91,68 @@ background-color: red;
     background-color: #E0F2F1;
     border-color: #ddd;
 }
+
+
+
+/*Custom designs*/
+.custom-header{
+    background: #2874f0;
+    height: 80px;
+    padding: 1px 0 0px 10px;
+    color: white;
+}
+
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+
+.right-margin{
+  margin-right: 10px;
+}
+
+.background-transparent{
+  background:transparent;
+}
+
+
+.objective-header{
+ background: #2874f0;
+ height: 50px;
+}
+
+
+.objective-text{
+    font-size: 15px;
+    padding:-5px;
+    color: white;
+    margin: 15px;
+}
+
+.objective-Initiatives{
+  background: yellow;
+  height: 40px;
+  color: black;
+
+
+ 
+}
+
+.Initiatives-text{
+    font-weight: bold;
+    font-size: 17px;
+    padding: 9px;
+    text-align: center;
+    width: 100%;
+
+}
+
+.custom-panel{
+padding: 1px;
+
+}
+
