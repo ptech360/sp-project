@@ -159,3 +159,14 @@ padding: 1px;
 .no-margin{
   margin:0px !important;
 }
+
+
+
+.bg-model{
+  background:#f2b632;
+}
+
+.costwidth{
+  width: 50% !important;
+  margin-left: 78px;
+}
