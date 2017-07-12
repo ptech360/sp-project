@@ -96,7 +96,7 @@ background-color: red;
 
 /*Custom designs*/
 .custom-header{
-    background: #2874f0;
+    background: #283018;
     height: 80px;
     padding: 1px 0 0px 10px;
     color: white;
@@ -109,6 +109,7 @@ background-color: red;
   font-size: 18px;
   line-height: 1.33;
   border-radius: 25px;
+  color: white;
 }
 
 .right-margin{
@@ -120,9 +121,9 @@ background-color: red;
 }
 
 
-.objective-header{
- background: #2874f0;
- height: 50px;
+.custom-header{
+ background: #c43235;
+ height: 76px;
 }
 
 
@@ -133,26 +134,28 @@ background-color: red;
     margin: 15px;
 }
 
-.objective-Initiatives{
-  background: yellow;
-  height: 40px;
-  color: black;
 
 
- 
-}
-
-.Initiatives-text{
-    font-weight: bold;
-    font-size: 17px;
-    padding: 9px;
-    text-align: center;
-    width: 100%;
-
-}
 
 .custom-panel{
 padding: 1px;
 
 }
 
+.no-border{
+      border: 0px solid transparent;
+  
+}
+
+.no-padding{
+  padding: 0px;
+}
+
+
+.margin-top{
+  margin-top:26px !important; 
+}
+
+.no-margin{
+  margin:0px !important;
+}
