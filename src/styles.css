@@ -189,3 +189,33 @@ hr.style-line {
     font-family: 	"serif";
     font-size: 34px;
 }
+.initiative-header{
+    height: 50px;
+    background: #75caf4;
+}
+.objectivepage-header-text{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding-top: 10px;
+}
+
+.objective-header{
+    height: 50px;
+    background: #75caf4;
+}
+.activity-header{
+    height: 50px;
+    background: #75caf4; 
+}
+.measure-header{
+    height: 50px;
+    background: #75caf4; 
+}
+.assign-header{
+    height: 50px;
+    background: #75caf4;     
+}
+panel-heading:hover{
+    background:orange;
+}
