@@ -27,7 +27,6 @@ li.active a {
     color: white !important;
     font-weight: bold;
 }
-
 .nav>li>a:focus,
 .nav>li>a:hover {
     background: #0c0a0a !important;
