@@ -14,9 +14,7 @@
 
 /* Active list color */
 
-ul.nav.nav-tabs {
-    border: 1px solid var(--main-color)!important;
-}
+
 
 ul.nav.nav-tabs li a {
     color: white;

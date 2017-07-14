@@ -137,6 +137,7 @@ padding: 1px;
 
 .no-padding{
   padding: 0px;
+  
 }
 
 
@@ -157,4 +158,28 @@ padding: 1px;
 .costwidth{
   width: 50% !important;
   margin-left: 78px;
+}
+
+
+.effect-one:hover
+ {
+  background:#fcf8e3;
+  text-decoration: underline;
+}
+
+
+.border{
+  border:0px solid transparent !important;
+}
+
+.button-margin{
+  margin: 13px;
+}
+
+.bg-color{
+  background: #75caf4;
+}
+
+.text-color{
+  color: white;
 }
