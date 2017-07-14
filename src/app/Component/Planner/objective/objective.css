@@ -96,8 +96,8 @@ background-color: red;
 
 /*Custom designs*/
 .custom-header{
-    background: #283018;
-    height: 80px;
+    background: #5ec1f2;
+    height: 76px;
     padding: 1px 0 0px 10px;
     color: white;
 }
@@ -118,12 +118,6 @@ background-color: red;
 
 .background-transparent{
   background:transparent;
-}
-
-
-.custom-header{
- background: #c43235;
- height: 76px;
 }
 
 
