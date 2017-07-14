@@ -42,3 +42,131 @@ tbody th, tbody td {
 tfoot th, tfoot td {
   text-align: center;
 }
+
+.add-button
+{
+  background-color: red;
+}
+
+.assign-button{
+
+margin-right: 20px;
+background-color: red;
+
+}
+
+.one-ob{
+      color: black;
+    background-color: #00695C;
+    border-color: #d6e9c6;
+}
+
+.two-ob
+{
+    color: black;
+    background-color: #00897B;
+    border-color: #d6e9c6;
+}
+
+.three-ob{
+    color: #0c480e;
+    background-color: #80CBC4;
+    border-color: #ddd;
+}
+
+.four-ob{
+    color: #652607;
+    background-color: #4DB6AC;
+    border-color: #ddd;
+}
+
+.five-ob{
+    color: #8a1a1a;
+    background-color: #B2DFDB;
+    border-color: #ddd;
+}
+
+.six-ob{
+  color: #333;
+    background-color: #E0F2F1;
+    border-color: #ddd;
+}
+
+
+
+/*Custom designs*/
+.custom-header{
+    background: #283018;
+    height: 80px;
+    padding: 1px 0 0px 10px;
+    color: white;
+}
+
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  color: white;
+}
+
+.right-margin{
+  margin-right: 10px;
+}
+
+.background-transparent{
+  background:transparent;
+}
+
+
+.custom-header{
+ background: #c43235;
+ height: 76px;
+}
+
+
+.objective-text{
+    font-size: 15px;
+    padding:-5px;
+    color: white;
+    margin: 15px;
+}
+
+
+
+
+.custom-panel{
+padding: 1px;
+
+}
+
+.no-border{
+      border: 0px solid transparent;
+  
+}
+
+.no-padding{
+  padding: 0px;
+}
+
+
+.margin-top{
+  margin-top:26px !important; 
+}
+
+.no-margin{
+  margin:0px !important;
+}
+
+
+
+.bg-model{
+  background:#f2b632;
+}
+
+.costwidth{
+  width: 50% !important;
+  margin-left: 78px;
+}

@@ -3,9 +3,9 @@
     --shodow-color: #ea212e;
 }
 
-body {
-    background: #ddd;
-}
+/*body {
+   background: #ddd;
+} */
 
 .main-content {
     margin-top: 100px;
@@ -48,7 +48,7 @@ li.active a {
 }
 
 a {
-    color: #8585ec;
+    color: white;
 }
 
 .img-center {
@@ -185,4 +185,8 @@ hr.style-line {
     background-color: white;
     padding: 0 50px 0 50px;
     margin: 25px;
+}
+.Itext{
+    font-family: 	"serif";
+    font-size: 34px;
 }
