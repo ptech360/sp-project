@@ -208,3 +208,10 @@ padding: 1px;
     font-size: 16px;
     font-weight: lighter;
 }
+
+.initiative-panel{
+    text-align: center;
+    background: #e4e4e4;
+    height: 45px;
+    font-weight: 100;
+}

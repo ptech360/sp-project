@@ -28,7 +28,7 @@
 
       <div class="panel-collapse collapse" [attr.id]="'obj' + i" [ngClass]="{'in': i == 0}">
         <div class="panel-body no-padding">
-          <p *ngIf="!obj.initiatives.length">No Initiative added yet for this Objective.</p>
+           <p *ngIf="!obj.initiatives.length" class="initiative-panel">No Initiative added yet for this Objective.</p>
           <div class="panel-group" id="accordion2">
           <!-- Initiative header -->
           <div class="row initiative-header">
