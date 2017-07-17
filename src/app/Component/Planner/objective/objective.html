@@ -179,7 +179,7 @@
               <ul class="nav nav-tabs">
                 <li [ngClass]="{'active': ul == 0}" *ngFor="let s of objectiveForm.controls.spis.controls;let ul = index;">
                   <a data-toggle="tab" [attr.data-target]="'#spi' + ul">Spi {{ul+1}} 
-                  <button type="button" class="close" aria-label="Close" (click)="removeSpi(objectiveForm,ul)">
+                  <button type="button" class="close close-button" aria-label="Close" (click)="removeSpi(objectiveForm,ul)">
                     <span aria-hidden="true">&times;</span>
                   </button>
                   </a>
@@ -265,19 +265,19 @@
               <input type="number" class="form-control" placeholder="20000" formControlName="totalCost">
             </div>
           </div>
-          <div class="panel panel-info">
+          <div class="panel panel-info no border">
             <div class="panel-heading"><b>Add Proposed Activities</b></div>
             <div class="panel-body no-padding button-margin" formArrayName="activities">
               <ul class="nav nav-tabs">
                 <li [ngClass]="{'active': ul == initiativeForm.controls.activities.controls.length - 1}" *ngFor="let act of initiativeForm.controls.activities.controls;let ul= index;">
-                  <a data-toggle="tab" [attr.data-target]="'#activity' + ul">Activity {{ul+1}} 
-                  <button type="button" class="close" aria-label="Close" (click)="removeActivity(initiativeForm,ul)">
-                    <span aria-hidden="true">&times;</span>
+                  <a data-toggle="tab" [attr.data-target]="'#activity' + ul"> {{ul+1}} 
+                  <button type="button" class="close close-button" aria-label="Close" (click)="removeActivity(initiativeForm,ul)">
+                     <span aria-hidden="true">&times;</span>
                   </button>
                   </a>
                 </li>
                 <li>
-                  <button class="btn btn-primary" style="cursor:pointer;" (click)="addActivity(initiativeForm)">Add</button>
+                  <button class="btn btn-primary measure-button"  (click)="addActivity(initiativeForm)"><i class="glyphicon glyphicon-plus"></i></button>
                 </li>
               </ul>
               <div class="tab-content">
@@ -290,19 +290,19 @@
                       <textarea class="form-control" rows="3" formControlName="activity"></textarea>
                     </div>
                   </div>
-                  <div class="panel panel-info">
+                  <div class="panel panel-info no border">
                     <div class="panel-heading"><b>Add Measure</b></div>
                     <div class="panel-body no-padding button-margin" formArrayName="measures">
                       <ul class="nav nav-tabs">
                         <li [ngClass]="{'active': ul == act.controls.measures.controls.length - 1}" *ngFor="let measureAct of act.controls.measures.controls;let ul= index;">
-                          <a data-toggle="tab" [attr.data-target]="'#measure' + ul">Measure {{ul+1}} 
-                        <button type="button" class="close" aria-label="Close" (click)="removeMeasure(act,ul)">
-                          <span aria-hidden="true">&times;</span>
+                          <a data-toggle="tab" [attr.data-target]="'#measure' + ul"> {{ul+1}} 
+                        <button type="button" class="close close-button" aria-label="Close" (click)="removeMeasure(act,ul)">
+                            <span aria-hidden="true">&times;</span>
                         </button>
                         </a>
                         </li>
                         <li>
-                          <button class="btn btn-primary" style="cursor:pointer;" (click)="addMeasure(act)">Add</button>
+                          <button class="btn btn-primary measure-button"  (click)="addMeasure(act)"><i class="glyphicon glyphicon-plus"></i></button>
                         </li>
                       </ul>
 
@@ -342,7 +342,7 @@
                         </select>
                             </div>
                           </div>
-                          <div class="panel panel-info">
+                          <div class="panel panel-info no border">
                             <div class="panel-heading text-center">{{commonService.getData('org_info')[0].cycle[0]}} - {{commonService.getData('org_info')[0].cycle[commonService.getData('org_info')[0].cycle.length-1]}}
                               Annual Target</div>
                             <div class="panel-body no-padding">
@@ -407,19 +407,19 @@
               <textarea class="form-control" rows="3" formControlName="activity"></textarea>
             </div>
           </div>
-          <div class="panel panel-info">
+          <div class="panel panel-info no border">
             <div class="panel-heading"><b>Add Measure</b></div>
             <div class="panel-body no-padding" formArrayName="measures">
               <ul class="nav nav-tabs">
                 <li [ngClass]="{'active': ul == activityForm.controls.measures.controls.length - 1}" *ngFor="let measureAct of activityForm.controls.measures.controls;let ul= index;">
-                  <a data-toggle="tab" [attr.data-target]="'#measure' + ul">Measure {{ul+1}} 
-                  <button type="button" class="close" aria-label="Close" (click)="removeMeasure(activityForm,ul)">
-                    <span aria-hidden="true">&times;</span>
+                  <a data-toggle="tab" [attr.data-target]="'#measure' + ul">{{ul+1}} 
+                  <button type="button" class="close close-button" aria-label="Close" (click)="removeMeasure(activityForm,ul)">
+                      <span aria-hidden="true">&times;</span>
                   </button>
                   </a>
                 </li>
                 <li>
-                  <button class="btn btn-primary" style="cursor:pointer;" (click)="addMeasure(activityForm)">Add</button>
+                  <button class="btn btn-primary measure-button"  (click)="addMeasure(activityForm)"><i class="glyphicon glyphicon-plus"></i></button>
                 </li>
               </ul>
               <div class="tab-content">
@@ -458,7 +458,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="panel panel-info">
+                  <div class="panel panel-info no border">
                     <div class="panel-heading text-center">{{commonService.getData('org_info')[0].cycle[0]}} - {{commonService.getData('org_info')[0].cycle[commonService.getData('org_info')[0].cycle.length-1]}}
                       Annual Target</div>
                     <div class="panel-body no-padding">
@@ -507,7 +507,8 @@
 
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-header">
+      
+      <div class="modal-header bg-color">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Add Measure</h4>
       </div>
