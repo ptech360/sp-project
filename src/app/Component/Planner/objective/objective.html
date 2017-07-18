@@ -1,133 +1,145 @@
 <div class="custom-header">
-    <div class="row objective-header">
-      <div class="col-lg-11 col-md-11 col-sm-11 text-center objectivepage-header-text">
-          Objectives
-      </div>
-      <div class="col-lg-1 col-md-1 col-sm-1">
-          <button data-toggle="modal" data-target="#objectiveModal" class="pull-right btn background-transparent btn-circle btn-lg right-margin " data-toggle="modal" (click)="objectiveId = obj.id" data-target="#initiativeModal"><i class="glyphicon glyphicon-plus"></i></button>
-      </div>
-    </div>  
+  <div class="row objective-header">
+    <div class="col-lg-11 col-md-11 col-sm-11 text-center objectivepage-header-text">
+      Objectives
+    </div>
+    <div class="col-lg-1 col-md-1 col-sm-1">
+      <button data-toggle="modal" data-target="#objectiveModal" class="pull-right btn background-transparent btn-circle btn-lg right-margin">
+        <i class="glyphicon glyphicon-plus"></i>
+      </button>
+    </div>
   </div>
+</div>
 
 
 
-  
-  <div class="panel-group no-margin  " id="accordion">
-    <div class="panel panel-info" *ngFor="let obj of objectives; let i = index;">
-      <div class="panel-heading row effect-one " >
-        <div class="col-sm-10 col xs-10 effect-one " (click)="getObjElement($event)" data-toggle="collapse" data-parent="#accordion" [attr.data-target]="'#obj' + i">
-          <b>{{i+1}}. Objective :</b> {{obj.objective}}
-        </div>
+
+<div class="panel-group no-margin  " id="accordion">
+  <div class="panel panel-info" *ngFor="let obj of objectives; let i = index;">
+    <div class="panel-heading row effect-one ">
+      <div class="col-sm-10 col xs-10 effect-one " (click)="getObjElement($event)" data-toggle="collapse" data-parent="#accordion"
+        [attr.data-target]="'#obj' + i">
+        <b>{{i+1}}. Objective :</b> {{obj.objective}}
       </div>
+    </div>
 
 
 
 
-      <div class="panel-collapse collapse" [attr.id]="'obj' + i" [ngClass]="{'in': i == 0}">
-        <div class="panel-body no-padding">
-           <p *ngIf="!obj.initiatives.length" class="initiative-panel">No Initiative added yet for this Objective.</p>
-          <div class="panel-group" id="accordion2">
+    <div class="panel-collapse collapse" [attr.id]="'obj' + i" [ngClass]="{'in': i == 0}">
+      <div class="panel-body no-padding">
+        <p *ngIf="!obj.initiatives.length" class="initiative-panel">No Initiative added yet for this Objective.</p>
+        <div class="panel-group" id="accordion2">
           <!-- Initiative header -->
           <div class="row initiative-header">
             <div class="col-lg-11 col-md-11 col-sm-11 text-center objectivepage-header-text">
               Initiatives
             </div>
             <div class="col-lg-1 col-md-1 col-sm-1">
-                <button class="pull-right btn background-transparent btn-circle btn-lg right-margin " data-toggle="modal" (click)="objectiveId = obj.id" data-target="#initiativeModal"><i class="glyphicon glyphicon-plus"></i></button>
+              <button class="pull-right btn background-transparent btn-circle btn-lg right-margin " data-toggle="modal" (click)="objectiveId = obj.id"
+                data-target="#initiativeModal"><i class="glyphicon glyphicon-plus"></i></button>
             </div>
-          </div>   <!-- /Initiative header -->         
-            <div class="panel panel-info" *ngFor="let ini of obj.initiatives; let j = index;">              
-              <div class="panel-heading row effect-one" style="margin:0px !important;">
-                <div class="col-sm-10 col xs-10 effect-one" (click)="getIniElement($event)" data-toggle="collapse" data-parent="accordion2" [attr.data-target]="'#obj' + i + 'ini' + j">
-                  <b>{{i+1}}.{{j+1}}) Initiative :</b> {{ini.initiative}}
-                </div>
+          </div>
+          <!-- /Initiative header -->
+          <div class="panel panel-info" *ngFor="let ini of obj.initiatives; let j = index;">
+            <div class="panel-heading row effect-one" style="margin:0px !important;">
+              <div class="col-sm-10 col xs-10 effect-one" (click)="getIniElement($event)" data-toggle="collapse" data-parent="accordion2"
+                [attr.data-target]="'#obj' + i + 'ini' + j">
+                <b>{{i+1}}.{{j+1}}) Initiative :</b> {{ini.initiative}}
               </div>
-              <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j" [ngClass]="{'in': j == 0}">
-                <div class="panel-body no-padding">
-                  <p *ngIf="!ini.activities">No Activity added yet for this Initiative</p>
-                  <div class="panel-group" id="accordion3">
+            </div>
+            <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j" [ngClass]="{'in': j == 0}">
+              <div class="panel-body no-padding">
+                <p *ngIf="!ini.activities">No Activity added yet for this Initiative</p>
+                <div class="panel-group" id="accordion3">
                   <!-- Activities header -->
                   <div class="row activity-header">
                     <div class="col-lg-11 col-md-11 col-sm-11 text-center objectivepage-header-text">
                       Activities
                     </div>
                     <div class="col-lg-1 col-md-1 col-sm-1">
-                        <button class="pull-right btn background-transparent btn-circle btn-lg right-margin " data-toggle="modal" (click)="initiativeId = ini.id" data-target="#activityModal"><i class="glyphicon glyphicon-plus"></i></button>
+                      <button class="pull-right btn background-transparent btn-circle btn-lg right-margin " data-toggle="modal" (click)="initiativeId = ini.id"
+                        data-target="#activityModal"><i class="glyphicon glyphicon-plus"></i></button>
                     </div>
-                  </div>   <!-- /Activities header -->                       
-                    <div class="panel panel-info" *ngFor="let act of ini.activities; let k = index;">
-                      <div class="panel-heading row effect-one" style="margin:0px !important;">
-                        <div class="col-sm-8 col xs-8 effect-one" (click)="getActElement($event)" data-toggle="collapse" data-parent="#accordion3" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k">
-                          <b>{{i+1}}.{{j+1}}.{{k+1}}) Activity :</b> {{act.activity}}
-                        </div>
-                        <div class="col-sm-4 col-xs-4 activity" [ngClass]="{'hideBtn': k != 0}">
-                          <!--<button class="btn btn-info pull-right" data-toggle="modal" (click)="activityId = act.id" data-target="#measureModal">Add Measure</button>-->
-                          <!--<button class="btn btn-info pull-right" data-toggle="modal" (click)="selectedActivity = act;" data-target="#assignActivityModel">Assign</button>-->
-                        </div>
+                  </div>
+                  <!-- /Activities header -->
+                  <div class="panel panel-info" *ngFor="let act of ini.activities; let k = index;">
+                    <div class="panel-heading row effect-one" style="margin:0px !important;">
+                      <div class="col-sm-8 col xs-8 effect-one" (click)="getActElement($event)" data-toggle="collapse" data-parent="#accordion3"
+                        [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k">
+                        <b>{{i+1}}.{{j+1}}.{{k+1}}) Activity :</b> {{act.activity}}
                       </div>
-                      <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k" [ngClass]="{'in': k == 0}">
-                        <div class="panel-body no-padding">
-                          <div class="panel panel-info">
-                            <!-- Assigned header -->
-                            <div class="row assign-header">
-                              <div class="col-lg-11 col-md-11 col-sm-11 text-center objectivepage-header-text">
-                                Assigned Departments
-                              </div>
-                              <div class="col-lg-1 col-md-1 col-sm-1">
-                                  <button class="pull-right btn background-transparent btn-circle btn-lg right-margin " data-toggle="modal" (click)="selectedActivity = act;" data-target="#assignActivityModel"><i class="glyphicon glyphicon-plus"></i></button>
-                              </div>
-                            </div>   <!-- /Assigned header -->   
-                            <div class="panel-body no-padding">
-                              <ul class="list-group">
-                                <li class="list-group-item" *ngFor="let dept of act.assignedDepartments;let d = index;">
-                                  {{dept.department}}
-                                </li>
-                              </ul>
+                      <div class="col-sm-4 col-xs-4 activity" [ngClass]="{'hideBtn': k != 0}">
+                        <!--<button class="btn btn-info pull-right" data-toggle="modal" (click)="activityId = act.id" data-target="#measureModal">Add Measure</button>-->
+                        <!--<button class="btn btn-info pull-right" data-toggle="modal" (click)="selectedActivity = act;" data-target="#assignActivityModel">Assign</button>-->
+                      </div>
+                    </div>
+                    <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k" [ngClass]="{'in': k == 0}">
+                      <div class="panel-body no-padding">
+                        <div class="panel panel-info">
+                          <!-- Assigned header -->
+                          <div class="row assign-header">
+                            <div class="col-lg-11 col-md-11 col-sm-11 text-center objectivepage-header-text">
+                              Assigned Departments
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1">
+                              <button class="pull-right btn background-transparent btn-circle btn-lg right-margin " data-toggle="modal" (click)="selectedActivity = act;"
+                                data-target="#assignActivityModel"><i class="glyphicon glyphicon-plus"></i></button>
                             </div>
                           </div>
-                          <p *ngIf="!act.measures">No Measure set yet for this Activities</p>
-                          <div class="panel-group" id="accordion4">
-                            <!-- Measure header -->
-                            <div class="row measure-header">
-                              <div class="col-lg-11 col-md-11 col-sm-11 text-center objectivepage-header-text">
-                                Measures
-                              </div>
-                              <div class="col-lg-1 col-md-1 col-sm-1">
-                                  <button class="pull-right btn background-transparent btn-circle btn-lg right-margin " data-toggle="modal" (click)="activityId = act.id" data-target="#measureModal"><i class="glyphicon glyphicon-plus"></i></button>
-                              </div>
-                            </div>   <!-- /Measure header -->    
-                            <div class="panel panel-info " *ngFor="let measr of act.measures;let l = index;">
-                              <div class="panel-heading" data-toggle="collapse" data-parent="#accordion4" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'measr' + l"><b>{{i+1}}.{{j+1}}.{{k+1}}.{{l+1}}) Measure</b> {{measr.measure}}</div>
-                              <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k + 'measr' + l" [ngClass]="{'in': l == 0}">
-                                <div class="panel-body no-padding">
-                                  <label>Current Level:</label> {{measr.currentLevel}}
-                                  <span class="glyphicon glyphicon-time pull-right"><label> {{measr.frequency}}</label></span>
-                                  <div class="panel panel-info">
-                                    <div class="panel-heading text-center"><b>Estimated Target</b></div>
-                                    <div class="panel-body no-padding">
-                                      <table class="table table-hover">
-                                        <thead>
-                                          <tr>
-                                            <th>Year</th>
-                                            <th>Estimated Cost</th>
-                                            <th>Quarter</th>
-                                            <th>Target</th>
-                                            <th>Audit Date</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody id="attachment-parent" *ngFor="let tdl of measr.annualTarget;let at = index;">
-                                          <tr>
-                                            <td style="vertical-align: middle;" [attr.rowspan]="tdl.levels.length + 2">{{ tdl.year }}</td>
-                                            <td style="vertical-align: middle;" [attr.rowspan]="tdl.levels.length + 2">{{tdl.estimatedCost}}</td>
-                                          </tr>
-                                          <tr *ngFor="let lev of tdl.levels; let in = index;">
-                                            <td>{{lev.quarter}}</td>
-                                            <td>{{lev.estimatedTargetLevel}}</td>
-                                            <td>{{lev.startDate}} To {{lev.endDate}}</td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                    </div>
+                          <!-- /Assigned header -->
+                          <div class="panel-body no-padding">
+                            <ul class="list-group">
+                              <li class="list-group-item" *ngFor="let dept of act.assignedDepartments;let d = index;">
+                                {{dept.department}}
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <p *ngIf="!act.measures">No Measure set yet for this Activities</p>
+                        <div class="panel-group" id="accordion4">
+                          <!-- Measure header -->
+                          <div class="row measure-header">
+                            <div class="col-lg-11 col-md-11 col-sm-11 text-center objectivepage-header-text">
+                              Measures
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1">
+                              <button class="pull-right btn background-transparent btn-circle btn-lg right-margin " data-toggle="modal" (click)="activityId = act.id"
+                                data-target="#measureModal"><i class="glyphicon glyphicon-plus"></i></button>
+                            </div>
+                          </div>
+                          <!-- /Measure header -->
+                          <div class="panel panel-info " *ngFor="let measr of act.measures;let l = index;">
+                            <div class="panel-heading" data-toggle="collapse" data-parent="#accordion4" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'measr' + l"><b>{{i+1}}.{{j+1}}.{{k+1}}.{{l+1}}) Measure</b> {{measr.measure}}</div>
+                            <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k + 'measr' + l" [ngClass]="{'in': l == 0}">
+                              <div class="panel-body no-padding">
+                                <label>Current Level:</label> {{measr.currentLevel}}
+                                <span class="glyphicon glyphicon-time pull-right"><label> {{measr.frequency}}</label></span>
+                                <div class="panel panel-info">
+                                  <div class="panel-heading text-center"><b>Estimated Target</b></div>
+                                  <div class="panel-body no-padding">
+                                    <table class="table table-hover">
+                                      <thead>
+                                        <tr>
+                                          <th>Year</th>
+                                          <th>Estimated Cost</th>
+                                          <th>Quarter</th>
+                                          <th>Target</th>
+                                          <th>Audit Date</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody id="attachment-parent" *ngFor="let tdl of measr.annualTarget;let at = index;">
+                                        <tr>
+                                          <td style="vertical-align: middle;" [attr.rowspan]="tdl.levels.length + 2">{{ tdl.year }}</td>
+                                          <td style="vertical-align: middle;" [attr.rowspan]="tdl.levels.length + 2">{{tdl.estimatedCost}}</td>
+                                        </tr>
+                                        <tr *ngFor="let lev of tdl.levels; let in = index;">
+                                          <td>{{lev.quarter}}</td>
+                                          <td>{{lev.estimatedTargetLevel}}</td>
+                                          <td>{{lev.startDate}} To {{lev.endDate}}</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
                                   </div>
                                 </div>
                               </div>
@@ -145,6 +157,7 @@
       </div>
     </div>
   </div>
+</div>
 
 
 <!-- Objective Modal -->
@@ -274,7 +287,7 @@
                   </a>
                 </li>
                 <li>
-                  <button class="btn btn-primary measure-button"  (click)="addActivity(initiativeForm)"><i class="glyphicon glyphicon-plus"></i></button>
+                  <button class="btn btn-primary measure-button" (click)="addActivity(initiativeForm)"><i class="glyphicon glyphicon-plus"></i></button>
                 </li>
               </ul>
               <div class="tab-content">
@@ -299,7 +312,7 @@
                         </a>
                         </li>
                         <li>
-                          <button class="btn btn-primary measure-button"  (click)="addMeasure(act)"><i class="glyphicon glyphicon-plus"></i></button>
+                          <button class="btn btn-primary measure-button" (click)="addMeasure(act)"><i class="glyphicon glyphicon-plus"></i></button>
                         </li>
                       </ul>
 
@@ -340,7 +353,7 @@
                             </div>
                           </div>
                           <div class="panel panel-info no border">
-                            <div class="panel-heading text-center">{{commonService.getData('org_info')[0].cycle[0]}} - {{commonService.getData('org_info')[0].cycle[commonService.getData('org_info')[0].cycle.length-1]}}
+                            <div class="panel-heading text-center">{{commonService.getData('org_info').cycle[0]}} - {{commonService.getData('org_info').cycle[commonService.getData('org_info').cycle.length-1]}}
                               Annual Target</div>
                             <div class="panel-body no-padding">
                               <table class="table table-striped">
@@ -416,7 +429,7 @@
                   </a>
                 </li>
                 <li>
-                  <button class="btn btn-primary measure-button"  (click)="addMeasure(activityForm)"><i class="glyphicon glyphicon-plus"></i></button>
+                  <button class="btn btn-primary measure-button" (click)="addMeasure(activityForm)"><i class="glyphicon glyphicon-plus"></i></button>
                 </li>
               </ul>
               <div class="tab-content">
@@ -456,7 +469,7 @@
                     </div>
                   </div>
                   <div class="panel panel-info no border">
-                    <div class="panel-heading text-center">{{commonService.getData('org_info')[0].cycle[0]}} - {{commonService.getData('org_info')[0].cycle[commonService.getData('org_info')[0].cycle.length-1]}}
+                    <div class="panel-heading text-center">{{commonService.getData('org_info').cycle[0]}} - {{commonService.getData('org_info').cycle[commonService.getData('org_info').cycle.length-1]}}
                       Annual Target</div>
                     <div class="panel-body no-padding">
                       <table class="table table-striped">
@@ -504,7 +517,7 @@
 
     <!-- Modal content-->
     <div class="modal-content">
-      
+
       <div class="modal-header bg-color">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Add Measure</h4>
@@ -544,7 +557,7 @@
             </div>
           </div>
           <div class="panel panel-info no border">
-            <div class="panel-heading text-center">{{commonService.getData('org_info')[0].cycle[0]}} - {{commonService.getData('org_info')[0].cycle[commonService.getData('org_info')[0].cycle.length-1]}}
+            <div class="panel-heading text-center">{{commonService.getData('org_info').cycle[0]}} - {{commonService.getData('org_info').cycle[commonService.getData('org_info').cycle.length-1]}}
               Annual Target</div>
             <div class="panel-body no-padding" style="text-align: center;">
               <table class="table table-striped" formArrayName="annualTarget">

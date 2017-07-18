@@ -26,7 +26,7 @@ export class ObjectiveComponent implements AfterViewInit{
   constructor(private orgSer:OrganizationService2,
               private commonService:CommonService,
               public formBuilder: FormBuilder){
-    orgSer.fetchObjectives(commonService.getData('org_info')[0].cycles.id).subscribe((res:any)=>{
+    orgSer.fetchObjectives(commonService.getData('org_info').cycles.id).subscribe((res:any)=>{
       if(res.status == 204){
         this.empty = false;
         this.objectives = [];        
@@ -80,7 +80,7 @@ export class ObjectiveComponent implements AfterViewInit{
   }  
   inItTarget() {
     const fa:any[] = [];
-    this.commonService.getData('org_info')[0].cycle.forEach((element:any) => {
+    this.commonService.getData('org_info').cycle.forEach((element:any) => {
       fa.push(this.inItTargetDigital(element));
     });
     return fa;
@@ -98,7 +98,7 @@ export class ObjectiveComponent implements AfterViewInit{
 
   returnedObject:any;
   onSubmit() {
-    this.objectiveForm.value["cycleId"] = this.commonService.getData('org_info')[0].cycles.id;
+    this.objectiveForm.value["cycleId"] = this.commonService.getData('org_info').cycles.id;
     this.orgSer.addObjective(this.objectiveForm.value).subscribe((response:any) => {
       $('#objectiveModal').modal('hide');
       this.returnedObject = response;
@@ -150,7 +150,7 @@ initForm(){
   }
   setAnnualTarget() {
     const annualTarget:any[] = [];
-    this.commonService.getData('org_info')[0].cycle.forEach((element:any) => {
+    this.commonService.getData('org_info').cycle.forEach((element:any) => {
       annualTarget.push(this.inItTargetIn(element));
     });
     return annualTarget;
@@ -163,7 +163,7 @@ initForm(){
     });
   }
   setTargetTable(form:any, e:any) {
-    for (var index = 0; index < this.commonService.getData('org_info')[0].cycle.length; index++) {
+    for (var index = 0; index < this.commonService.getData('org_info').cycle.length; index++) {
       form[index].controls['levels'] = this.formBuilder.array([]);
       const levels = <FormArray>form[index].controls['levels'];
       for (var i = 0; i < e; i++) {
