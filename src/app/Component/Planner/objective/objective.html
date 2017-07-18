@@ -165,9 +165,9 @@
   <div class="modal-dialog modal-lg">
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-header bg-model">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Add Objective</h4>
+      <div class="modal-header bg-color">
+        <button type="button" class="close cross-button" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-model">Add Objective</h4>
       </div>
       <form [formGroup]="objectiveForm" (submit)="onSubmit()">
         <div class="modal-body">
@@ -195,7 +195,7 @@
                   </a>
                 </li>
                 <li>
-                  <button class="btn btn-primary" style="cursor:pointer;" (click)="addSpi(objectiveForm)">Add</button>
+                  <button class="btn btn-primary measure-button" (click)="addSpi(objectiveForm)"><i class="glyphicon glyphicon-plus"></i></button>
                 </li>
               </ul>
 
@@ -258,7 +258,7 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header bg-color ">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close cross-button" data-dismiss="modal">&times;</button>
         <h4 class="modal-title text-color ">Add Initiative</h4>
       </div>
       <form [formGroup]="initiativeForm" (submit)="submitInitiative()">
@@ -405,8 +405,8 @@
   <div class="modal-dialog modal-lg">
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <div class="modal-header bg-color">
+        <button type="button" class="close cross-button" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Add Activity</h4>
       </div>
       <form [formGroup]="activityForm" (submit)="submitActivity()">

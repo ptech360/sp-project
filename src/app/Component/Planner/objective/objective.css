@@ -149,12 +149,6 @@ padding: 1px;
   margin:0px !important;
 }
 
-
-
-.bg-model{
-  background:#f2b632;
-}
-
 .costwidth{
   width: 50% !important;
   margin-left: 78px;
@@ -215,3 +209,16 @@ padding: 1px;
     height: 45px;
     font-weight: 100;
 }
+  .cross-button{
+    margin-top: -2px;
+    color: white;
+    opacity: 1;
+  }
+
+  .cross-button:hover{
+    color:orange;
+  }
+
+  .text-model{
+    color: white;
+  }
