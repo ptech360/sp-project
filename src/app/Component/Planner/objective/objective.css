@@ -42,3 +42,12 @@ tbody th, tbody td {
 tfoot th, tfoot td {
   text-align: center;
 }
+
+.unexistance td{
+  padding: 8px;
+  border-top: 1px solid #ddd;
+}
+
+.modal-xlg{
+  width:90%
+}

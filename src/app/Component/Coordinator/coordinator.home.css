@@ -4,7 +4,8 @@
 
 .status-color{
     position: absolute;
-    width: 41.4%;
+    width: 70.9%;
     background: whitesmoke;
     box-shadow: 5px 5px 5px grey;
+    z-index: 1;
 }

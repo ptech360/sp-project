@@ -3,9 +3,9 @@
 <div class="form-card" style="background:white">
   <img src="./app/img/cycle.png" class="center-box" width="100px">
   <h3 class="center-align">
-    <span class="blue-text"> {{organizationInfo[0].cycles.startCycle}} </span>
+    <span class="blue-text"> {{organizationInfo.cycles.startCycle}} </span>
     <b> To </b>
-    <span class="red-text"> {{organizationInfo[0].cycles.endCycle}} </span>
+    <span class="red-text"> {{organizationInfo.cycles.endCycle}} </span>
   </h3>
   <a [routerLink]="['/planner/objective']" style="padding:5px;padding: 5px;float: right;margin-top: -30px;"><img src="./app/img/blue-circle.gif" width="20px" height="20px" style="    vertical-align: baseline;border-radius: 15px;">Objectives</a>
   <div class="panel panel-info">
@@ -13,7 +13,7 @@
       <b class="panel-title">Mission</b>
     </div>
     <div class="panel-body">
-      {{organizationInfo[0].mission}}
+      {{organizationInfo.mission}}
     </div>
   </div>
   <div class="panel panel-info">
@@ -21,12 +21,11 @@
       <b class="panel-title">Vision</b>
     </div>
     <div class="panel-body">
-      {{organizationInfo[0].vision}}
+      {{organizationInfo.vision}}
     </div>
   </div>
-  <!--<span class="text-primary center-align"><b>Values</b></span>-->
-  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-info" *ngFor="let val of organizationInfo[0].values;let i = index;">
+  <!--<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-info" *ngFor="let val of organizationInfo.values;let i = index;">
       <div class="panel-heading" role="tab" id="headingOne">
         <h3 class="panel-title">
           <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{i}}" aria-expanded="true" aria-controls="collapseOne">
@@ -39,8 +38,65 @@
         </div>
       </div>
     </div>
+  </div>-->
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <b>Values</b>
+        <span class="pull-right"><button data-toggle="modal" data-target="#valueForm">Add</button></span>
+      </h3>            
+    </div>
+    <div class="panel-collapse collapse in">
+      <div class="panel-body">
+        <div class="panel panel-info" *ngFor="let val of organizationInfo.values;let i = index;">
+          <div class="panel-heading"><b>{{i+1}}. {{val.title}}</b>
+            <div class="dropdown pull-right">
+              <span class="glyphicon glyphicon-option-vertical dropdown-toggle" data-toggle="dropdown"></span>
+              <ul class="dropdown-menu">
+                <li><a data-toggle="modal" data-target="#valueForm" (click)="onValueSelected(val,i)">Edit</a></li>
+                <li><a (clcik)="deleteValue(val,i)">Delete</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel-body">{{val.description}}</div>
+        </div>
+      </div>
+    </div>
   </div>
-  <!--<button type="button" class="btn btn-info btn-lg center-block" [routerLink]="['/strategic-goal']">
-        View\Add Objective
-      </button>-->
+</div>
+
+
+<div class="modal fade" id="valueForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">
+          Value
+        </h4>
+      </div>
+      <!-- Modal Body -->
+      <form [formGroup]="valueForm" (submit)="onValueSubmit()">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" formControlName="title" />
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text" class="form-control" id="description" formControlName="description"></textarea>
+          </div>
+        </div>
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

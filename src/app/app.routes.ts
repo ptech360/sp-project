@@ -34,7 +34,7 @@ export const rootRouterConfig: Routes = [
   { path:'planner', component:PlannerHome,  canActivate: [LoggedInGuard],
     children:[
       { path: 'initialSetup', component:InitialStetup,},
-      { path: '', component:CycleComponent},
+      { path: '', component:CycleComponent,  canActivate: [HaveCycle]},
       { path: 'objective', component:ObjectiveComponent}
     ]
   },

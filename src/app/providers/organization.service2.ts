@@ -27,6 +27,27 @@ export class OrganizationService2{
                     .catch(this.handleError);
   }
 
+  public addValue(val:any[]){
+    this.baseUrl = this.con.baseUrl;
+    return this.http.post(this.baseUrl + "/values",val)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  public updateValue(val:any,id:any){
+    this.baseUrl = this.con.baseUrl;
+    return this.http.put(this.baseUrl + "/values/"+id, val)
+            .map(this.extractData)
+            .catch(this.handleError);
+  }
+
+  public deleteValue(id:any){
+    this.baseUrl = this.con.baseUrl;
+    return this.http.delete(this.baseUrl + "/values/"+id)
+          .map(this.extractData)
+          .catch(this.handleError);
+  }
+
   public getUniversities(){
     this.baseUrl = this.con.baseUrl;
     return this.http.get(this.baseUrl + "/university")
@@ -83,14 +104,21 @@ export class OrganizationService2{
                     .catch(this.handleError); 
   }
 
-  public saveEvidence(data:any, quarterId:any, resultId:any){
+  public updateQuarteResult(data:any, resultId:any){
+    this.baseUrl = this.con.baseUrl;
+    return this.http.put(this.baseUrl + "/result/"+resultId,data)
+                    .map(this.extractData)
+                    .catch(this.handleError); 
+  }
+
+  public saveEvidence(data:any, resultId:any){
     this.baseUrl = this.con.baseUrl;
     var options = new RequestOptions({
       headers: new Headers({
         'Authorization': 'Bearer ' + localStorage.getItem('access_token')
       })
     });
-    return this.htttp.post(this.baseUrl + "/quarter/"+quarterId+"/result/"+resultId+"/evidance",data,options)
+    return this.htttp.post(this.baseUrl + "/result/"+resultId+"/evidance",data,options)
                     .map(this.extractData)
                     .catch(this.handleError); 
   }
