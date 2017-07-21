@@ -172,6 +172,9 @@ padding: 1px;
 
 .bg-color{
   background: #75caf4;
+  margin: 23px;
+  text-align: center;
+  
 }
 
 .text-color{
@@ -222,3 +225,5 @@ padding: 1px;
   .text-model{
     color: white;
   }
+
+  
