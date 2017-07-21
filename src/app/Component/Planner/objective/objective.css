@@ -1,6 +1,10 @@
 /*.panel {
     border: 0;
 }*/
+.badge{
+  font-size: 14px;
+}
+
 /*modal css*/
 .modal {
   text-align: center;
@@ -110,10 +114,6 @@ background-color: red;
   margin-right: 10px;
 }
 
-.background-transparent{
-  background:transparent;
-}
-
 
 .objective-text{
     font-size: 15px;
@@ -131,8 +131,7 @@ padding: 1px;
 }
 
 .no-border{
-      border: 0px solid transparent;
-  
+      border: 0px solid black;
 }
 
 .no-padding{

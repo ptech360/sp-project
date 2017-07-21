@@ -145,6 +145,7 @@ initForm(){
       "frequencyId": [1, [Validators.required]],
       "measureUnit": ['', [Validators.required]],
       "currentLevel": ['', [Validators.required]],
+      "direction": ['', [Validators.required]],
       "annualTarget": this.formBuilder.array(this.setAnnualTarget())
     });
   }

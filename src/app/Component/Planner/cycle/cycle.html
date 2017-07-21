@@ -1,42 +1,65 @@
-<h2 style="text-align: center;margin-bottom:20px;">Initial Setup</h2>
-<hr>
-<div class="form-card" style="background:white">
-  <img src="./app/img/cycle.png" class="center-box" width="100px">
-  <h3 class="center-align">
-    <span class="blue-text"> {{organizationInfo.cycles.startCycle}} </span>
+<!-- ===============================================================================
+======================== Initial Setup Interface ==============================================
+===================================================================================== -->
+<!-- Header of objectives -->
+<div class="subheader-milky milky-background cycle-margin">
+  <div class="subheader-text">
+    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+    <span class="text">INITIAL SETUP</span>
+    <!-- <span>
+      <div class="ctooltip">
+        <button data-toggle="modal" data-target="#objectiveModal" class="btn background-transparent btn-circle btn-subheader right-margin">
+          <i class="glyphicon glyphicon-chevron-right"></i>
+        </button> 
+        <span class="ctooltiptext">Add Objective</span>
+      </div>   
+    </span> -->
+    <div class="subtext" >
+      <div class="ctooltip">
+       <button [routerLink]="['/planner/objective']" class="btn btn-circle btn-subheader right-margin orange-background">
+          <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span>
+       </button>
+        <span class="ctooltiptext left-tooltip">Add and View objective</span>
+      </div>
+        
+      <br> <a [routerLink]="['/planner/objective']">Objectives <b>></b> </a>
+    </div>
+      <h3 class="center-align">
+    {{organizationInfo.cycles.startCycle}}
     <b> To </b>
-    <span class="red-text"> {{organizationInfo.cycles.endCycle}} </span>
+   {{organizationInfo.cycles.endCycle}}
   </h3>
-  <a [routerLink]="['/planner/objective']" class="btn btn-danger btn-rounded active pull-right link-button" >
-  <!--<img src="./app/img/blue-circle.gif" width="20px" height="20px" style="    vertical-align: baseline;border-radius: 15px;">-->
-  Objectives</a>
-  <div class="panel panel-info">
-    <div class="panel-heading">
+  </div>
+</div>
+<!-- /End of header page -->
+<div>
+  <div class="panel panel-info panel-no-border">
+    <div class="panel-heading background-transparent text-center panel-no-border">
       <b class="panel-title">Mission</b>
     </div>
-    <div class="panel-body">
+    <div class="panel-body panel-no-border">
       {{organizationInfo.mission}}
     </div>
   </div>
-  <div class="panel panel-info">
-    <div class="panel-heading">
+  <div class="panel panel-info panel-no-border">
+    <div class="panel-heading background-transparent text-center panel-no-border">
       <b class="panel-title">Vision</b>
     </div>
-    <div class="panel-body">
+    <div class="panel-body panel-no-border">
       {{organizationInfo.vision}}
     </div>
   </div>
   <!--<span class="text-primary center-align"><b>Values</b></span>-->
   <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-info" *ngFor="let val of organizationInfo.values;let i = index;">
-      <div class="panel-heading" role="tab" id="headingOne">
+    <div class="panel panel-info panel-no-border" *ngFor="let val of organizationInfo.values;let i = index;">
+      <div class="panel-heading background-transparent" role="tab" id="headingOne">
         <h3 class="panel-title">
           <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{i}}" aria-expanded="true" aria-controls="collapseOne">
-                Value {{i+1}} - {{val.title}}</a>
+                <span class="badge badge-font"> Value {{i+1}} </span> {{val.title}}</a>
         </h3>
       </div>
       <div id="collapse{{i}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-        <div class="panel-body">
+        <div class="panel-body panel-no-border">
           {{val.description}}
         </div>
       </div>
@@ -46,3 +69,6 @@
         View\Add Objective
       </button>-->
 </div>
+    <!-- ===============================================================================
+======================== /End of Initial setup Interface ==============================================
+===================================================================================== -->
