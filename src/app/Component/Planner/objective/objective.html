@@ -31,7 +31,7 @@
       </div>
       <div class="col-sm-1 col-xs-1 objective" [ngClass]="{'hideBtn': i != 0}">
         <div class="ctooltip">
-          <button class="btn btn-circle btn-right" data-toggle="modal" (click)="objectiveId = obj.id" data-target="#initiativeModal">
+          <button class="btn btn-circle btn-right" data-toggle="modal" (click)="selectedObjective = obj" data-target="#initiativeModal">
           <i class="glyphicon glyphicon-plus"></i>
         </button>
           <span class="ctooltiptext">Add Initiative</span>
@@ -203,7 +203,7 @@
   ============================================================================================== -->
 <!-- Objective Modal -->
 <div class="modal fade" id="objectiveModal" role="dialog">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-xlg">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header bg-color">
@@ -228,7 +228,7 @@
             <div class="panel-heading"><b>Strategic Performance indicator</b></div>
             <div class="panel-body no-padding" formArrayName="spis">
               <ul class="nav nav-tabs">
-                <li [ngClass]="{'active': ul == 0}" *ngFor="let s of objectiveForm.controls.spis.controls;let ul = index;">
+                <li [ngClass]="{'active': ul == objectiveForm.controls.spis.controls.length - 1}" *ngFor="let s of objectiveForm.controls.spis.controls;let ul = index;">
                   <a data-toggle="tab" [attr.data-target]="'#spi' + ul">Spi {{ul+1}} 
                   <button type="button" class="close close-button" aria-label="Close" (click)="removeSpi(objectiveForm,ul)">
                     <span aria-hidden="true">&times;</span>
@@ -236,13 +236,13 @@
                   </a>
                 </li>
                 <li>
-                  <button class="btn btn-primary measure-button" (click)="addSpi(objectiveForm)"><i class="glyphicon glyphicon-plus"></i></button>
+                  <button class="btn btn-primary measure-button" style="cursor:pointer;" (click)="addSpi(objectiveForm)" [disabled]="objectiveForm.controls.spis.invalid"><i class="glyphicon glyphicon-plus"></i></button>
                 </li>
               </ul>
 
               <div class="tab-content">
                 <div [attr.id]="'spi' + i" class="tab-pane fade" *ngFor="let s of objectiveForm.controls.spis.controls; let i = index;" [formGroupName]="i"
-                  [ngClass]="{'in active': i == 0}">
+                  [ngClass]="{'in active': i == objectiveForm.controls.spis.controls.length - 1}">
                   <h3></h3>
                   <div class="form-group row">
                     <label class="col-lg-2 col-form-label">Enter SPI</label>
@@ -254,10 +254,10 @@
                     <label class="col-lg-2 col-form-label">Select MeasureUnit</label>
                     <div class="col-lg-10">
                       <select class="form-control" formControlName="measureUnit">
-                          <option value="" disabled selected>Choose Measurement Unit</option>
-                          <option value="percentage">Percent</option>
-                          <option value="decimal">Decimal</option>
-                        </select>
+                        <option value="" disabled selected>Choose Measurement Unit</option>
+                        <option value="percentage">Percent</option>
+                        <option value="decimal">Decimal</option>
+                      </select>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -279,13 +279,14 @@
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Submit</button>
+          <button type="submit" class="btn btn-success" [disabled]="objectiveForm.invalid">Submit</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </form>
@@ -295,7 +296,7 @@
 
 <!-- Initiative Modal-->
 <div id="initiativeModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-xlg">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header bg-color ">
@@ -328,7 +329,7 @@
                   </a>
                 </li>
                 <li>
-                  <button class="btn btn-primary measure-button" (click)="addActivity(initiativeForm)"><i class="glyphicon glyphicon-plus"></i></button>
+                  <button class="btn btn-primary measure-button" style="cursor:pointer" (click)="addActivity(initiativeForm)" [disabled]="initiativeForm.controls.activities.invalid"><i class="glyphicon glyphicon-plus"></i></button>
                 </li>
               </ul>
               <div class="tab-content">
@@ -345,18 +346,17 @@
                     <div class="panel-heading"><b>Add Measure</b></div>
                     <div class="panel-body no-padding button-margin" formArrayName="measures">
                       <ul class="nav nav-tabs">
-                        <li [ngClass]="{'active': ul == act.controls.measures.controls.length - 1}" *ngFor="let measureAct of act.controls.measures.controls;let ul= index;">
-                          <a data-toggle="tab" [attr.data-target]="'#measure' + ul"> {{ul+1}} 
-                        <button type="button" class="close close-button" aria-label="Close" (click)="removeMeasure(act,ul)">
+                        <li [ngClass]="{'active': ul == act.controls.measures.controls.length - 1}" *ngFor="let measureAct of act.controls.measures.controls;let ulm= index;">
+                          <a data-toggle="tab" [attr.data-target]="'#measure' + ulm"> {{ul+1}} 
+                        <button type="button" class="close close-button" aria-label="Close" (click)="removeMeasure(act,ulm)">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         </a>
                         </li>
                         <li>
-                          <button class="btn btn-primary measure-button" (click)="addMeasure(act)"><i class="glyphicon glyphicon-plus"></i></button>
+                          <button class="btn btn-primary measure-button" style="cursor:pointer;" [disabled]="act.controls.measures.invalid" (click)="addMeasure(act)"><i class="glyphicon glyphicon-plus"></i></button>
                         </li>
                       </ul>
-
                       <div class="tab-content">
                         <div [attr.id]="'measure' + i" class="tab-pane fade" *ngFor="let measureAct of act.controls.measures.controls; let i = index;"
                           [formGroupName]="i" [ngClass]="{'in active': i == act.controls.measures.controls.length - 1}">
@@ -378,6 +378,16 @@
                             </div>
                           </div>
                           <div class="form-group row">
+                            <label class="col-lg-2 col-form-label">Select Direction</label>
+                            <div class="col-lg-10">
+                              <select class="form-control" formControlName="direction">
+                                <option value="" disabled selected>Choose Direction of measureUnit</option>
+                                <option value="upward">Upward</option>
+                                <option value="downward">Downward</option>
+                              </select>
+                            </div>
+                          </div>                          
+                          <div class="form-group row">
                             <label class="col-lg-2 col-form-label">Current Level</label>
                             <div class="col-lg-10">
                               <input type="number" min="0" step="1" class="form-control" formControlName="currentLevel">
@@ -387,33 +397,33 @@
                             <label class="col-lg-2 col-form-label">Frequency of Measurement</label>
                             <div class="col-lg-10">
                               <select class="form-control" formControlName="frequencyId" (ngModelChange)="setTargetTable(measureAct.controls.annualTarget.controls,$event)">
-                          <option value="1">Annually</option>
-                          <option value="2">Semi-Annual</option>      
-                          <option value="4">Quarterly</option> 
-                        </select>
+                                <option value="1">Annually</option>
+                                <option value="2">Semi-Annual</option>      
+                                <option value="4">Quarterly</option> 
+                              </select>
                             </div>
                           </div>
-                          <div class="panel panel-info no border">
+                          <div class="panel panel-info">
                             <div class="panel-heading text-center">{{commonService.getData('org_info').cycle[0]}} - {{commonService.getData('org_info').cycle[commonService.getData('org_info').cycle.length-1]}}
                               Annual Target</div>
                             <div class="panel-body no-padding">
                               <table class="table table-striped">
                                 <thead>
                                   <tr>
-                                    <th width="20%">Year</th>
-                                    <th width="60%">Estimate Target</th>
-                                    <th width="20%">Estimate Cost</th>
+                                    <th>Year</th>
+                                    <th>Estimate Target</th>
+                                    <th>Estimate Cost</th>
                                   </tr>
                                 </thead>
                                 <tbody formArrayName="annualTarget">
                                   <tr *ngFor="let td of measureAct.controls.annualTarget.controls;let n = index;" [formGroupName]="n">
                                     <td>{{td.value.year}}</td>
-                                    <div formArrayName="levels">
+                                    <div class="unexistance" formArrayName="levels">
                                       <td *ngFor="let le of td.controls.levels.controls;let o = index;" [formGroupName]="o">
-                                        <input type="text" style="width:50%" formControlName="quarter" hidden>
-                                        <input type="text" style="width:50%" formControlName="startDate" hidden>
-                                        <input type="text" style="width:50%" formControlName="endDate" hidden>
-                                        <input type="text" style="width:50%" class="validate" formControlName="estimatedTargetLevel">
+                                        <input type="text"  class="validate" formControlName="estimatedTargetLevel">
+                                        <input type="text"  formControlName="quarter" hidden>
+                                        <input type="date"  formControlName="startDate">
+                                        <input type="date"  formControlName="endDate">
                                       </td>
                                     </div>
                                     <td><input type="text" class="validate" formControlName="estimatedCost"></td>
@@ -433,7 +443,7 @@
 
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Submit</button>
+          <button type="submit" class="btn btn-success" [disabled]="initiativeForm.invalid">Submit</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </form>
@@ -443,7 +453,7 @@
 
 <!-- Activity Modal -->
 <div id="activityModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-xlg">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -470,7 +480,7 @@
                   </a>
                 </li>
                 <li>
-                  <button class="btn btn-primary measure-button" (click)="addMeasure(activityForm)"><i class="glyphicon glyphicon-plus"></i></button>
+                  <button class="btn btn-primary measure-button" style="cursor:pointer;" (click)="addMeasure(activityForm)" [disabled]="activityForm.controls.measures.invalid"><i class="glyphicon glyphicon-plus"></i></button>
                 </li>
               </ul>
               <div class="tab-content">
@@ -494,6 +504,16 @@
                     </div>
                   </div>
                   <div class="form-group row">
+                    <label class="col-lg-2 col-form-label">Select Direction</label>
+                    <div class="col-lg-10">
+                      <select class="form-control" formControlName="direction">
+                        <option value="" disabled selected>Choose Direction of measureUnit</option>
+                        <option value="upward">Upward</option>
+                        <option value="downward">Downward</option>
+                      </select>
+                    </div>
+                  </div>                  
+                  <div class="form-group row">
                     <label class="col-lg-2 col-form-label">Current Level</label>
                     <div class="col-lg-10">
                       <input type="number" min="0" step="1" class="form-control" formControlName="currentLevel">
@@ -509,27 +529,27 @@
                       </select>
                     </div>
                   </div>
-                  <div class="panel panel-info no border">
+                  <div class="panel panel-info">
                     <div class="panel-heading text-center">{{commonService.getData('org_info').cycle[0]}} - {{commonService.getData('org_info').cycle[commonService.getData('org_info').cycle.length-1]}}
                       Annual Target</div>
                     <div class="panel-body no-padding">
                       <table class="table table-striped">
                         <thead>
                           <tr>
-                            <th width="20%">Year</th>
-                            <th width="60%">Estimate Target</th>
-                            <th width="20%">Estimate Cost</th>
+                            <th>Year</th>
+                            <th>Estimate Target</th>
+                            <th>Estimate Cost</th>
                           </tr>
                         </thead>
                         <tbody formArrayName="annualTarget">
                           <tr *ngFor="let td of measureAct.controls.annualTarget.controls;let n = index;" [formGroupName]="n">
                             <td>{{td.value.year}}</td>
-                            <div formArrayName="levels">
+                            <div class="unexistance" formArrayName="levels">
                               <td *ngFor="let le of td.controls.levels.controls;let o = index;" [formGroupName]="o">
-                                <input type="text" style="width:50%" formControlName="quarter" hidden>
-                                <input type="text" style="width:50%" formControlName="startDate" hidden>
-                                <input type="text" style="width:50%" formControlName="endDate" hidden>
-                                <input type="text" style="width:50%" class="validate" formControlName="estimatedTargetLevel">
+                                <input type="text"  class="validate" formControlName="estimatedTargetLevel">
+                                <input type="text"  formControlName="quarter" hidden>
+                                <input type="date"  formControlName="startDate">
+                                <input type="date"  formControlName="endDate">
                               </td>
                             </div>
                             <td><input type="text" class="validate" formControlName="estimatedCost"></td>
@@ -544,7 +564,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Submit</button>
+          <button type="submit" class="btn btn-success" [disabled]="activityForm.invalid">Submit</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </form>
@@ -554,7 +574,7 @@
 
 <!-- Measure Modal -->
 <div id="measureModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-xlg">
 
     <!-- Modal content-->
     <div class="modal-content">
@@ -582,6 +602,16 @@
             </div>
           </div>
           <div class="form-group row">
+            <label class="col-lg-2 col-form-label">Select Direction</label>
+            <div class="col-lg-10">
+              <select class="form-control" formControlName="direction">
+                <option value="" disabled selected>Choose Direction of measureUnit</option>
+                <option value="upward">Upward</option>
+                <option value="downward">Downward</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
             <label class="col-lg-2 col-form-label">Current Level</label>
             <div class="col-lg-10">
               <input type="number" min="0" step="1" class="form-control" formControlName="currentLevel">
@@ -597,27 +627,27 @@
               </select>
             </div>
           </div>
-          <div class="panel panel-info no border">
+          <div class="panel panel-info">
             <div class="panel-heading text-center">{{commonService.getData('org_info').cycle[0]}} - {{commonService.getData('org_info').cycle[commonService.getData('org_info').cycle.length-1]}}
               Annual Target</div>
             <div class="panel-body no-padding" style="text-align: center;">
               <table class="table table-striped" formArrayName="annualTarget">
                 <thead>
                   <tr>
-                    <th width="20%">Year</th>
-                    <th width="60%">Estimate Target</th>
-                    <th width="20%">Estimate Cost</th>
+                    <th>Year</th>
+                    <th>Estimate Target</th>
+                    <th>Estimate Cost</th>
                   </tr>
                 </thead>
                 <tbody *ngFor="let td of measureForm.controls.annualTarget.controls;let n = index;" [formGroupName]="n">
                   <tr>
                     <td>{{td.value.year}}</td>
-                    <div formArrayName="levels">
+                    <div class="unexistance" formArrayName="levels">
                       <td *ngFor="let le of td.controls.levels.controls;let o = index;" [formGroupName]="o">
-                        <input type="text" style="width:50%" formControlName="quarter" hidden>
-                        <input type="text" style="width:50%" formControlName="startDate" hidden>
-                        <input type="text" style="width:50%" formControlName="endDate" hidden>
-                        <input type="text" style="width:50%" class="validate" formControlName="estimatedTargetLevel">
+                        <input type="text"  class="validate" formControlName="estimatedTargetLevel">
+                        <input type="text"  formControlName="quarter" hidden>
+                        <input type="date"  formControlName="startDate">
+                        <input type="date"  formControlName="endDate">
                       </td>
                     </div>
                     <td><input type="text" class="validate" formControlName="estimatedCost"></td>
@@ -628,7 +658,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Submit</button>
+          <button type="submit" class="btn btn-success" [disabled]="measureForm.invalid">Submit</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </form>
@@ -645,7 +675,6 @@
         <h4 class="modal-title">Assign Activity to further Departments</h4>
       </div>
       <div class="modal-body" *ngIf="selectedActivity">
-
         <select multiple class="form-control" [(ngModel)]="department" (ngModelChange)="departmentIds = $event">
             <option *ngFor="let dept of selectedActivity.otherDepartments;" [value]="dept.departmentId">{{dept.department}}</option>
           </select>

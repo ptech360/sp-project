@@ -15,12 +15,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Polyfills -->
-    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <!--<script src="node_modules/core-js/client/shim.min.js"></script>
 
     <script src="node_modules/zone.js/dist/zone.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>-->
 
-    <script src="systemjs.config.js"></script>
+    <!-- Polyfills -->
+    <script src="https://unpkg.com/core-js/client/shim.min.js"></script>
+
+    <!-- Update these package versions as needed -->
+    <script src="https://unpkg.com/zone.js@0.8.4?main=browser"></script>
+    <script src="https://unpkg.com/systemjs@0.19.39/dist/system.src.js"></script>
+
+    <!--<script src="systemjs.config.js"></script>-->
+    <!-- This SystemJS configuration loads umd packages from the web -->
+    <script src="systemjs.config.server.js"></script>
     <script>
       System.import('main.js').catch(function(err){ console.error(err); });
     </script>

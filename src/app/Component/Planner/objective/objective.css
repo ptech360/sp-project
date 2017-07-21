@@ -47,6 +47,7 @@ tfoot th, tfoot td {
   text-align: center;
 }
 
+<<<<<<< HEAD
 .add-button
 {
   background-color: red;
@@ -213,4 +214,12 @@ padding: 1px;
     background: #e4e4e4;
     height: 45px;
     font-weight: 100;
+}
+.unexistance td{
+  padding: 8px;
+  border-top: 1px solid #ddd;
+}
+
+.modal-xlg{
+  width:90%
 }

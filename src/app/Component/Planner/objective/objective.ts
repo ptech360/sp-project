@@ -14,13 +14,13 @@ export class ObjectiveComponent implements AfterViewInit{
   public objectives : any[];
   public initiatives : any[] = [];
   public empty:boolean =false;
-  public objectiveId:any;
-  public initiativeId:any;
+  public selectedObjective :any;
+  public selectedInitiative:any;
   public objectiveForm: FormGroup;
   public initiativeForm: FormGroup;
   public activityForm: FormGroup;
   public measureForm: FormGroup;
-  public activityId:any;
+  public selectedActivity:any;
   public quarter:any[] = ["First","Second","Third","Forth"];
   public departmentIds:any[];
   constructor(private orgSer:OrganizationService2,
@@ -30,14 +30,13 @@ export class ObjectiveComponent implements AfterViewInit{
       if(res.status == 204){
         this.empty = false;
         this.objectives = [];        
-      }
-      else{
+      }else{
         this.objectives = res;
         this.getInitiative(this.objectives[0].id);
       }
       console.log(res);
     });
-    this.initializeGoalForm();
+    this.initObjectiveForm();
     this.initiativeForm = this.initForm();
     this.activityForm = this.setActivity();
     this.measureForm = this.setMeasure();
@@ -56,7 +55,7 @@ export class ObjectiveComponent implements AfterViewInit{
     });
   }
   /**Objective Component */
-  initializeGoalForm() {
+  initObjectiveForm() {
     this.objectiveForm = this.formBuilder.group({
       "objective": ['', [Validators.required]],
       "totalCost": ['', [Validators.required]],
@@ -103,7 +102,7 @@ export class ObjectiveComponent implements AfterViewInit{
       $('#objectiveModal').modal('hide');
       this.returnedObject = response;
       this.objectives.push(this.returnedObject);
-      this.initializeGoalForm();
+      this.initObjectiveForm();
     }, (error:any) => {
       console.log(error);
     });
@@ -159,7 +158,7 @@ initForm(){
   inItTargetIn(year:any) {
     return this.formBuilder.group({
       "year": [year, [Validators.required]],
-      "levels": this.formBuilder.array([this.inItLevels(1)]),
+      "levels": this.formBuilder.array([this.inItLevels(this.quarter[0])]),
       "estimatedCost": ['', [Validators.required]]
     });
   }
@@ -182,10 +181,9 @@ initForm(){
   }
 
   submitInitiative() {
-    this.initiativeForm.value['objectiveId'] = this.objectiveId;
-    console.log("object", this.initiativeForm.value);
+    this.initiativeForm.value['objectiveId'] = this.selectedObjective.id;
     this.orgSer.addInitiative(this.initiativeForm.value).subscribe((res:any) => {
-      // this.initiatives.push(res);
+      this.selectedObjective.initiatives.push(res);
       $('#initiativeModal').modal('hide');
       this.initForm();
     }, err => {
@@ -194,20 +192,21 @@ initForm(){
   }
 
   submitActivity(){
-    this.activityForm.value['initiativeId'] = this.initiativeId;
+    this.activityForm.value['initiativeId'] = this.selectedInitiative.id;
     this.orgSer.saveActivity(this.activityForm.value)
     .subscribe(response =>{
+      this.selectedInitiative.activities.push(response);
       $('#activityModal').modal('hide');
       this.activityForm = this.setActivity();
-      console.log(response);
     });    
   }
 
   submitMeasure(){
-    this.measureForm.value['activityId'] = this.activityId;
+    this.measureForm.value['activityId'] = this.selectedActivity.id;
     this.orgSer.saveMeasure(this.measureForm.value).subscribe((response:any) =>{
       this.measureForm = this.setMeasure();
-      $('#measureModal').modal('show');
+      this.selectedActivity.measures.push(response);
+      $('#measureModal').modal('hide');
     }, error =>{
       console.log(error);
     });
@@ -215,8 +214,7 @@ initForm(){
 
   public assignActivity(activity:any){
     this.orgSer.assignActivity(activity.id,this.departmentIds).subscribe((res:any) =>{
-      activity.assignedDepartments = activity.assignedDepartments.concat(res);
-      
+      activity.assignedDepartments = activity.assignedDepartments.concat(res);      
       activity.otherDepartments.forEach((oelement:any,index:any) => {        
         this.departmentIds.forEach((ielement:any) => {
           if(ielement == oelement.departmentId){
@@ -231,7 +229,7 @@ initForm(){
     });
   }
 
-  getObjElement(event:any){ 
+  getObjElement(event:any){
     $('.objective').addClass('hideBtn');
     if(!event.srcElement.classList.contains('collapsed'))
       $('.objective').addClass('hideBtn');          
@@ -250,10 +248,8 @@ initForm(){
   getActElement(event:any){
     $('.activity').addClass('hideBtn');
     if(!event.srcElement.classList.contains('collapsed'))
-      $('.activity').addClass('hideBtn');          
+      $('.activity').addClass('hideBtn');        
     else
       event.srcElement.nextElementSibling.classList.remove('hideBtn');
   }
-
-
 }

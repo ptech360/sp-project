@@ -49,25 +49,66 @@
       {{organizationInfo.vision}}
     </div>
   </div>
-  <!--<span class="text-primary center-align"><b>Values</b></span>-->
-  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-info panel-no-border" *ngFor="let val of organizationInfo.values;let i = index;">
-      <div class="panel-heading background-transparent" role="tab" id="headingOne">
-        <h3 class="panel-title">
-          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{i}}" aria-expanded="true" aria-controls="collapseOne">
-                <span class="badge badge-font"> Value {{i+1}} </span> {{val.title}}</a>
-        </h3>
-      </div>
-      <div id="collapse{{i}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-        <div class="panel-body panel-no-border">
-          {{val.description}}
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <b>Values</b>
+        <span class="pull-right"><button data-toggle="modal" data-target="#valueForm">Add</button></span>
+      </h3>            
+    </div>
+    <div class="panel-collapse collapse in">
+      <div class="panel-body">
+        <div class="panel panel-info" *ngFor="let val of organizationInfo.values;let i = index;">
+          <div class="panel-heading"><b>{{i+1}}. {{val.title}}</b>
+            <div class="dropdown pull-right">
+              <span class="glyphicon glyphicon-option-vertical dropdown-toggle" data-toggle="dropdown"></span>
+              <ul class="dropdown-menu">
+                <li><a data-toggle="modal" data-target="#valueForm" (click)="onValueSelected(val,i)">Edit</a></li>
+                <li><a (clcik)="deleteValue(val,i)">Delete</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel-body">{{val.description}}</div>
         </div>
       </div>
     </div>
   </div>
-  <!--<button type="button" class="btn btn-info btn-lg center-block" [routerLink]="['/strategic-goal']">
-        View\Add Objective
-      </button>-->
+</div>
+
+
+<div class="modal fade" id="valueForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">
+          Value
+        </h4>
+      </div>
+      <!-- Modal Body -->
+      <form [formGroup]="valueForm" (submit)="onValueSubmit()">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" formControlName="title" />
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text" class="form-control" id="description" formControlName="description"></textarea>
+          </div>
+        </div>
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
     <!-- ===============================================================================
 ======================== /End of Initial setup Interface ==============================================
