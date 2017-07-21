@@ -61,28 +61,12 @@ export class Login{
   
   public fetchOrganizationInfo(user_info:any) {
     this.org_ser.fetchOrganizationInfo().subscribe((res:any) => {
-      if(res.cycles) {
-        this.buildData(res);
-      } else {
-         this.commonService.storeData("org_info", res);        
-      }
+      this.commonService.storeData("org_info", res);
       this.onSuccess();    
     }, (err:any) => {
       this.onError();
     });
   }
-
-  public buildData(info:any) {
-      // let cycle:any[] = [];
-      // let org_info = info;
-      // var startYear = new Date(org_info[0].cycles.startCycle).getFullYear();
-      // var endYear = new Date(org_info[0].cycles.endCycle).getFullYear();
-      // for (var y = startYear; y <= endYear; y++) {
-      //   cycle.push(y);
-      // }
-      // org_info[0]['cycle'] = cycle;
-      this.commonService.storeData("org_info", info);
-  }  
 
   public onSuccess() {
     this.loginStart = false;

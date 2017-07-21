@@ -90,9 +90,9 @@ export class OrganizationService2{
                     .catch(this.handleError);
   }
 
-  public fetchAssignedActivity(){
+  public fetchAssignedActivity(departmentIds:any[]){
     this.baseUrl = this.con.baseUrl;
-    return this.http.get(this.baseUrl + "/department/" + this.con.getData('user_roleInfo')[0].departmentId+"/result")
+    return this.http.get(this.baseUrl + "/department/" +departmentIds+ "/result")    
                     .map(this.extractData)
                     .catch(this.handleError); 
   }

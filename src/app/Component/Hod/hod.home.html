@@ -5,6 +5,7 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        <li><a href=""><span class="glyphicon glyphicon-user"></span> {{cs.getData('userDetails').firstName}}</a></li>
         <li><a href="" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
       </ul>
     </div>
@@ -74,12 +75,13 @@
                                                         <th>Actual Level</th>
                                                         <th>Actual Cost</th>
                                                         <th></th>
+                                                        <th></th>
                                                       </tr>
                                                     </thead>
                                                     <tbody *ngFor="let tdl of measr.annualTargets;let at = index;">
                                                       <tr>
-                                                        <td style="vertical-align: middle;" [attr.rowspan]="tdl.target.quarterInfo.length + 2">{{ tdl.target.year }}</td>
-                                                        <td style="vertical-align: middle;" [attr.rowspan]="tdl.target.quarterInfo.length + 2">{{tdl.target.estimatedCost}}</td>
+                                                        <td style="vertical-align: middle;" [attr.rowspan]="tdl.target.quarterInfo.length + 3">{{ tdl.target.year }}</td>
+                                                        <td style="vertical-align: middle;" [attr.rowspan]="tdl.target.quarterInfo.length + 3">{{tdl.target.estimatedCost}}</td>
                                                       </tr>
                                                       <template class="panel panel-info" let-lev ngFor [ngForOf]="tdl.target.quarterInfo" let-in="index">
                                                         <tr>
@@ -88,18 +90,43 @@
                                                           <td>{{lev.startDate}} To {{lev.endDate}}</td>
                                                           <td>{{lev.currentLevel}}</td>
                                                           <td>{{lev.currentCost}}</td>
-                                                          <td data-toggle="collapse" [attr.data-target]=                                                                  "'#q'+l+at+in" data-parent="#accordionTable">                                                                   <i class="fa fa-sort-desc" aria-hidden="true"></i>                                                              </td>
+                                                          <td data-toggle="collapse" 
+                                                          [attr.data-target]="'#q'+l+at+in" 
+                                                          data-parent="#accordionTable"> 
+                                                          <i class="fa fa-sort-desc" aria-hidden="true"></i> 
+                                                          </td>
                                                         </tr>
                                                         <tr>
-                                                          <td class="panel-collapse status-color collapse"                                                                [attr.id]="'q'+l+at+in" colspan="5">
-                                                            <div class="panel-body">
-                                                              <div class="panel panel-default">
+                                                          <td class="panel-collapse status-color collapse" 
+                                                          [attr.id]="'q'+l+at+in" colspan="6" style="width: 
+                                                          63.8% !important;">
+                                                            <div class="panel-body row" style="text-align:left">
+                                                              <div class="panel panel-default col-sm-6">
                                                                 <div class="panel-heading">
-                                                                  <b>Attachments</b>
-                                                                  <span class="pull-right"><i class="glyphicon                                                                    glyphicon-plus-sign" data-toggle="modal"                                                                        data-target="#evidenceForm"></i></span>
+                                                                  <b>Attachments</b> <span class="pull-right"><i
+                                                                    class="glyphicon glyphicon-plus-sign"
+                                                                    data-toggle="modal"
+                                                                    data-target="#evidenceForm"
+                                                                    (click)="selectedQuarter=lev"></i></span>
                                                                 </div>
                                                                 <div class="panel-body">
-                                                                  <b>1)</b>:Adffs.pdf
+                                                                  <p *ngIf="!lev.evidance">No evidance added
+                                                                  </p>
+                                                                  <a href="lev.url" *ngFor="let evi of 
+                                                                  lev.evidance;let no=index;">
+                                                                  <b>{{no+1}})</b>:{{evi.title}}<br>
+                                                                  </a>
+                                                                </div>
+                                                              </div>
+                                                              <div class="panel panel-default col-sm-6" 
+                                                              style="margin-top: 0px;">
+                                                                <div class="panel-heading">
+                                                                  <b>Discussion</b>
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                  <b>Me:</b><br>
+                                                                  <a>Hello there!!</a><br>
+                                                                  <a>Hello there!!</a>
                                                                 </div>
                                                               </div>
                                                             </div>

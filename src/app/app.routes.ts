@@ -39,6 +39,9 @@ export const rootRouterConfig: Routes = [
     ]
   },
   { path:'coordinator', component:CoordinatorHome, canActivate:[LoggedInGuard]},
-  { path:'hod', component:HodHome, canActivate:[LoggedInGuard]}
+  { path:'hod', component:HodHome, canActivate:[LoggedInGuard]},
+  { path:'chancellor', component:HodHome, canActivate:[LoggedInGuard]},
+  { path:'viceChancellor', component:HodHome, canActivate:[LoggedInGuard]},
+  { path:'deputyViceChancellor', component:HodHome, canActivate:[LoggedInGuard]}
   
 ];

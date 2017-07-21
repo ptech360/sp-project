@@ -13,20 +13,29 @@ declare let $:any;
 export class CoordinatorHome{
   public assignedActivities:any[] = [];
   public evidencForm:FormGroup;
+  public departments:any = []
+  public discussionForm:FormGroup;
+  public currentUser:any;
   constructor(private orgSer:OrganizationService2,private cs:CommonService){
+    this.cs.getData('user_roleInfo').forEach((element:any) => {
+      this.departments.push(element.departmentId);
+    });
     this.evidencForm = new FormGroup({
       title:new FormControl('',[Validators.required]),
       description:new FormControl('',Validators.required),
       files:new FormControl('',[Validators.required])
     });
-
-    this.orgSer.fetchAssignedActivity().subscribe((res:any) =>{
+    this.discussionForm = new FormGroup({
+      comment:new FormControl('',[Validators.required])
+    });
+    this.orgSer.fetchAssignedActivity(this.departments).subscribe((res:any) =>{
       if(res.status != 204){
         this.assignedActivities = res;
       }else{
         this.assignedActivities = [];
       }
-    })
+    });
+    this.currentUser = this.cs.getData('userDetails').id;
   }
 
   saveResult(e:any){
@@ -70,7 +79,17 @@ export class CoordinatorHome{
     });
   }
 
+  commentPost(){
+    this.discussionForm.value["quarterLevelResultId"] = this.selectedQuarter.id;
+    this.discussionForm.value["employeeId"] = this.cs.getData('userDetails').id;
+    this.discussionForm.value["commentedOn"] = new Date();
+    this.orgSer.saveComment(this.selectedQuarter.id,this.discussionForm.value).subscribe((response:any) =>{
+      console.log(response);
+    })
+  }
+
   logout(){
     localStorage.clear();
   }
+
 }
