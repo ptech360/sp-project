@@ -35,6 +35,14 @@
 					<i class="fa fa-lock white-text" aria-hidden="true"></i>
 				</div>
 			</div>
+			<div class="login-button">
+				
+				<input type="submit" class="btn " value="Sign in" [disabled]="loginForm.invalid"/>
+			<div *ngIf="loginStart"></div>
+			<div *ngIf="error">
+				<p >Username or password invalid.</p>
+			</div>
+			</div>
 		</form>
 	</div>
 
