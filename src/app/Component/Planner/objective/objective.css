@@ -1,6 +1,10 @@
 /*.panel {
     border: 0;
 }*/
+.badge{
+  font-size: 14px;
+}
+
 /*modal css*/
 .modal {
   text-align: center;
@@ -43,6 +47,7 @@ tfoot th, tfoot td {
   text-align: center;
 }
 
+<<<<<<< HEAD
 .add-button
 {
   background-color: red;
@@ -110,10 +115,6 @@ background-color: red;
   margin-right: 10px;
 }
 
-.background-transparent{
-  background:transparent;
-}
-
 
 .objective-text{
     font-size: 15px;
@@ -121,18 +122,13 @@ background-color: red;
     color: white;
     margin: 15px;
 }
-
-
-
-
 .custom-panel{
 padding: 1px;
 
 }
 
 .no-border{
-      border: 0px solid transparent;
-  
+      border: 0px solid black;
 }
 
 .no-padding{
@@ -169,25 +165,22 @@ padding: 1px;
 .button-margin{
   margin: 13px;
 }
-
-.bg-color{
-  background: #75caf4;
-  margin: 23px;
-  text-align: center;
-  
-}
-
 .text-color{
   color: white;
 }
 
 .measure-button{
-    cursor: pointer;
+    height: 40px;
     border-radius: 50%;
     background-color: #8BC34A;
     border-color: #8BC34A;
-    margin-top: 5px;
     margin-left: 10px;
+    width: 40px;
+}
+.measure-button:hover{
+    background: #8BC34A;
+    border: #8BC34A;
+    box-shadow: 0px 1px 3px #6f7907;
 }
 
 .close-button{
@@ -195,6 +188,7 @@ padding: 1px;
     top: 0px;
     right: 0px;
     background: white;
+    color:#F44336;
     border-radius: 51%;
     height: 20px;
     width: 20px;
@@ -205,6 +199,10 @@ padding: 1px;
     font-size: 16px;
     font-weight: lighter;
 }
+  .close-button:hover{
+    background:#F44336;
+    color: white;
+  }
 
 .initiative-panel{
     text-align: center;
@@ -212,18 +210,18 @@ padding: 1px;
     height: 45px;
     font-weight: 100;
 }
-  .cross-button{
-    margin-top: -2px;
-    color: white;
-    opacity: 1;
-  }
 
-  .cross-button:hover{
-    color:orange;
-  }
+.unexistance td{
+  padding: 8px;
+  border-top: 1px solid #ddd;
+}
 
-  .text-model{
-    color: white;
-  }
+.modal-xlg{
+  width:90%
+}
+.btn[disabled] {
+    background: rgb(185, 185, 185);
+    border: 0px;
+    box-shadow: inset 0px 1px 23px #636363;
+}
 
-  

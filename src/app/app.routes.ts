@@ -34,11 +34,14 @@ export const rootRouterConfig: Routes = [
   { path:'planner', component:PlannerHome,  canActivate: [LoggedInGuard],
     children:[
       { path: 'initialSetup', component:InitialStetup,},
-      { path: '', component:CycleComponent},
+      { path: '', component:CycleComponent,  canActivate: [HaveCycle]},
       { path: 'objective', component:ObjectiveComponent}
     ]
   },
   { path:'coordinator', component:CoordinatorHome, canActivate:[LoggedInGuard]},
-  { path:'hod', component:HodHome, canActivate:[LoggedInGuard]}
+  { path:'hod', component:HodHome, canActivate:[LoggedInGuard]},
+  { path:'chancellor', component:HodHome, canActivate:[LoggedInGuard]},
+  { path:'viceChancellor', component:HodHome, canActivate:[LoggedInGuard]},
+  { path:'deputyViceChancellor', component:HodHome, canActivate:[LoggedInGuard]}
   
 ];

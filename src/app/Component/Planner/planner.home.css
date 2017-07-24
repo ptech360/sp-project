@@ -48,11 +48,6 @@ bWhite{
     margin-left:auto;
     margin-right:auto;
 }
-.top{
-
-    background-color: #2f2323;
-    border-color: rgba(212, 26, 26, 0.89);
-}
 
 .link-button
 {
@@ -69,6 +64,18 @@ color: white;
     color: red !important;
 }
 
-. one-ob{
-    
+.left-tooltip{
+    margin-top: -50px !important;
+    margin-left: 30px;
+}
+.cycle-margin{
+    margin-top:-80px;
+}
+.nav>li>a{
+    color:white;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: #fff;
+    color: #82c0f9 !important;
 }

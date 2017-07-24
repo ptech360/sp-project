@@ -4,7 +4,81 @@
 
 .status-color{
     position: absolute;
-    width: 41.4%;
+    width: 70.9%;
     background: whitesmoke;
     box-shadow: 5px 5px 5px grey;
+    z-index: 1;
+}
+
+/*---- Chat box messages css ----------*/
+.myMsg{
+    float:right;
+    width:100%;
+}
+.myImg{
+    float:right;
+    width: 60px;  
+    height: 50px;  
+    padding: 0px 5px 0px 5px;
+    border-radius: 100% !important;    
+}
+.myText{
+    display: -webkit-box;
+    text-align: -webkit-right;
+    padding: 4px;
+    width: 70%;
+    float: right;
+    border-radius: 10px !important;
+}
+.myText-style{
+    background: #e2ffc7 !important;
+    padding: 5px;
+    border-radius: 20px !important;
+    display: grid;
+}
+.myMsgDate{
+    float:right;
+    margin: 0px 5px 10px 0px;
+    font-size: 10px;
+    color: gray;
+}
+.msg{
+    float:left;
+    width:100%;
+}
+.img{
+    float:left;
+    width: 60px;
+    height: 50px;
+    padding: 0px 5px 0px 5px;
+    border-radius: 100% !important;
+}
+.text{
+    display: -webkit-box;
+    padding: 4px;
+    width:70%;
+    border-radius: 10px !important;
+}
+.text-style{
+    background: white !important;
+    padding: 5px;
+    border-radius: 20px !important;
+    display: grid;
+}
+.msgDate{
+    float:left;
+    margin: 0px 0px 10px 5px;
+    font-size: 10px;
+    color: gray;
+}
+
+.disabled-click {
+    pointer-events: none;
+    color:#e1e1e1;
+}
+
+h1{
+    font-family: 'Inconsolata';
+    font-weight: bold;
+    letter-spacing: 0.1em;
 }

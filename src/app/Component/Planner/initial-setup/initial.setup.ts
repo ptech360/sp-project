@@ -61,7 +61,7 @@ export class InitialStetup{
   }
 
   onSubmit() {    
-    this.cmvvForm.value['universityId'] = 213973813;
+    this.cmvvForm.value['universityId'] = this.commonService.getData("org_info")[0].id;
     var startYear = new Date(this.cmvvForm.value.startCycle).getFullYear();
     var endYear = new Date(this.cmvvForm.value.endCycle).getFullYear();
     for (var y = startYear; y <= endYear; y++)

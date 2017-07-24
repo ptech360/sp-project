@@ -1,48 +1,112 @@
-<h2 style="text-align: center;margin-bottom:20px;">Initial Setup</h2>
-<hr>
-<div class="form-card" style="background:white">
-  <img src="./app/img/cycle.png" class="center-box" width="100px">
-  <h3 class="center-align">
-    <span class="blue-text"> {{organizationInfo.cycles.startCycle}} </span>
+<!-- ===============================================================================
+======================== Initial Setup Interface ==============================================
+===================================================================================== -->
+<!-- Header of objectives -->
+<div class="subheader-milky milky-background cycle-margin">
+  <div class="subheader-text">
+    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+    <span class="text">INITIAL SETUP</span>
+    <div class="subtext" >
+      <div class="ctooltip">
+       <button [routerLink]="['/planner/objective']" class="btn btn-circle btn-subheader right-margin orange-background">
+          <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span>
+       </button>
+        <span class="ctooltiptext left-tooltip">Add and View objective</span>
+      </div>
+        
+      <br> <a [routerLink]="['/planner/objective']">Objectives <b>></b> </a>
+    </div>
+      <h3 class="center-align">
+    {{organizationInfo.cycles.startCycle}}
     <b> To </b>
-    <span class="red-text"> {{organizationInfo.cycles.endCycle}} </span>
+   {{organizationInfo.cycles.endCycle}}
   </h3>
-  <a [routerLink]="['/planner/objective']" class="btn btn-danger btn-rounded active pull-right link-button" >
-  <!--<img src="./app/img/blue-circle.gif" width="20px" height="20px" style="    vertical-align: baseline;border-radius: 15px;">-->
-  Objectives</a>
-  <div class="panel panel-info">
-    <div class="panel-heading">
+  </div>
+</div>
+<!-- /End of header page -->
+<div>
+  <div class="panel panel-info panel-no-border">
+    <div class="panel-heading background-transparent text-center panel-no-border">
       <b class="panel-title">Mission</b>
     </div>
-    <div class="panel-body">
+    <div class="panel-body panel-no-border">
       {{organizationInfo.mission}}
     </div>
   </div>
-  <div class="panel panel-info">
-    <div class="panel-heading">
+  <div class="panel panel-info panel-no-border">
+    <div class="panel-heading background-transparent text-center panel-no-border">
       <b class="panel-title">Vision</b>
     </div>
-    <div class="panel-body">
+    <div class="panel-body panel-no-border">
       {{organizationInfo.vision}}
     </div>
   </div>
-  <!--<span class="text-primary center-align"><b>Values</b></span>-->
-  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-info" *ngFor="let val of organizationInfo.values;let i = index;">
-      <div class="panel-heading" role="tab" id="headingOne">
-        <h3 class="panel-title">
-          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{i}}" aria-expanded="true" aria-controls="collapseOne">
-                Value {{i+1}} - {{val.title}}</a>
-        </h3>
-      </div>
-      <div id="collapse{{i}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-        <div class="panel-body">
-          {{val.description}}
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <b>Values</b>
+        <span class="pull-right ctooltip">
+          <button class="btn btn-circle btn-right green-background" data-toggle="modal" data-target="#valueForm">
+            <i class="glyphicon glyphicon-plus"></i>
+          </button>
+          <span class="ctooltiptext">Add Values</span>
+        </span>
+      </h3>            
+    </div>
+    <div class="panel-collapse collapse in">
+      <div class="panel-body">
+        <div class="panel panel-info" *ngFor="let val of organizationInfo.values;let i = index;">
+          <div class="panel-heading"><b>{{i+1}}. {{val.title}}</b>
+            <div class="dropdown pull-right">
+              <span class="glyphicon glyphicon-option-vertical dropdown-toggle" data-toggle="dropdown"></span>
+              <ul class="dropdown-menu">
+                <li><a data-toggle="modal" data-target="#valueForm" (click)="onValueSelected(val,i)">Edit</a></li>
+                <li><a (clcik)="deleteValue(val,i)">Delete</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel-body">{{val.description}}</div>
         </div>
       </div>
     </div>
   </div>
-  <!--<button type="button" class="btn btn-info btn-lg center-block" [routerLink]="['/strategic-goal']">
-        View\Add Objective
-      </button>-->
 </div>
+
+
+<div class="modal fade" id="valueForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">
+          Value
+        </h4>
+      </div>
+      <!-- Modal Body -->
+      <form [formGroup]="valueForm" (submit)="onValueSubmit()">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" formControlName="title" />
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text" class="form-control" id="description" formControlName="description"></textarea>
+          </div>
+        </div>
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+    <!-- ===============================================================================
+======================== /End of Initial setup Interface ==============================================
+===================================================================================== -->

@@ -9,7 +9,7 @@ export class HaveCycle implements CanActivate {
   }
 
   canActivate() {
-    if(this.commonService.getData("org_info")[0].cycles)
+    if(this.commonService.getData("org_info").cycles)
       return true;
      
       this.router.navigateByUrl("/planner/initialSetup");

@@ -1,10 +1,11 @@
-<nav class="navbar top navbar-fixed-top header">
+<nav class="navbar navbar-fixed-top milky-background header">
   <div class="container">
     <div class="navbar-header" id="toggle-header">
     <a class="navbar-brand nav-sp" href="">Strategic Planning</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+				<li><a href=""><span class="glyphicon glyphicon-user"></span> {{cs.getData('userDetails').firstName}}</a></li>        
         <li><a href="" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
       </ul>
     </div>
