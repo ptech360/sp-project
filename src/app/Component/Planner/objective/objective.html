@@ -316,31 +316,38 @@
     </div>
   </div>
 </div>
-<!--  Initiative Modal-->
+
+<!--initiative Model  -->
 <div id="initiativeModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-xlg">
+  <div class="modal-dialog modal-lg">
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-header bg-color ">
-        <button type="button" class="close cross-button" data-dismiss="modal">&times;</button>
+      <div class="modal-header milky-background ">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title text-color ">Add Initiative</h4>
       </div>
       <form [formGroup]="initiativeForm" (submit)="submitInitiative()">
-        <div class="modal-body">
-          <div class="form-group row">
-            <label class="col-lg-2 col-form-label">Proposed Initiative</label>
-            <div class="col-lg-10">
-              <textarea class="form-control" rows="3" formControlName="initiative"></textarea>
-            </div>
+         <div class="modal-body">
+        <div class="well">
+          <div class="row">
+             <div class="col-lg-9 col-xs-12 col-sm-9">
+              <div class="form-group ">
+            <label>Proposed Initiative</label>
+            <textarea class="form-control" rows="1" formControlName="initiative"></textarea>
+             </div>
+             </div>
+             <div class="col-lg-3 col-xs-12 col-sm-3">
+              <div class="form-group ">
+                <label>Estimated Cost</label>
+                <input type="number" class="form-control" placeholder="20000" formControlName="totalCost">
+               </div>               
+             </div>
           </div>
-          <div class="form-group row">
-            <label class="col-lg-2 col-form-label">Estimated Cost</label>
-            <div class="col-lg-10">
-              <input type="number" class="form-control" placeholder="20000" formControlName="totalCost">
+        </div>
+         <div class="panel panel-info no border">
+            <div class="panel-heading background-transparent">
+              <b><span class="badge">Add Proposed Activities</span></b>
             </div>
-          </div>
-          <div class="panel panel-info no border">
-            <div class="panel-heading"><b>Add Proposed Activities</b></div>
             <div class="panel-body no-padding button-margin" formArrayName="activities">
               <ul class="nav nav-tabs">
                 <li [ngClass]="{'active': ul == initiativeForm.controls.activities.controls.length - 1}" *ngFor="let act of initiativeForm.controls.activities.controls;let ul= index;">
@@ -354,18 +361,30 @@
                   <button class="btn btn-primary measure-button" style="cursor:pointer" (click)="addActivity(initiativeForm)" [disabled]="initiativeForm.controls.activities.invalid"><i class="glyphicon glyphicon-plus"></i></button>
                 </li>
               </ul>
+
+
+
+           
               <div class="tab-content">
                 <div [attr.id]="'activity' + i" class="tab-pane fade" *ngFor="let act of initiativeForm.controls.activities.controls; let i = index;"
                   [formGroupName]="i" [ngClass]="{'in active': i == initiativeForm.controls.activities.controls.length - 1}">
                   <h3></h3>
-                  <div class="form-group row">
-                    <label class="col-lg-2 col-form-label">Activity</label>
-                    <div class="col-lg-10">
-                      <textarea class="form-control" rows="3" formControlName="activity"></textarea>
-                    </div>
+                  <div class="well">
+                  <div class="row">
+                  <div class="col-lg-12 col-xs-12 col-sm-12">
+                  <div class="form-group">
+                    <label>Activity</label>
+                     <textarea class="form-control" rows="3" formControlName="activity"></textarea>
+                   </div>
                   </div>
+                  </div>
+             </div>
+
+
                   <div class="panel panel-info no border">
-                    <div class="panel-heading"><b>Add Measure</b></div>
+                    <div class="panel-heading background-transparent">
+                      <b><span class="badge">Add Measure</span></b>
+                    </div>
                     <div class="panel-body no-padding button-margin" formArrayName="measures">
                       <ul class="nav nav-tabs">
                         <li [ngClass]="{'active': ul == act.controls.measures.controls.length - 1}" *ngFor="let measureAct of act.controls.measures.controls;let ulm= index;">
@@ -383,51 +402,62 @@
                         <div [attr.id]="'measure' + i" class="tab-pane fade" *ngFor="let measureAct of act.controls.measures.controls; let i = index;"
                           [formGroupName]="i" [ngClass]="{'in active': i == act.controls.measures.controls.length - 1}">
                           <h3></h3>
-                          <div class="form-group row">
-                            <label class="col-lg-2 col-form-label">Measure</label>
-                            <div class="col-lg-10">
-                              <textarea class="form-control" rows="3" formControlName="measure"></textarea>
+                          <div class="well">
+                            <div class="row">
+                              <div class="col-lg-6 col-xs-12 col-sm-6">
+                          <div class="form-group ">
+                            <label>Measure</label>
+                            <textarea class="form-control" rows="5" formControlName="measure"></textarea>
                             </div>
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-lg-2 col-form-label">Select MeasureUnit</label>
-                            <div class="col-lg-10">
+                             <div class="form-group ">
+                            <label>Select MeasureUnit</label>
+                        
                               <select class="form-control" formControlName="measureUnit">
                             <option value="" disabled selected>Choose Measurement Unit</option>
                             <option value="percentage">Percent</option>
                             <option value="decimal">Decimal</option>
                           </select>
-                            </div>
+                            
                           </div>
-                          <div class="form-group row">
-                            <label class="col-lg-2 col-form-label">Select Direction</label>
-                            <div class="col-lg-10">
+
+                           </div>
+                            <div class="col-lg-6 col-xs-12 col-sm-6">
+                                <div class="form-group">
+                            <label>Select Direction</label>
+                            
                               <select class="form-control" formControlName="direction">
                                 <option value="" disabled selected>Choose Direction of measureUnit</option>
                                 <option value="upward">Upward</option>
                                 <option value="downward">Downward</option>
                               </select>
-                            </div>
+                           
                           </div>                          
-                          <div class="form-group row">
-                            <label class="col-lg-2 col-form-label">Current Level</label>
-                            <div class="col-lg-10">
+                          <div class="form-group">
+                            <label>Current Level</label>
+                            
                               <input type="number" min="0" step="1" class="form-control" formControlName="currentLevel">
-                            </div>
+                            
                           </div>
-                          <div class="form-group row">
-                            <label class="col-lg-2 col-form-label">Frequency of Measurement</label>
-                            <div class="col-lg-10">
+                          <div class="form-group">
+                            <label>Frequency of Measurement</label>
+                            
                               <select class="form-control" formControlName="frequencyId" (ngModelChange)="setTargetTable(measureAct.controls.annualTarget.controls,$event)">
                                 <option value="1">Annually</option>
                                 <option value="2">Semi-Annual</option>      
                                 <option value="4">Quarterly</option> 
                               </select>
-                            </div>
+                            
                           </div>
+                          </div>
+                          </div>
+                          
+
                           <div class="panel panel-info">
-                            <div class="panel-heading text-center">{{commonService.getData('org_info').cycle[0]}} - {{commonService.getData('org_info').cycle[commonService.getData('org_info').cycle.length-1]}}
-                              Annual Target</div>
+                            <div class="panel-heading text-center  background-transparent">
+                               <b><span class="badge">{{commonService.getData('org_info').cycle[0]}} - {{commonService.getData('org_info').cycle[commonService.getData('org_info').cycle.length-1]}}
+                             Annual Target</span></b>
+                            
+                            </div>
                             <div class="panel-body no-padding">
                               <table class="table table-striped">
                                 <thead>
@@ -453,6 +483,7 @@
                                 </tbody>
                               </table>
                             </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -475,23 +506,28 @@
 
 <!-- Activity Modal -->
 <div id="activityModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-xlg">
+  <div class="modal-dialog modal-lg">
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-header bg-color">
+      <div class="modal-header milky-background">
         <button type="button" class="close cross-button" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Add Activity</h4>
       </div>
       <form [formGroup]="activityForm" (submit)="submitActivity()">
-        <div class="modal-body">
-          <div class="form-group row">
-            <label class="col-lg-2 col-form-label">Activity</label>
-            <div class="col-lg-10">
-              <textarea class="form-control" rows="3" formControlName="activity"></textarea>
+        <div class="modal-body panel-no-border">
+          <div class="well">
+            <div class="row">
+              <div class="col-lg-12 col-xs-12 col-sm-12">
+          <div class="form-group">
+            <label>Activity</label>
+             <textarea class="form-control" rows="1" formControlName="activity"></textarea>
             </div>
           </div>
+          </div>
+          </div>
           <div class="panel panel-info no border">
-            <div class="panel-heading"><b>Add Measure</b></div>
+            <div class="panel-heading background-transparent">
+              <b><span class="badge">Add Measure</span></b></div>
             <div class="panel-body no-padding" formArrayName="measures">
               <ul class="nav nav-tabs">
                 <li [ngClass]="{'active': ul == activityForm.controls.measures.controls.length - 1}" *ngFor="let measureAct of activityForm.controls.measures.controls;let ul= index;">
@@ -509,52 +545,58 @@
                 <div [attr.id]="'measure' + i" class="tab-pane fade" *ngFor="let measureAct of activityForm.controls.measures.controls; let i = index;"
                   [formGroupName]="i" [ngClass]="{'in active': i == activityForm.controls.measures.controls.length - 1}">
                   <h3></h3>
-                  <div class="form-group row">
-                    <label class="col-lg-2 col-form-label">Measure</label>
-                    <div class="col-lg-10">
-                      <textarea class="form-control" rows="3" formControlName="measure"></textarea>
-                    </div>
+                   <div class="well">
+                     <div class="row">
+                      <div class="col-lg-6 col-xs-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Measure</label>
+                      <textarea class="form-control" rows="5" formControlName="measure"></textarea>
                   </div>
-                  <div class="form-group row">
-                    <label class="col-lg-2 col-form-label">Select MeasureUnit</label>
-                    <div class="col-lg-10">
+                  <div class="form-group">
+                    <label>Select MeasureUnit</label>
                       <select class="form-control" formControlName="measureUnit">
                         <option value="" disabled selected>Choose Measurement Unit</option>
                         <option value="percentage">Percent</option>
                         <option value="decimal">Decimal</option>
                       </select>
-                    </div>
                   </div>
-                  <div class="form-group row">
-                    <label class="col-lg-2 col-form-label">Select Direction</label>
-                    <div class="col-lg-10">
+                  </div>
+                <div class="col-lg-6 col-xs-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Select Direction</label>
+                    
                       <select class="form-control" formControlName="direction">
                         <option value="" disabled selected>Choose Direction of measureUnit</option>
                         <option value="upward">Upward</option>
                         <option value="downward">Downward</option>
                       </select>
-                    </div>
-                  </div>                  
-                  <div class="form-group row">
-                    <label class="col-lg-2 col-form-label">Current Level</label>
-                    <div class="col-lg-10">
+                   
+                  </div>   
+                            
+                  <div class="form-group ">
+                    <label>Current Level</label>
+                   
                       <input type="number" min="0" step="1" class="form-control" formControlName="currentLevel">
-                    </div>
+                   
                   </div>
-                  <div class="form-group row">
-                    <label class="col-lg-2 col-form-label">Frequency of Measurement</label>
-                    <div class="col-lg-10">
+                  <div class="form-group">
+                    <label>Frequency of Measurement</label>
+                    
                       <select class="form-control" formControlName="frequencyId" (ngModelChange)="setTargetTable(measureAct.controls.annualTarget.controls,$event)">
                         <option value="1">Annually</option>
                         <option value="2">Semi-Annual</option>      
                         <option value="4">Quarterly</option> 
                       </select>
-                    </div>
+                    
                   </div>
+                     </div>
+                     </div>
                   <div class="panel panel-info">
-                    <div class="panel-heading text-center">{{commonService.getData('org_info').cycle[0]}} - {{commonService.getData('org_info').cycle[commonService.getData('org_info').cycle.length-1]}}
-                      Annual Target</div>
+                    <div class="panel-heading text-center background-transparent"><b><span class="badge">
+                      {{commonService.getData('org_info').cycle[0]}} - {{commonService.getData('org_info').cycle[commonService.getData('org_info').cycle.length-1]}}
+                      Annual Target</span></b></div>
                     <div class="panel-body no-padding">
+                      <div class="table-responsive">
                       <table class="table table-striped">
                         <thead>
                           <tr>
@@ -578,12 +620,14 @@
                           </tr>
                         </tbody>
                       </table>
+                      </div>
+                    </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </div> 
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-success" [disabled]="activityForm.invalid">Submit</button>
