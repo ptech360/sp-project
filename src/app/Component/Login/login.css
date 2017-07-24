@@ -8,11 +8,10 @@
 }
 
 .heading{
-   color:white;
-   text-align: center;
-    padding: 35px;
-   font-size:40px;
-  
+    color: #fcff00;
+    text-align: center;
+    padding: 25px;
+    font-size: 65px; 
 }
 
 .main-body{
