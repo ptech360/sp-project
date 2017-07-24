@@ -176,21 +176,22 @@ padding: 1px;
   margin: 13px;
 }
 
-.bg-color{
-  background: #75caf4;
-}
-
 .text-color{
   color: white;
 }
 
 .measure-button{
-    cursor: pointer;
+    height: 40px;
     border-radius: 50%;
     background-color: #8BC34A;
     border-color: #8BC34A;
-    margin-top: 5px;
     margin-left: 10px;
+    width: 40px;
+}
+.measure-button:hover{
+    background: #8BC34A;
+    border: #8BC34A;
+    box-shadow: 0px 1px 3px #6f7907;
 }
 
 .close-button{
@@ -198,6 +199,7 @@ padding: 1px;
     top: 0px;
     right: 0px;
     background: white;
+    color:#F44336;
     border-radius: 51%;
     height: 20px;
     width: 20px;
@@ -208,6 +210,10 @@ padding: 1px;
     font-size: 16px;
     font-weight: lighter;
 }
+  .close-button:hover{
+    background:#F44336;
+    color: white;
+  }
 
 .initiative-panel{
     text-align: center;
@@ -222,4 +228,9 @@ padding: 1px;
 
 .modal-xlg{
   width:90%
+}
+.btn[disabled] {
+    background: rgb(185, 185, 185);
+    border: 0px;
+    box-shadow: inset 0px 1px 23px #636363;
 }

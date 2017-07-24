@@ -203,30 +203,40 @@
   ============================================================================================== -->
 <!-- Objective Modal -->
 <div class="modal fade" id="objectiveModal" role="dialog">
-  <div class="modal-dialog modal-xlg">
+  <div class="modal-dialog modal-lg">
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-header bg-color">
+      <div class="modal-header milky-background">
         <button type="button" class="close cross-button" data-dismiss="modal">&times;</button>
         <h4 class="modal-title text-model">Add Objective</h4>
       </div>
       <form [formGroup]="objectiveForm" (submit)="onSubmit()">
-        <div class="modal-body">
-          <div class="form-group row">
-            <label class="col-lg-2 col-form-label">Objective</label>
-            <div class="col-lg-10">
-              <textarea class="form-control" rows="3" formControlName="objective"></textarea>
+        <div class="modal-body panel-no-border">
+          <div class="well">
+            <div class="row">
+              <div class="col-lg-10 col-xs-12 col-sm-10">
+                <div class="form-group">
+                  <label class="col-form-label">
+                    <span class="badge">Objective</span>
+                  </label>
+                  <textarea class="form-control" rows="1" formControlName="objective"></textarea>
+                </div>
+              </div>
+              <div class="col-lg-2 col-xs-12 col-sm-3">
+                <div class="form-group">
+                  <label class="col-form-label">
+                    <span class="badge">Estimated Cost</span>
+                  </label>
+                    <input type="number" class="form-control" placeholder="20000" formControlName="totalCost">
+                </div> 
+              </div>
             </div>
           </div>
-          <div class="form-group row ">
-            <label class="col-lg-2 col-form-label">Estimated Cost</label>
-            <div class="col-lg-10">
-              <input type="number" class="form-control" placeholder="20000" formControlName="totalCost">
+          <div class="panel panel-info panel-no-border">
+            <div class="panel-heading background-transparent">
+              <b><span class="badge">Strategic Performance indicator</span></b>
             </div>
-          </div>
-          <div class="panel panel-info">
-            <div class="panel-heading"><b>Strategic Performance indicator</b></div>
-            <div class="panel-body no-padding" formArrayName="spis">
+            <div class="panel-body" formArrayName="spis">
               <ul class="nav nav-tabs">
                 <li [ngClass]="{'active': ul == objectiveForm.controls.spis.controls.length - 1}" *ngFor="let s of objectiveForm.controls.spis.controls;let ul = index;">
                   <a data-toggle="tab" [attr.data-target]="'#spi' + ul">Spi {{ul+1}} 
@@ -236,58 +246,70 @@
                   </a>
                 </li>
                 <li>
-                  <button class="btn btn-primary measure-button" style="cursor:pointer;" (click)="addSpi(objectiveForm)" [disabled]="objectiveForm.controls.spis.invalid"><i class="glyphicon glyphicon-plus"></i></button>
+                  <button class="btn btn-primary measure-button"  (click)="addSpi(objectiveForm)" [disabled]="objectiveForm.controls.spis.invalid"><i class="glyphicon glyphicon-plus"></i></button>
                 </li>
               </ul>
 
               <div class="tab-content">
                 <div [attr.id]="'spi' + i" class="tab-pane fade" *ngFor="let s of objectiveForm.controls.spis.controls; let i = index;" [formGroupName]="i"
                   [ngClass]="{'in active': i == objectiveForm.controls.spis.controls.length - 1}">
-                  <h3></h3>
-                  <div class="form-group row">
-                    <label class="col-lg-2 col-form-label">Enter SPI</label>
-                    <div class="col-lg-10">
-                      <textarea class="form-control" rows="3" formControlName="spi"></textarea>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-lg-2 col-form-label">Select MeasureUnit</label>
-                    <div class="col-lg-10">
-                      <select class="form-control" formControlName="measureUnit">
-                        <option value="" disabled selected>Choose Measurement Unit</option>
-                        <option value="percentage">Percent</option>
-                        <option value="decimal">Decimal</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-lg-2 col-form-label">Current Level</label>
-                    <div class="col-lg-10">
-                      <input type="number" min="0" step="1" class="form-control" formControlName="currentLevel">
-                    </div>
-                  </div>
-                  <div class="panel panel-info" formArrayName="targetDigital">
-                    <div class="panel-heading">Annuals Target</div>
-                    <div class="panel-body no-padding">
-                      <div class="form-group row">
-                        <div *ngFor="let td of objectiveForm.controls.spis.controls[i].controls.targetDigital.controls;let m = index;" [formGroupName]="m">
-                          <label for="example-text-input" class="col-lg-2 col-form-label">{{td.value.year}}</label>
-                          <div class="col-lg-10">
-                            <input type="number" min="0" step="1" class="form-control" formControlName="expectedLevel">
+                  
+                  <div class="well">
+                    <div class="row">
+                      <div class="col-lg-6 col-xs-12 col-sm-6">
+                        <div class="form-group">
+                          <label>Enter SPI</label>
+                            <textarea class="form-control" rows="5" formControlName="spi"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-sm-6 col-xs-12 col-md-6">
+                        <div class="row">
+                          <div class="form-group">
+                            <label>Current Level</label>
+                            <!-- <div class="col-lg-10"> -->
+                              <input type="number" min="0" step="1" class="form-control" formControlName="currentLevel">
+                            <!-- </div> -->
+                          </div>                        
+                        </div>
+                        <div class="row">
+                          <div class="form-group">
+                            <label >Select MeasureUnit</label>
+                            <!-- <div class="col-lg-10"> -->
+                              <select class="form-control" formControlName="measureUnit">
+                                <option value="" disabled selected>Choose Measurement Unit</option>
+                                <option value="percentage">Percent</option>
+                                <option value="decimal">Decimal</option>
+                              </select>
+                            <!-- </div> -->
                           </div>
                         </div>
                       </div>
                     </div>
+                  <div class="panel panel-default" formArrayName="targetDigital">
+                    <div class="panel-heading  background-transparent">
+                      <b>Annual Target</b>
+                    </div>
+                    <div class="panel-body">
+                      <div class="form-group row">
+                        <div class="col-lg-3 col-sm-3 col-xs-12 col-md-3" *ngFor="let td of objectiveForm.controls.spis.controls[i].controls.targetDigital.controls;let m = index;" [formGroupName]="m">
+                          <label for="example-text-input">{{td.value.year}}</label>
+                          <!-- <div class="col-lg-10"> -->
+                            <input type="number" min="0" step="1" class="form-control" formControlName="expectedLevel">
+                          <!-- </div> -->
+                        </div>
+                      </div>
+                    </div>
                   </div>
-
+ </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer milky-background">
+          <button class="btn btn-info"  (click)="addSpi(objectiveForm)" [disabled]="objectiveForm.controls.spis.invalid">Add SPI</button>
           <button type="submit" class="btn btn-success" [disabled]="objectiveForm.invalid">Submit</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Close</button>
         </div>
       </form>
     </div>

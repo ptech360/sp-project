@@ -71,3 +71,11 @@ color: white;
 .cycle-margin{
     margin-top:-80px;
 }
+.nav>li>a{
+    color:white;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: #fff;
+    color: #82c0f9 !important;
+}

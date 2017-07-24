@@ -253,3 +253,17 @@ div,table,a{
 .sidebarIcon{
      margin-right: 10px;
 }
+    li.active a {
+    background: #85befd;
+    color:white !important;
+}
+ul.nav.nav-tabs li a {
+    color: white;
+}
+.pagination>li>a,
+.pagination>li>span {
+    color: #8585ec;
+}
+a {
+    color: white;
+}
