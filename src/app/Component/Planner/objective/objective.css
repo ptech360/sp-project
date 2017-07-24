@@ -1,6 +1,10 @@
 /*.panel {
     border: 0;
 }*/
+.badge{
+  font-size: 14px;
+}
+
 /*modal css*/
 .modal {
   text-align: center;
@@ -43,6 +47,180 @@ tfoot th, tfoot td {
   text-align: center;
 }
 
+<<<<<<< HEAD
+.add-button
+{
+  background-color: red;
+}
+
+.assign-button{
+
+margin-right: 20px;
+background-color: red;
+
+}
+
+.one-ob{
+      color: black;
+    background-color: #00695C;
+    border-color: #d6e9c6;
+}
+
+.two-ob
+{
+    color: black;
+    background-color: #00897B;
+    border-color: #d6e9c6;
+}
+
+.three-ob{
+    color: #0c480e;
+    background-color: #80CBC4;
+    border-color: #ddd;
+}
+
+.four-ob{
+    color: #652607;
+    background-color: #4DB6AC;
+    border-color: #ddd;
+}
+
+.five-ob{
+    color: #8a1a1a;
+    background-color: #B2DFDB;
+    border-color: #ddd;
+}
+
+.six-ob{
+  color: #333;
+    background-color: #E0F2F1;
+    border-color: #ddd;
+}
+
+
+
+/*Custom designs*/
+
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  color: white;
+}
+
+.right-margin{
+  margin-right: 10px;
+}
+
+
+.objective-text{
+    font-size: 15px;
+    padding:-5px;
+    color: white;
+    margin: 15px;
+}
+
+
+
+
+.custom-panel{
+padding: 1px;
+
+}
+
+.no-border{
+      border: 0px solid black;
+}
+
+.no-padding{
+  padding: 0px;
+  
+}
+
+
+.margin-top{
+  margin-top:26px !important; 
+}
+
+.no-margin{
+  margin:0px !important;
+}
+
+
+
+.bg-model{
+  background:#f2b632;
+}
+
+.costwidth{
+  width: 50% !important;
+  margin-left: 78px;
+}
+
+
+.effect-one:hover
+ {
+  background:#fcf8e3;
+  text-decoration: underline;
+}
+
+
+.border{
+  border:0px solid transparent !important;
+}
+
+.button-margin{
+  margin: 13px;
+}
+
+.text-color{
+  color: white;
+}
+
+.measure-button{
+    height: 40px;
+    border-radius: 50%;
+    background-color: #8BC34A;
+    border-color: #8BC34A;
+    margin-left: 10px;
+    width: 40px;
+}
+.measure-button:hover{
+    background: #8BC34A;
+    border: #8BC34A;
+    box-shadow: 0px 1px 3px #6f7907;
+}
+
+.close-button{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: white;
+    color:#F44336;
+    border-radius: 51%;
+    height: 20px;
+    width: 20px;
+    margin-top: -7px;
+    margin-right: -9px;
+    opacity: 1;
+    border: 1px solid;
+    font-size: 16px;
+    font-weight: lighter;
+}
+  .close-button:hover{
+    background:#F44336;
+    color: white;
+  }
+
+.initiative-panel{
+    text-align: center;
+    background: #e4e4e4;
+    height: 45px;
+    font-weight: 100;
+}
 .unexistance td{
   padding: 8px;
   border-top: 1px solid #ddd;
@@ -50,4 +228,9 @@ tfoot th, tfoot td {
 
 .modal-xlg{
   width:90%
+}
+.btn[disabled] {
+    background: rgb(185, 185, 185);
+    border: 0px;
+    box-shadow: inset 0px 1px 23px #636363;
 }

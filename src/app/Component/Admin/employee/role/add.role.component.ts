@@ -5,7 +5,7 @@ declare let $:any;
 @Component({
   selector:'add-role',
   templateUrl:'./add.role.component.html',
-  // styleUrls:['./add.role.component.css']
+  styleUrls:['./add.role.component.css']
 })
 export class AddRole{
   public addRole: FormGroup;

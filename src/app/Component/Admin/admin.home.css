@@ -92,7 +92,6 @@ main{
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
     box-shadow: 0 0 30px black;
-    background:#8585ec;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -119,7 +118,7 @@ main{
     margin: 0;
     padding: 0;
     list-style: none;
-    background:white;
+    
 } 
 
 .sidebar-nav li {
@@ -130,20 +129,11 @@ main{
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #000;
+    color:#5a5a5a;
 }
 
 .sidebar-nav li a:hover {
-    text-decoration: none;
-    color: #3333d2;
-    background: rgba(255,255,255,0.2);
-}
-
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-    text-decoration: none;
-    color: #ea212e;
-    background: rgba(255,255,255,0.2);
+    
 }
 
 .sidebar-nav > .sidebar-brand {
@@ -157,7 +147,7 @@ main{
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-    color: #ea212e;
+
     background: none;
 }
 
@@ -190,12 +180,13 @@ main{
 }
 
 .sidebar-items{
-    box-shadow: 0 -3px 7px #ea212e;
+    box-shadow: 0 -2px 0px #85befd;
 }
 
 .sidebar-items > a {
     color:black;
 }
+
 .sidebar-icon{
     margin-right: 10px;
     width:20px;
@@ -203,7 +194,7 @@ main{
 }
 
 .header{
-    background: #8585ec;
+    background: black;
 }
 
 .sidebar-header{
@@ -211,7 +202,6 @@ main{
 }
 
 .profile-display{
-    background: linear-gradient(to bottom, #f5959c 0%, #3333d2 100%);
     height: 160px;
     display: block;
     margin-left: auto;
@@ -244,7 +234,7 @@ a{
     color:white;
 }
 a:hover{
-    color: #ea212e;
+  
 }
 
 div,table,a{
@@ -258,4 +248,22 @@ div,table,a{
 .logo{
     height:40px;
     width:auto;
+}
+
+.sidebarIcon{
+     margin-right: 10px;
+}
+    li.active a {
+    background: #85befd;
+    color:white !important;
+}
+ul.nav.nav-tabs li a {
+    color: white;
+}
+.pagination>li>a,
+.pagination>li>span {
+    color: #8585ec;
+}
+a {
+    color: white;
 }

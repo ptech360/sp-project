@@ -1,0 +1,18 @@
+.bg1{
+      background-image:url('https://s-media-cache-ak0.pinimg.com/originals/ab/8a/69/ab8a69d4c82a3f0992df71c37605bb57.jpg');
+}
+ .btn {
+    width: 90%;
+    background-color: #26ace3;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 14px 2px;
+    cursor: pointer;
+    
+
+}

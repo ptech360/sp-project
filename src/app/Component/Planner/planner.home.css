@@ -48,3 +48,34 @@ bWhite{
     margin-left:auto;
     margin-right:auto;
 }
+
+.link-button
+{
+    margin-top: -130px;
+}
+
+.nav-sp 
+{
+color: white;
+}
+
+. nav-sp:hover
+{
+    color: red !important;
+}
+
+.left-tooltip{
+    margin-top: -50px !important;
+    margin-left: 30px;
+}
+.cycle-margin{
+    margin-top:-80px;
+}
+.nav>li>a{
+    color:white;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: #fff;
+    color: #82c0f9 !important;
+}
