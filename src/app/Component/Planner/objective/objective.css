@@ -225,3 +225,8 @@ padding: 1px;
     box-shadow: inset 0px 1px 23px #636363;
 }
 
+.btn btn-circle btn-subheader:focus{
+  outline:0px auto webkit focus ring color;
+  outline-offset: 0px;
+  
+}
