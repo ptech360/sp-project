@@ -241,6 +241,7 @@ panel-heading:hover{
   border-radius: 25px;
   color: white;
   border: 3px solid white;
+  outline: none !important;
 }
 
 .btn-subheader:hover{
@@ -258,6 +259,7 @@ panel-heading:hover{
   color: white;
   border: 3px solid #0082a9;
   background:#0082a9;
+  outline: none !important;
 }
 .btn-right:hover{
   background: white;
