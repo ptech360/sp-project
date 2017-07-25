@@ -669,8 +669,6 @@ padding-left{
     margin-top: 23px;
     color: #1e6cc7;
     margin-left: 99px;
-<<<<<<< HEAD
-=======
 }
 
 .wide-badge{
@@ -680,5 +678,19 @@ padding-left{
 
 .badge-blue{
     background:#85bdfd;
->>>>>>> f97199faef25f52ec9e323406c55a2c94abf5f8a
 }
+  .nav-sp 
+{
+color: white;
+}
+.nav>li>a{
+    color:white!important;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: #fff;
+    color: #82c0f9 !important;
+}
+  .header-margin{
+    margin-top:50px;
+  }

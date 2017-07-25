@@ -1,10 +1,45 @@
-<nav class="navbar navbar-default navbar-fixed-top header">
+<!-- new code -->
+<nav class="navbar navbar-fixed-top header milky-background">
 	<div class="container-fluid">
 		<div class="navbar-header" id="toggle-header">
-			<a class="navbar-brand" href="">Strategic Planning</a>
+			<a class="navbar-brand nav-sp" href="">Strategic Planning</a>
 		</div>
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href=""><span class="glyphicon glyphicon-user"></span> {{cs.getData('userDetails').firstName}}</a></li>
+				<li><a href="" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<!-- Header of objectives -->
+<div class="subheader-milky milky-background header-margin">
+  <div class="subheader-text">
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    <span class="text main-text">Coordinator</span>
+    <div class="subtext">
+      Add and Assign objectives
+      <br> Objective > Initiative > Activity
+    </div>
+  </div>
+</div>
+<!-- /End of header page -->
+
+
+
+
+
+
+
+<!--===================================================================================old code===============================================================================
+========================================================================================
+-->
+<nav class="navbar navbar-fixed-top header milky-background">
+	<div class="container-fluid">
+		<div class="navbar-header" id="toggle-header">
+			<a class="navbar-brand nav-sp" href="">Strategic Planning</a>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href=""><span class="glyphicon glyphicon-user"></span> {{cs.getData('userDetails').firstName}}</a></li>
 				<li><a href="" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
@@ -16,85 +51,52 @@
 	<div class="main-content">
 		<h1>Assigned Objectives</h1>
 		<div class="panel-group" id="accordion">
-			<div class="panel panel-info"
-				*ngFor="let obj of assignedActivities; let i = index;">
-				<div class="panel-heading" data-toggle="collapse"
-					data-parent="#accordion" [attr.data-target]="'#obj' + i">
+			<div class="panel panel-info" *ngFor="let obj of assignedActivities; let i = index;">
+				<div class="panel-heading" data-toggle="collapse" data-parent="#accordion" [attr.data-target]="'#obj' + i">
 					<b>{{i+1}}) Objective :</b> {{obj.objective}}
 				</div>
 
-				<div class="panel-collapse collapse" [attr.id]="'obj' + i"
-					[ngClass]="{'in': i == 0}">
+				<div class="panel-collapse collapse" [attr.id]="'obj' + i" [ngClass]="{'in': i == 0}">
 					<div class="panel-body">
-						<p *ngIf="!obj.initiatives.length">No Initiative added yet for
-							this Objective.</p>
+						<p *ngIf="!obj.initiatives.length">No Initiative added yet for this Objective.</p>
 						<div class="panel-group" id="accordion2">
-							<div class="panel panel-default"
-								*ngFor="let ini of obj.initiatives; let j = index;">
-								<div class="panel-heading" data-toggle="collapse"
-									data-parent="#accordion2"
-									[attr.data-target]="'#obj' + i + 'ini' + j">
+							<div class="panel panel-default" *ngFor="let ini of obj.initiatives; let j = index;">
+								<div class="panel-heading" data-toggle="collapse" data-parent="#accordion2" [attr.data-target]="'#obj' + i + 'ini' + j">
 									<b>{{i+1}}.{{j+1}}) Initiative :</b> {{ini.initiative}}
 								</div>
-								<div class="panel-collapse collapse"
-									[attr.id]="'obj' + i + 'ini' + j" [ngClass]="{'in': j == 0}">
+								<div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j" [ngClass]="{'in': j == 0}">
 									<div class="panel-body">
-										<p *ngIf="!ini.activities">No Activity added yet for this
-											Initiative</p>
+										<p *ngIf="!ini.activities">No Activity added yet for this Initiative
+										</p>
 										<div class="panel-group" id="accordion3">
-											<div class="panel panel-default"
-												*ngFor="let act of ini.activities; let k = index;">
-												<div class="panel-heading" data-toggle="collapse"
-													data-parent="#accordion3"
-													[attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k">
+											<div class="panel panel-default" *ngFor="let act of ini.activities; let k = index;">
+												<div class="panel-heading" data-toggle="collapse" data-parent="#accordion3" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k">
 													<b>{{i+1}}.{{j+1}}.{{k+1}}) Activity :</b> {{act.activity}}
 												</div>
-												<div class="panel-collapse collapse"
-													[attr.id]="'obj' + i + 'ini' + j + 'act' + k"
-													[ngClass]="{'in': k == 0}">
+												<div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k" [ngClass]="{'in': k == 0}">
 													<div class="panel-body">
-														<p *ngIf="!act.departments">The respective departments
-															have not done audit for this activity</p>
+														<p *ngIf="!act.departments">The respective departments have not done audit for this activity</p>
 														<b>Perspective Departments</b>
 														<div class="panel-group" id="accordion4">
-															<div class="panel panel-default"
-																*ngFor="let department of act.departments;let dept = index;">
-																<div class="panel-heading row"
-																	style="margin: 0px !important;">
-																	<div class="col-sm-6 col xs-6"
-																		style="padding: 0px !important;"
-																		data-toggle="collapse" data-parent="#accordion4"
-																		[attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'dept' + dept">
-																		<b>Department {{dept+1}}):</b>
-																		{{department.department}}
+															<div class="panel panel-default" *ngFor="let department of act.departments;let dept = index;">
+																<div class="panel-heading row" style="margin: 0px !important;">
+																	<div class="col-sm-6 col xs-6" style="padding: 0px !important;" data-toggle="collapse" data-parent="#accordion4" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'dept' + dept">
+																		<b>Department {{dept+1}}):</b> {{department.department}}
 																	</div>
 																</div>
-																<div class="panel-collapse collapse"
-																	[attr.id]="'obj' + i + 'ini' + j + 'act' + k + 'dept' + dept"
-																	[ngClass]="{'in': dept == 0}">
+																<div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k + 'dept' + dept" [ngClass]="{'in': dept == 0}">
 																	<div class="panel-body">
-																		<p *ngIf="!department.measures">No Measure set yet
-																			for this Activity</p>
+																		<p *ngIf="!department.measures">No Measure set yet for this Activity</p>
 																		<div class="panel-group" id="accordion5">
-																			<div class="panel panel-default"
-																				*ngFor="let measr of department.measures;let l = index;">
-																				<div class="panel-heading row"
-																					style="margin: 0px !important;">
-																					<div class="col-sm-6 col xs-6"
-																						style="padding: 0px !important;"
-																						data-toggle="collapse" data-parent="#accordion5"
-																						[attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'dept' + dept + 'measr' + l">
-																						<b>{{i+1}}.{{j+1}}.{{k+1}}.{{l+1}}) Measure:</b>
-																						{{measr.measure}}
+																			<div class="panel panel-default" *ngFor="let measr of department.measures;let l = index;">
+																				<div class="panel-heading row" style="margin: 0px !important;">
+																					<div class="col-sm-6 col xs-6" style="padding: 0px !important;" data-toggle="collapse" data-parent="#accordion5" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'dept' + dept + 'measr' + l">
+																						<b>{{i+1}}.{{j+1}}.{{k+1}}.{{l+1}}) Measure:</b> {{measr.measure}}
 																					</div>
 																				</div>
-																				<div class="panel-collapse collapse"
-																					[attr.id]="'obj' + i + 'ini' + j + 'act' + k + 'dept' + dept + 'measr' + l"
-																					[ngClass]="{'in': l == 0}">
+																				<div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k + 'dept' + dept + 'measr' + l" [ngClass]="{'in': l == 0}">
 																					<div class="panel-body">
-																						<label>Current Level:</label>
-																						{{measr.currentLevel}} <span
-																							class="glyphicon glyphicon-time pull-right"><label>
+																						<label>Current Level:</label> {{measr.currentLevel}} <span class="glyphicon glyphicon-time pull-right"><label>
 																								{{measr.frequency}}</label></span>
 																						<div class="panel panel-default">
 																							<div class="panel-heading text-center">
@@ -115,85 +117,61 @@
 																											<th></th>
 																										</tr>
 																									</thead>
-																									<tbody
-																										*ngFor="let tdl of measr.annualTargets;let at=index;">
+																									<tbody *ngFor="let tdl of measr.annualTargets;let at=index;">
 																										<tr>
-																											<td style="vertical-align: middle;"
-																												[attr.rowspan]="tdl.target.quarterInfo.length + 3">{{
-																												tdl.target.year }}</td>
-																											<td style="vertical-align: middle;"
-																												[attr.rowspan]="tdl.target.quarterInfo.length + 3">{{tdl.target.estimatedCost}}</td>
+																											<td style="vertical-align: middle;" [attr.rowspan]="tdl.target.quarterInfo.length + 3">{{ tdl.target.year }}</td>
+																											<td style="vertical-align: middle;" [attr.rowspan]="tdl.target.quarterInfo.length + 3">{{tdl.target.estimatedCost}}</td>
 																										</tr>
-																										<template class="panel panel-info" let-lev
-																											ngFor [ngForOf]="tdl.target.quarterInfo"
-																											let-in="index">
-																										<tr [style.background]="lev.successInfo.color">
-																											<td>{{lev.quarter}}</td>
-																											<td>{{lev.estimatedLevel}}</td>
-																											<td>{{lev.startDate}} To {{lev.endDate}}</td>
-																											<td *ngIf="lev.status">{{lev.currentLevel}}</td>
-																											<td *ngIf="lev.status">{{lev.currentCost}}</td>
-																											<td *ngIf="!lev.status"><input
-																												type="number" [(ngModel)]="lev.currentLevel"></td>
-																											<td *ngIf="!lev.status"><input
-																												type="number" [(ngModel)]="lev.currentCost"
-																												[value]=""></td>
-																											<td *ngIf="!lev.status"><i
-																												class="glyphicon glyphicon-floppy-saved"
-																												(click)="saveResult(lev)"></i></td>
-																											<td *ngIf="lev.status"><i
-																												class="glyphicon glyphicon-edit"
-																												(click)="lev.status = false"></i></td>
-																											<td><i *ngIf="lev.evidance&&lev.status"
-																												class="glyphicon glyphicon-lock"></i></td>
-																											<td data-toggle="collapse"
-																												[attr.data-target]="'#q'+l+at+in"
-																												data-parent="#accordionTable" (click)="selectedQuarter=lev"><i
-																												class="fa fa-sort-desc" aria-hidden="true"></i>
-																											</td>
-																										</tr>
-																										<tr>
-																											<td class="panel-collapse status-color collapse"
-																												[attr.id]="'q'+l+at+in" colspan="6">
-																												<div class="panel-body row"
-																													style="text-align: left;">
-																													<div class="panel panel-default col-sm-6">
-																														<div class="panel-heading">
-																															<b>Attachments</b> <span
-																																class="pull-right"><i
+																										<template class="panel panel-info" let-lev ngFor [ngForOf]="tdl.target.quarterInfo" let-in="index">
+																											<tr [style.background]="lev.successInfo.color">
+																												<td>{{lev.quarter}}</td>
+																												<td>{{lev.estimatedLevel}}</td>
+																												<td>{{lev.startDate}} To {{lev.endDate}}</td>
+																												<td *ngIf="lev.status">{{lev.currentLevel}}</td>
+																												<td *ngIf="lev.status">{{lev.currentCost}}</td>
+																												<td *ngIf="!lev.status"><input type="number" [(ngModel)]="lev.currentLevel"></td>
+																												<td *ngIf="!lev.status"><input type="number" [(ngModel)]="lev.currentCost" [value]=""></td>
+																												<td *ngIf="!lev.status"><i class="glyphicon glyphicon-floppy-saved" (click)="saveResult(lev)"></i></td>
+																												<td *ngIf="lev.status"><i class="glyphicon glyphicon-edit" (click)="lev.status = false"></i></td>
+																												<td><i *ngIf="lev.evidance&&lev.status" class="glyphicon glyphicon-lock"></i></td>
+																												<td data-toggle="collapse" [attr.data-target]="'#q'+l+at+in" data-parent="#accordionTable" (click)="selectedQuarter=lev"><i class="fa fa-sort-desc" aria-hidden="true"></i>
+																												</td>
+																											</tr>
+																											<tr>
+																												<td class="panel-collapse status-color collapse" [attr.id]="'q'+l+at+in" colspan="6">
+																													<div class="panel-body row" style="text-align: left;">
+																														<div class="panel panel-default col-sm-6">
+																															<div class="panel-heading">
+																																<b>Attachments</b> <span class="pull-right"><i
 																																class="glyphicon glyphicon-plus-sign"
 																																data-toggle="modal"
 																																data-target="#evidenceForm"
 																																(click)="selectedQuarter=lev"></i></span>
-																														</div>
-																														<div class="panel-body">
-																															<p *ngIf="!lev.evidance">No evidance
-																																added</p>
-																															<a href="lev.url" *ngFor="let evi of lev.evidance;																															let no=index;"> <b>{{no+1}})</b>:{{evi.title}}                                                                  <br></a>
-																														</div>
-																													</div>
-																													<div class="panel panel-default col-sm-6" 
-																														style="    margin-top: 0px;">
-																														<div class="panel-heading">
-																															<b>Discussion</b>
-																														</div>
-																														<div class="panel-body row">
-																															<form [formGroup]="discussionForm" (submit)
-																															="commentPost()">
-																															<div class="form-group">
-																																<div class="col-sm-10">
-																																<textarea class="form-control" 
-																																formControlName="comment"
-																																id="exampleTextarea" rows="3"></textarea>
-																																</div>
-																																<div class="col-sm-2">
-																																	<button type="submit" class="btn btn-info 
-																																	pull-left">Post</button>
-																																</div>
 																															</div>
-																															</form>
-																															<div class="col-sm-10">
-																															    <div *ngFor="let c of lev.discussion">
+																															<div class="panel-body">
+																																<p *ngIf="!lev.evidance">No evidance added
+																																</p>
+																																<a href="lev.url" *ngFor="let evi of lev.evidance;																															let no=index;"> <b>{{no+1}})</b>:{{evi.title}}                                                                  <br></a>
+																															</div>
+																														</div>
+																														<div class="panel panel-default col-sm-6" style="    margin-top: 0px;">
+																															<div class="panel-heading">
+																																<b>Discussion</b>
+																															</div>
+																															<div class="panel-body row">
+																																<form [formGroup]="discussionForm" (submit)="commentPost()">
+																																	<div class="form-group">
+																																		<div class="col-sm-10">
+																																			<textarea class="form-control" formControlName="comment" id="exampleTextarea" rows="3"></textarea>
+																																		</div>
+																																		<div class="col-sm-2">
+																																			<button type="submit" class="btn btn-info 
+																																	pull-left">Post</button>
+																																		</div>
+																																	</div>
+																																</form>
+																																<div class="col-sm-10">
+																																	<div *ngFor="let c of lev.discussion">
 																																		<div *ngIf="c.employeeId == currentUser">
 																																			<div class="myMsg">
 																																				<img src="http://www.clker.com/cliparts/f/8/a/6/1376432218623075512little%20girl%20dreaming-hi.png" class="myImg" />
@@ -224,11 +202,11 @@
 																																		</div>
 																																	</div>
 																																</div>
+																															</div>
 																														</div>
 																													</div>
-																												</div>
-																											</td>
-																										</tr>
+																												</td>
+																											</tr>
 																										</template>
 																									</tbody>
 																								</table>
@@ -257,8 +235,7 @@
 	</div>
 </div>
 
-<div class="modal fade" id="evidenceForm" tabindex="-1" role="dialog"
-	aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="evidenceForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<!-- Modal Header -->
@@ -272,20 +249,15 @@
 			<form [formGroup]="evidencForm" (submit)="onEvidenceSubmit()">
 				<div class="modal-body">
 					<div class="form-group">
-						<label for="title">Title</label> <input type="text"
-							class="form-control" id="title" formControlName="title" />
+						<label for="title">Title</label> <input type="text" class="form-control" id="title" formControlName="title" />
 					</div>
 					<div class="form-group">
 						<label for="description">Description</label>
-						<textarea type="text" class="form-control" id="description"
-							formControlName="description"></textarea>
+						<textarea type="text" class="form-control" id="description" formControlName="description"></textarea>
 					</div>
 					<div class="form-group">
-						<label for="exampleInputFile">Attachment</label> <input
-							type="file" class="form-control-file" id="exampleInputFile"
-							formControlName="files" (change)="getFile($event)"
-							aria-describedby="fileHelp"> <small id="fileHelp"
-							class="form-text text-muted">This is some placeholder
+						<label for="exampleInputFile">Attachment</label> <input type="file" class="form-control-file" id="exampleInputFile"
+						 formControlName="files" (change)="getFile($event)" aria-describedby="fileHelp"> <small id="fileHelp" class="form-text text-muted">This is some placeholder
 							block-level help text for the above input. It's a bit lighter and
 							easily wraps to a new line.</small>
 					</div>

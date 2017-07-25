@@ -82,3 +82,7 @@ h1{
     font-weight: bold;
     letter-spacing: 0.1em;
 }
+.main-text{
+    margin: auto;
+    display: block;
+}
