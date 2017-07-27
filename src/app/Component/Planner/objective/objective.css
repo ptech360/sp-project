@@ -122,10 +122,6 @@ background-color: red;
     color: white;
     margin: 15px;
 }
-
-
-
-
 .custom-panel{
 padding: 1px;
 
@@ -149,12 +145,6 @@ padding: 1px;
   margin:0px !important;
 }
 
-
-
-.bg-model{
-  background:#f2b632;
-}
-
 .costwidth{
   width: 50% !important;
   margin-left: 78px;
@@ -175,7 +165,6 @@ padding: 1px;
 .button-margin{
   margin: 13px;
 }
-
 .text-color{
   color: white;
 }
@@ -221,6 +210,7 @@ padding: 1px;
     height: 45px;
     font-weight: 100;
 }
+
 .unexistance td{
   padding: 8px;
   border-top: 1px solid #ddd;

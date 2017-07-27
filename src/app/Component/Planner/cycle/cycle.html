@@ -6,14 +6,6 @@
   <div class="subheader-text">
     <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
     <span class="text">INITIAL SETUP</span>
-    <!-- <span>
-      <div class="ctooltip">
-        <button data-toggle="modal" data-target="#objectiveModal" class="btn background-transparent btn-circle btn-subheader right-margin">
-          <i class="glyphicon glyphicon-chevron-right"></i>
-        </button> 
-        <span class="ctooltiptext">Add Objective</span>
-      </div>   
-    </span> -->
     <div class="subtext" >
       <div class="ctooltip">
        <button [routerLink]="['/planner/objective']" class="btn btn-circle btn-subheader right-margin orange-background">
@@ -54,7 +46,12 @@
     <div class="panel-heading">
       <h3 class="panel-title">
         <b>Values</b>
-        <span class="pull-right"><button data-toggle="modal" data-target="#valueForm">Add</button></span>
+        <span class="pull-right ctooltip">
+          <button class="btn btn-circle btn-right green-background" data-toggle="modal" data-target="#valueForm">
+            <i class="glyphicon glyphicon-plus"></i>
+          </button>
+          <span class="ctooltiptext">Add Values</span>
+        </span>
       </h3>            
     </div>
     <div class="panel-collapse collapse in">

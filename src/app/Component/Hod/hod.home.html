@@ -16,7 +16,7 @@
     <h1>Assigned Objectives</h1>
     <div class="panel-group" id="accordion">
       <div class="panel panel-info" *ngFor="let obj of assignedActivities; let i = index;">
-        <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" [attr.data-target]="'#obj' + i">
+        <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" [attr.data-target]="'#obj'+i ">
           <b>{{i+1}}) Objective :</b> {{obj.objective}}
         </div>
 
@@ -27,7 +27,7 @@
               <div class="panel panel-default" *ngFor="let ini of obj.initiatives; let j = index;">
                 <div class="panel-heading" data-toggle="collapse" data-parent="#accordion2" [attr.data-target]="'#obj' + i + 'ini' + j"><b>{{i+1}}.{{j+1}}) Initiative :</b> {{ini.initiative}}
                 </div>
-                <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j" [ngClass]="{'in': j == 0}">
+                <div class="panel-collapse collapse" [attr.id]="'obj'+i+'ini'+j" [ngClass]="{'in': j == 0}">
                   <div class="panel-body">
                     <p *ngIf="!ini.activities">No Activity added yet for this Initiative</p>
                     <div class="panel-group" id="accordion3">

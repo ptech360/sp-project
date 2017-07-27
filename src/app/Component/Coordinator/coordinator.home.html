@@ -141,11 +141,11 @@
 																											<td *ngIf="!lev.status"><i
 																												class="glyphicon glyphicon-floppy-saved"
 																												(click)="saveResult(lev)"></i></td>
-																											<td *ngIf="lev.status"><i
+																											<td *ngIf="lev.status && lev.status != 'locked'"><i
 																												class="glyphicon glyphicon-edit"
 																												(click)="lev.status = false"></i></td>
-																											<td><i *ngIf="lev.evidance&&lev.status"
-																												class="glyphicon glyphicon-lock"></i></td>
+																											<td><i *ngIf="lev.evidance&&lev.status&& lev.status != 'locked'"	class="glyphicon glyphicon-lock" (click)="lockResult(lev)"></i></td>
+																											<td *ngIf="lev.status == 'locked'">Locked</td>
 																											<td data-toggle="collapse"
 																												[attr.data-target]="'#q'+l+at+in"
 																												data-parent="#accordionTable" (click)="selectedQuarter=lev"><i
@@ -196,7 +196,11 @@
 																															    <div *ngFor="let c of lev.discussion">
 																																		<div *ngIf="c.employeeId == currentUser">
 																																			<div class="myMsg">
-																																				<img src="http://www.clker.com/cliparts/f/8/a/6/1376432218623075512little%20girl%20dreaming-hi.png" class="myImg" />
+																																				<img 
+																																				src="http://www.clker.
+																																				com/cliparts/f/8/a/6/1376432218623075512
+																																				little%20girl%20dreaming-hi.png" 
+																																				class="myImg" />
 																																				<div class="myText">
 																																					<span class="myText-style">
 																																						{{c.comment}}
@@ -209,7 +213,10 @@
 																																		</div>
 																																		<div *ngIf="c.employeeId != currentUser">
 																																			<div class="msg">
-																																				<img src="http://www.kpop-map.com/wp-content/uploads/2016/01/sm-rookies-kun-profile.jpg" class="img" />
+																																				<img 
+																																				src="http://www.kpop-map.
+																																				com/wp-content/uploads/2016/01/sm-rookie
+																																				s-kun-profile.jpg" class="img" />
 																																				<div class="text">
 																																					<span class="text-style">
 																																						{{c.comment}}
@@ -217,8 +224,10 @@
 																																				</div>
 																																			</div>
 																																			<div class="msgDate">
-																																				<span *ngIf="c.employeeName">{{c.employeeName}}</span>
-																																				<span *ngIf="c.parentName">{{c.parentName}}</span>
+																																				<span *ngIf="c.employeeName">
+																																					{{c.employeeName}}</span>
+																																				<span *ngIf="c.parentName">
+																																					{{c.parentName}}</span>
 																																				<span>: {{c.commentedOn|date}}</span>
 																																			</div>
 																																		</div>

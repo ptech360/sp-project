@@ -195,6 +195,7 @@ hr.style-line {
 panel-heading:hover{
     background:orange;
 }
+
 .milky-background{
     background: linear-gradient(to right, rgb(81, 226, 195) 0%, rgba(131, 188, 253, 0.98) 100%);
     color:white;
@@ -356,8 +357,6 @@ padding-left{
 }
 
 /*loader css  */
-
-
 .bookshelf_wrapper {
   position: relative;
   top: 60%;
