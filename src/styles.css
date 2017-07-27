@@ -694,3 +694,9 @@ color: white;
   .header-margin{
     margin-top:50px;
   }
+
+  
+.no-padding{
+  padding: 0px;
+  
+}
