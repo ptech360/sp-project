@@ -52,7 +52,7 @@
                     <p *ngIf="!ini.activities">No Activity added yet for this Initiative</p>
                     <div class="panel-group" id="accordion3">
                       <div class="panel panel-danger panel-no-border" *ngFor="let act of ini.activities; let k = index;">
-                        <div class="panel-heading background-transpaenrt" data-toggle="collapse" data-parent="#accordion3" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k">
+                        <div class="panel-heading background-transpaenrt" data-toggle="collapse" data-parent="#accordion3" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k"style="background:transparent;">
                             <span class="badge"><b>{{i+1}}.{{j+1}}.{{k+1}} Activity :</b></span> {{act.activity}}
                         </div>
                         <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k" [ngClass]="{'in': k == 0}">
@@ -61,9 +61,9 @@
                             <span class="badge"><b>Perspective Departments</b></span>
                             <div class="panel-group" id="accordion4">
                               <div class="panel panel-warning panel-no-border " *ngFor="let department of act.departments;let dept = index;">
-                                <div class="panel-heading background-transpaenrt row" style="margin:0px !important;">
+                                <div class="panel-heading background-transpaenrt row" style="margin:0px !important; background:transparent;">
                                   <div class="col-sm-6 col xs-6" style="padding:0px !important;" data-toggle="collapse" data-parent="#accordion4" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'dept' + dept">
-                              <span class="badge"><b>Department {{dept+1}}).</b></span> {{department.department}}
+                              <span class="badge"><b>Department {{dept+1}}.</b></span> {{department.department}}
                                   </div>
                                 </div>
                                 <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k + 'dept' + dept" [ngClass]="{'in': dept == 0}">
@@ -71,7 +71,7 @@
                                     <p *ngIf="!department.measures">No Measure set yet for this Activity</p>
                                     <div class="panel-group" id="accordion5">
                                       <div class="panel panel-default panel-no-border" *ngFor="let measr of department.measures;let l = index;">
-                                        <div class="panel-heading background-transpaenrt row" style="margin:0px !important;">
+                                        <div class="panel-heading background-transpaenrt row" style="margin:0px !important; background:transparent;">
                                           <div class="col-sm-6 col xs-6" style="padding:0px !important;" data-toggle="collapse" data-parent="#accordion5" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'dept' + dept + 'measr' + l">
                                           <span class="badge"><b>{{i+1}}.{{j+1}}.{{k+1}}.{{l+1}}) Measure.</b></span> {{measr.measure}}
                                           </div>
