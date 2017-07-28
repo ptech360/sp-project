@@ -46,22 +46,17 @@ tbody th, tbody td {
 tfoot th, tfoot td {
   text-align: center;
 }
-
-<<<<<<< HEAD
 .add-button
 {
   background-color: red;
 }
-
 .assign-button{
 
 margin-right: 20px;
 background-color: red;
-
 }
-
 .one-ob{
-      color: black;
+     color: black;
     background-color: #00695C;
     border-color: #d6e9c6;
 }
@@ -101,7 +96,10 @@ background-color: red;
 
 /*Custom designs*/
 
-.btn-circle.btn-lg {
+.
+
+
+-circle.btn-lg {
   width: 50px;
   height: 50px;
   padding: 10px 16px;
