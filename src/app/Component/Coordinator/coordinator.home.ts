@@ -88,6 +88,13 @@ export class CoordinatorHome{
     })
   }
 
+  lockResult(lev:any){
+    this.orgSer.lockResult(lev.id).subscribe((res:any)=>{
+      lev.status = "locked"
+      console.log(res);
+    })
+  }
+
   logout(){
     localStorage.clear();
   }

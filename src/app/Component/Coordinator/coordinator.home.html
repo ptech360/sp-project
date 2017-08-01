@@ -30,7 +30,6 @@
 
 
 
-
 <!--===================================================================================old code===============================================================================
 ========================================================================================
 -->
@@ -53,7 +52,7 @@
 		<div class="panel-group" id="accordion">
 			<div class="panel panel-info panel-no-border" *ngFor="let obj of assignedActivities; let i = index;">
 				<div class="panel-heading background-transparent" data-toggle="collapse" data-parent="#accordion" [attr.data-target]="'#obj' + i">
-				<span class="badge"><b>{{i+1}}. Objective :</b></span> {{obj.objective}}
+					<span class="badge"><b>{{i+1}}. Objective :</b></span> {{obj.objective}}
 				</div>
 
 				<div class="panel-collapse collapse" [attr.id]="'obj' + i" [ngClass]="{'in': i == 0}">
@@ -62,7 +61,7 @@
 						<div class="panel-group" id="accordion2">
 							<div class="panel panel-danger panel-no-border" *ngFor="let ini of obj.initiatives; let j = index;">
 								<div class="panel-heading background-transparent" data-toggle="collapse" data-parent="#accordion2" [attr.data-target]="'#obj' + i + 'ini' + j">
-								<span class="badge"><b>{{i+1}}.{{j+1}} Initiative :</b></span> {{ini.initiative}}
+									<span class="badge"><b>{{i+1}}.{{j+1}} Initiative :</b></span> {{ini.initiative}}
 								</div>
 								<div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j" [ngClass]="{'in': j == 0}">
 									<div class="panel-body no-padding panel-no-border">
@@ -81,7 +80,7 @@
 															<div class="panel panel-warning panel-no-border" *ngFor="let department of act.departments;let dept = index;">
 																<div class="panel-heading row" style="margin: 0px !important; background:transparent;">
 																	<div class="col-sm-6 col xs-6" style="padding: 0px !important;" data-toggle="collapse" data-parent="#accordion4" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'dept' + dept">
-																	<span class="badge"><b>Department {{dept+1}}:</b></span> {{department.department}}
+																		<span class="badge"><b>Department {{dept+1}}:</b></span> {{department.department}}
 																	</div>
 																</div>
 																<div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k + 'dept' + dept" [ngClass]="{'in': dept == 0}">
@@ -91,7 +90,7 @@
 																			<div class="panel panel-default panel-no-border" *ngFor="let measr of department.measures;let l = index;">
 																				<div class="panel-heading row" style="margin: 0px !important;background:transparent;">
 																					<div class="col-sm-6 col xs-6" style="padding: 0px !important;" data-toggle="collapse" data-parent="#accordion5" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'dept' + dept + 'measr' + l">
-																				<span class="badge"><b>{{i+1}}.{{j+1}}.{{k+1}}.{{l+1}}. Measure:</b></span> {{measr.measure}}
+																						<span class="badge"><b>{{i+1}}.{{j+1}}.{{k+1}}.{{l+1}}. Measure:</b></span> {{measr.measure}}
 																					</div>
 																				</div>
 																				<div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k + 'dept' + dept + 'measr' + l" [ngClass]="{'in': l == 0}">
@@ -113,17 +112,18 @@
 																											<th>Audit Date</th>
 																											<th>Actual Level</th>
 																											<th>Actual Cost</th>
+																											<th>Acheived</th>
 																											<th></th>
 																											<th></th>
 																										</tr>
 																									</thead>
 																									<tbody *ngFor="let tdl of measr.annualTargets;let at=index;">
-																										<tr>
+																										<tr [style.border-left]="'5px solid '+tdl.target.successInfo.color">
 																											<td style="vertical-align: middle;" [attr.rowspan]="tdl.target.quarterInfo.length + 3">{{ tdl.target.year }}</td>
 																											<td style="vertical-align: middle;" [attr.rowspan]="tdl.target.quarterInfo.length + 3">{{tdl.target.estimatedCost}}</td>
 																										</tr>
 																										<template class="panel panel-info" let-lev ngFor [ngForOf]="tdl.target.quarterInfo" let-in="index">
-																											<tr [style.background]="lev.successInfo.color">
+																											<tr>
 																												<td>{{lev.quarter}}</td>
 																												<td>{{lev.estimatedLevel}}</td>
 																												<td>{{lev.startDate}} To {{lev.endDate}}</td>
@@ -131,9 +131,12 @@
 																												<td *ngIf="lev.status">{{lev.currentCost}}</td>
 																												<td *ngIf="!lev.status"><input type="number" [(ngModel)]="lev.currentLevel"></td>
 																												<td *ngIf="!lev.status"><input type="number" [(ngModel)]="lev.currentCost" [value]=""></td>
+																												<td [style.color]="lev.successInfo.color"><p>&#9673;</p></td>
 																												<td *ngIf="!lev.status"><i class="glyphicon glyphicon-floppy-saved" (click)="saveResult(lev)"></i></td>
-																												<td *ngIf="lev.status"><i class="glyphicon glyphicon-edit" (click)="lev.status = false"></i></td>
-																												<td><i *ngIf="lev.evidance&&lev.status" class="glyphicon glyphicon-lock"></i></td>
+																												<td *ngIf="lev.status && lev.status != 'locked'"><i class="glyphicon glyphicon-edit" (click)="lev.status = false"></i></td>
+																												<td><i *ngIf="lev.evidance&&lev.status&& lev.status != 'locked'" class="glyphicon glyphicon-lock"
+																													 (click)="lockResult(lev)"></i></td>
+																												<td *ngIf="lev.status == 'locked'">Locked</td>
 																												<td data-toggle="collapse" [attr.data-target]="'#q'+l+at+in" data-parent="#accordionTable" (click)="selectedQuarter=lev"><i class="fa fa-sort-desc" aria-hidden="true"></i>
 																												</td>
 																											</tr>
@@ -143,18 +146,21 @@
 																														<div class="panel panel-default col-sm-6">
 																															<div class="panel-heading">
 																																<b>Attachments</b> <span class="pull-right"><i
-																																class="glyphicon glyphicon-plus-sign"
-																																data-toggle="modal"
-																																data-target="#evidenceForm"
-																																(click)="selectedQuarter=lev"></i></span>
+																															class="glyphicon glyphicon-plus-sign"
+																															data-toggle="modal"
+																															data-target="#evidenceForm"
+																															(click)="selectedQuarter=lev"></i></span>
 																															</div>
 																															<div class="panel-body">
 																																<p *ngIf="!lev.evidance">No evidance added
 																																</p>
-																																<a href="lev.url" *ngFor="let evi of lev.evidance;																															let no=index;"> <b>{{no+1}})</b>:{{evi.title}}                                                                  <br></a>
+																																<a href="lev.url" *ngFor="let evi of 
+																															lev.evidance;let no=index;"> 
+																															<b>{{no+1}})</b>:{{evi.title}}<br></a>
 																															</div>
 																														</div>
-																														<div class="panel panel-default col-sm-6" style="    margin-top: 0px;">
+																														<div class="panel panel-default col-sm-6" 
+																														style="margin-top: 0px;">
 																															<div class="panel-heading">
 																																<b>Discussion</b>
 																															</div>
@@ -166,7 +172,7 @@
 																																		</div>
 																																		<div class="col-sm-2">
 																																			<button type="submit" class="btn btn-info 
-																																	pull-left">Post</button>
+																																pull-left">Post</button>
 																																		</div>
 																																	</div>
 																																</form>
@@ -174,11 +180,13 @@
 																																	<div *ngFor="let c of lev.discussion">
 																																		<div *ngIf="c.employeeId == currentUser">
 																																			<div class="myMsg">
-																																				<img src="http://www.clker.com/cliparts/f/8/a/6/1376432218623075512little%20girl%20dreaming-hi.png" class="myImg" />
+																																				<img src="http://www.clker.
+																																			com/cliparts/f/8/a/6/1376432218623075512
+																																			little%20girl%20dreaming-hi.png" class="myImg" />
 																																				<div class="myText">
 																																					<span class="myText-style">
-																																						{{c.comment}}
-																																					</span>
+																																					{{c.comment}}
+																																				</span>
 																																				</div>
 																																			</div>
 																																			<div class="myMsgDate">
@@ -187,16 +195,20 @@
 																																		</div>
 																																		<div *ngIf="c.employeeId != currentUser">
 																																			<div class="msg">
-																																				<img src="http://www.kpop-map.com/wp-content/uploads/2016/01/sm-rookies-kun-profile.jpg" class="img" />
+																																				<img src="http://www.kpop-map.
+																																			com/wp-content/uploads/2016/01/sm-rookie
+																																			s-kun-profile.jpg" class="img" />
 																																				<div class="text">
 																																					<span class="text-style">
-																																						{{c.comment}}
-																																					</span>
+																																					{{c.comment}}
+																																				</span>
 																																				</div>
 																																			</div>
 																																			<div class="msgDate">
-																																				<span *ngIf="c.employeeName">{{c.employeeName}}</span>
-																																				<span *ngIf="c.parentName">{{c.parentName}}</span>
+																																				<span *ngIf="c.employeeName">
+																																				{{c.employeeName}}</span>
+																																				<span *ngIf="c.parentName">
+																																				{{c.parentName}}</span>
 																																				<span>: {{c.commentedOn|date}}</span>
 																																			</div>
 																																		</div>

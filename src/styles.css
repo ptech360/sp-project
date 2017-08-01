@@ -362,7 +362,6 @@ padding-left{
 }
 
 /*loader css  */
-
 .bookshelf_wrapper {
   position: relative;
   top: 60%;
@@ -699,12 +698,10 @@ color: white;
   }
 
 .no-padding{
-  padding: 0px;
-  
+  padding: 0px;  
 }
 a{
   color: white;
-
 }
 
 .pd-badge{
