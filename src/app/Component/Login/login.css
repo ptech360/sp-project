@@ -121,3 +121,8 @@
      }
    }
 
+.invalid-text{
+    color: white;
+    margin: 40px;
+    padding-left: 50px;
+}
