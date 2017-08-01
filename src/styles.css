@@ -707,3 +707,13 @@ a{
 .pd-badge{
  margin-left: 615px;
 }
+
+.margin-top
+{
+  margin-top: 55px important!;
+  padding-top: 54px;
+}
+
+.padding-text{
+  padding-top: 54px;
+}
