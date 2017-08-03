@@ -104,7 +104,7 @@
                                                         <td style="vertical-align: middle;" [attr.rowspan]="tdl.target.quarterInfo.length + 3">{{ tdl.target.year }}</td>
                                                         <td style="vertical-align: middle;" [attr.rowspan]="tdl.target.quarterInfo.length + 3">{{tdl.target.estimatedCost}}</td>
                                                       </tr>
-                                                      <template class="panel panel-info" let-lev ngFor [ngForOf]="tdl.target.quarterInfo" let-in="index">
+                                                      <ng-template class="panel panel-info" let-lev ngFor [ngForOf]="tdl.target.quarterInfo" let-in="index">
                                                         <tr>
                                                           <td>{{lev.quarter}}</td>
                                                           <td>{{lev.estimatedLevel}}</td>
@@ -153,7 +153,7 @@
                                                             </div>
                                                           </td>
                                                         </tr>
-                                                      </template>
+                                                      </ng-template>
                                                     </tbody>
                                                   </table>
                                                 </div>

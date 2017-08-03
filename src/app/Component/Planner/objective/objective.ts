@@ -12,7 +12,6 @@ declare let angular:any;
 })
 export class ObjectiveComponent implements AfterViewInit{
   public objectives : any[];
-  public initiatives : any[] = [];
   public empty:boolean =false;
   public selectedObjective :any;
   public selectedInitiative:any;
@@ -32,7 +31,6 @@ export class ObjectiveComponent implements AfterViewInit{
         this.objectives = [];        
       }else{
         this.objectives = res;
-        this.getInitiative(this.objectives[0].id);
       }
       console.log(res);
     });
@@ -42,11 +40,11 @@ export class ObjectiveComponent implements AfterViewInit{
     this.measureForm = this.setMeasure();
   }
 
-  getInitiative(objectiveId:any){
-    this.orgSer.fetchInitiative(objectiveId).subscribe( (res:any) =>{
-      this.initiatives = res.initiatives;
-    })
-  }
+  // getInitiative(objectiveId:any){
+  //   this.orgSer.fetchInitiative(objectiveId).subscribe( (res:any) =>{
+  //     this.initiatives = res.initiatives;
+  //   })
+  // }
 
   ngAfterViewInit(){
     $('.panel-collapse').on('hidden.bs.collapse', function () {
@@ -251,5 +249,28 @@ initForm(){
       $('.activity').addClass('hideBtn');        
     else
       event.srcElement.nextElementSibling.classList.remove('hideBtn');
+  }
+
+  getRowSpan(array:any[]){
+    var rowSpan = 1;
+    rowSpan += array.length;
+    array.forEach((element) => {
+      rowSpan += element.activities.length;
+      element.activities.forEach((innerElement:any) => {
+        rowSpan += innerElement.measures.length;
+      });
+    });
+    if(rowSpan == 1)
+      return rowSpan+1;
+    return rowSpan;
+  }
+
+  getRowSpanOfIni(array:any[]){
+    var rowSpan = 1;
+    rowSpan += array.length*2;
+      array.forEach((innerElement:any) => {
+        rowSpan += innerElement.measures.length;
+      });
+      return rowSpan;
   }
 }

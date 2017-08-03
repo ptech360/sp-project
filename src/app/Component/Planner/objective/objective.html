@@ -29,7 +29,7 @@
       <div class="col-sm-11 col xs-11" (click)="getObjElement($event)" data-toggle="collapse" data-parent="#accordion" [attr.data-target]="'#obj' + i">
         <b><span class="badge">{{i+1}} Objective</span></b> {{obj.objective}}
       </div>
-      <div class="col-sm-1 col-xs-1 objective" [ngClass]="{'hideBtn': i != 0}">
+      <div class="col-sm-1 col-xs-1 objective">
         <div class="ctooltip">
           <button class="btn btn-circle btn-right" data-toggle="modal" (click)="selectedObjective = obj" data-target="#initiativeModal">
           <i class="glyphicon glyphicon-plus"></i>
@@ -48,10 +48,10 @@
           <div class="panel panel-success panel-no-border" *ngFor="let ini of obj.initiatives; let j = index;">
             <!-- ====== Initiative Heading ====== -->
             <div class="panel-heading background-transparent row" style="margin:0px !important;">
-              <div class="col-sm-11 col xs-11" (click)="getIniElement($event)" data-toggle="collapse" data-parent="accordion2" [attr.data-target]="'#obj' + i + 'ini' + j">
+              <div class="col-sm-11 col xs-11" data-toggle="collapse" data-parent="accordion2" [attr.data-target]="'#obj' + i + 'ini' + j">
                 <b><span class="badge">{{i+1}}.{{j+1}} Initiative</span></b> {{ini.initiative}}
               </div>
-              <div class="col-sm-1 col-xs-1 initiative" [ngClass]="{'hideBtn': j != 0}">
+              <div class="col-sm-1 col-xs-1 initiative">
                 <div class="ctooltip">
                   <button class="btn btn-circle btn-right green-background" data-toggle="modal" (click)="initiativeId = ini.id" data-target="#activityModal">
                   <i class="glyphicon glyphicon-plus"></i>
@@ -90,7 +90,7 @@
                             <div class="col-sm-11 col-xs-11">
                               <b><span class="badge"> Assigned Departments </span></b>
                             </div>
-                             <div class="col-sm-1 col-xs-1 activity" [ngClass]="{'hideBtn': k != 0}">
+                             <div class="col-sm-1 col-xs-1 activity">
                               <div class="ctooltip">
                                 <button class="btn btn-circle btn-right brown-background" data-toggle="modal" (click)="selectedActivity = act" data-target="#assignActivityModel">
                                   <i class="glyphicon glyphicon-plus"></i>
@@ -755,3 +755,42 @@
 <!-- ==============================================================================================
   =========================== /End of modals ========================================
   ============================================================================================== -->
+
+<div class="panel panel-default">
+  <div class="panel-heading">Strategic plans</div>
+  <div class="panel-body">
+    <table class="table table-responsive table-bordered">
+      <thead>
+        <tr>
+          <th>Objectives</th>
+          <th>Initiatives</th>
+          <th>Activitiy</th>
+          <th>Measures</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let object of objectives; let i = index;">        
+        <tr>
+          <td style="vertical-align: middle;" [attr.rowspan]="getRowSpan(object.initiatives)">{{ object.objective }}</td>
+        </tr>
+        <ng-template class="panel panel-info" let-initiate ngFor [ngForOf]="object.initiatives" let-j="index">
+        <tr>
+          <td style="vertical-align: middle;" [attr.rowspan]="getRowSpanOfIni(initiate.activities)">{{initiate.initiative}}</td>
+        </tr>
+        <ng-template class="panel panel-info" let-activit ngFor [ngForOf]="initiate.activities" let-k="index">
+        <tr>
+          <td style="vertical-align: middle;" [attr.rowspan]="activit.measures.length + 1">{{activit.activity}}</td>
+        </tr>
+        <ng-template let-msr ngFor [ngForOf]="activit.measures" let-l="index">
+          <tr>
+            <td style="vertical-align: middle;">{{msr.measure}}</td>
+          </tr>
+        </ng-template>
+        </ng-template>
+        </ng-template>  
+        <ng-template ngIf [ngIf]="!object.initiatives.length">
+          <tr><td>f</td><td>f</td><td>f</td></tr>
+        </ng-template>      
+      </tbody>
+    </table>
+  </div>
+</div>

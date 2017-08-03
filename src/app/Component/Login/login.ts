@@ -47,7 +47,7 @@ export class Login{
       this.commonService.storeData("user_roleInfo", res.userDetails.roleInfo);  
       this.commonService.updateBaseUrl(); 
       this.role = res.userDetails.roleInfo[0].role;
-      if(this.role == "planner"){
+      if(this.role == "planner"||this.role == "admin"){
         this.fetchOrganizationInfo(res);
       } else {
         this.onSuccess();
