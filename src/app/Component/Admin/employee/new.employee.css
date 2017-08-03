@@ -16,4 +16,16 @@
      cursor: pointer;
  }
 
- .
+ .dep-icon{
+     padding-right: 13px;
+ }
+
+ .no-margin{
+     margin-left: 0px !important;
+     margin-right: 0px !important;
+ }
+    .gender-button{
+        font-size: 15px;
+        padding-left: 1px;
+        
+    }
