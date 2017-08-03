@@ -6,11 +6,13 @@
 /*body {
    background: #ddd;
 } */
+  
 
+/* 
 .main-content {
     margin-top: 100px;
 }
-
+*/
 
 /* Active list color */
 
@@ -153,6 +155,7 @@ hr.style-line {
     background-color: white;
     padding: 0 50px 0 50px;
     margin: 25px;
+    box-shadow: 0px 3px 12px grey;
 }
 
 .formCard {
@@ -204,7 +207,7 @@ panel-heading:hover{
 .subheader-milky{
   height:250px;
   /* background: linear-gradient(to right, rgba(81,226,195,0.58) 0%,rgba(131,188,253,0.8) 100%); */
-  margin-top: -100px;
+ 
   margin-bottom:10px;
   display: table;
   width:100%;
@@ -346,6 +349,7 @@ padding-left{
 }
 .background-transparent{
   background:transparent !important;
+
 }
 .badge-font{
     font-size:15px;
@@ -694,7 +698,23 @@ color: white;
     margin-top:50px;
   }
 
-  
 .no-padding{
-  padding: 0px;
+  padding: 0px;  
+}
+a{
+  color: white;
+}
+
+.pd-badge{
+ margin-left: 615px;
+}
+
+.margin-top
+{
+  margin-top: 55px important!;
+  padding-top: 54px;
+}
+
+.padding-text{
+  padding-top: 54px;
 }

@@ -14,18 +14,16 @@
 <!-- Header of objectives -->
 <div class="subheader-milky milky-background cycle-margin">
   <div class="subheader-text">
-    <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span>
-    <span class="text">OBJECTIVES</span>
-    <span>
+   <span>
       <div class="ctooltip">
         <button data-toggle="modal" data-target="#objectiveModal" class="btn btn-circle btn-subheader">
-          <i class="glyphicon glyphicon-plus"></i>
+          <i class="glyphicon glyphicon-ok"></i>
         </button> 
         <span class="ctooltiptext">Add Objective</span>
       </div>   
     </span>
     <div class="subtext">
-      Add and View objectives
+    Assigned Objective
       <br> Objective > Initiative > Measures
     </div>
   </div>
@@ -33,7 +31,6 @@
 <!-- /End of header page -->
 <div class="container-fluid">
   <div class="main-content">
-    <h1>Assigned Objectives</h1>
     <div class="panel-group" id="accordion">
       <div class="panel panel-info panel-no-border" *ngFor="let obj of assignedActivities; let i = index;">
         <div class="panel-heading background-transparent" data-toggle="collapse" data-parent="#accordion" [attr.data-target]="'#obj' + i">
@@ -58,7 +55,7 @@
                         <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k" [ngClass]="{'in': k == 0}">
                           <div class="panel-body no-padding panel-no-border ">
                             <p *ngIf="!act.departments">The respective departments have not done audit for this activity</p>
-                            <span class="badge"><b>Perspective Departments</b></span>
+                            <span class="badge pd-badge"><b>Perspective Departments</b></span>
                             <div class="panel-group" id="accordion4">
                               <div class="panel panel-warning panel-no-border " *ngFor="let department of act.departments;let dept = index;">
                                 <div class="panel-heading background-transpaenrt row" style="margin:0px !important; background:transparent;">
@@ -81,7 +78,7 @@
                                           <div class="panel-body no-padding panel-no-border">
                                             <label>Current Level:</label> {{measr.currentLevel}}
                                             <span class="glyphicon glyphicon-time pull-right"><label> {{measr.frequency}}</label></span>
-                                            <div class="panel panel-default">
+                                            <div class="panel panel-warning">
                                               <div class="panel-heading text-center"><b>Estimated Target</b></div>
                                               <div class="panel-body">
                                                 <div class="panel-group" id="accordionTable">

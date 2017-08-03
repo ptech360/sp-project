@@ -14,17 +14,16 @@
 </nav>
 <!-- Header of objectives -->
 <div class="subheader-milky milky-background header-margin">
-	<div class="subheader-text">
-		<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-		<span class="text main-text">Coordinator</span>
-		<div class="subtext">
-			Add and Assign objectives
-			<br> Objective > Initiative > Activity
-		</div>
-	</div>
+  <div class="subheader-text">
+    <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+    <span class="text main-text">Coordinator</span>
+    <div class="subtext">
+      Add and Assign objectives
+      <br> Objective > Initiative > Activity
+    </div>
+  </div>
 </div>
 <!-- /End of header page -->
-
 
 
 
@@ -50,7 +49,6 @@
 
 <div class="container-fluid">
 	<div class="main-content">
-		<h1>Assigned Objectives</h1>
 		<div class="panel-group" id="accordion">
 			<div class="panel panel-info panel-no-border" *ngFor="let obj of assignedActivities; let i = index;">
 				<div class="panel-heading background-transparent" data-toggle="collapse" data-parent="#accordion" [attr.data-target]="'#obj' + i">
@@ -61,7 +59,7 @@
 					<div class="panel-body no-padding panel-no-border">
 						<p *ngIf="!obj.initiatives.length">No Initiative added yet for this Objective.</p>
 						<div class="panel-group" id="accordion2">
-							<div class="panel panel-default panel-no-border" *ngFor="let ini of obj.initiatives; let j = index;">
+							<div class="panel panel-danger panel-no-border" *ngFor="let ini of obj.initiatives; let j = index;">
 								<div class="panel-heading background-transparent" data-toggle="collapse" data-parent="#accordion2" [attr.data-target]="'#obj' + i + 'ini' + j">
 									<span class="badge" ><b>{{i+1}}.{{j+1}} Initiative :</b></span> {{ini.initiative}}
 								</div>
@@ -70,17 +68,16 @@
 										<p *ngIf="!ini.activities">No Activity added yet for this Initiative
 										</p>
 										<div class="panel-group" id="accordion3">
-											<div class="panel panel-default panel-no-border" *ngFor="let act of ini.activities; let k = index;">
-												<div class="panel-heading" data-toggle="collapse" data-parent="#accordion3" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k"
-												 style="background:transparent;">
+											<div class="panel panel-success panel-no-border" *ngFor="let act of ini.activities; let k = index;">
+												<div class="panel-heading" data-toggle="collapse" data-parent="#accordion3" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k"style="background:transparent;">
 													<span class="badge" [style.background-color]="act.successInfo.color"><b>{{i+1}}.{{j+1}}.{{k+1}} Activity :</b></span> {{act.activity}}
 												</div>
 												<div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k" [ngClass]="{'in': k == 0}">
 													<div class="panel-body no-padding panel-no-border">
 														<p *ngIf="!act.departments">The respective departments have not done audit for this activity</p>
-														<b>Perspective Departments</b>
+													<span class="badge pd-badge">	<b>Perspective Departments</b></span>
 														<div class="panel-group" id="accordion4">
-															<div class="panel panel-default panel-no-border" *ngFor="let department of act.departments;let dept = index;">
+															<div class="panel panel-warning panel-no-border" *ngFor="let department of act.departments;let dept = index;">
 																<div class="panel-heading row" style="margin: 0px !important; background:transparent;">
 																	<div class="col-sm-6 col xs-6" style="padding: 0px !important;" data-toggle="collapse" data-parent="#accordion4" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'dept' + dept">
 																		<span class="badge" [style.background-color]="department.successInfo.color"><b>Department {{dept+1}}:</b></span> {{department.department}}
@@ -100,7 +97,7 @@
 																					<div class="panel-body no-padding panel-no-border">
 																						<label>Current Level:</label> {{measr.currentLevel}} <span class="glyphicon glyphicon-time pull-right"><label>
 																								{{measr.frequency}}</label></span>
-																						<div class="panel panel-default">
+																						<div class="panel panel-warning">
 																							<div class="panel-heading text-center">
 																								<b>Estimated Target</b>
 																							</div>
