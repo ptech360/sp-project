@@ -12,6 +12,8 @@ declare let $:any;
 })
 export class CycleComponent implements OnInit {
   public valueForm:FormGroup;
+  public missionVisionForm:FormGroup;
+  public missionVision:string;
   public organizationInfo:any;
   public selectedValue:any;
 
@@ -19,6 +21,9 @@ export class CycleComponent implements OnInit {
     this.valueForm = new FormGroup({
       title:new FormControl('',[Validators.required]),
       description:new FormControl('',Validators.required),
+    });
+    this.missionVisionForm = new FormGroup({
+      description:new FormControl('',Validators.required)
     });
    }
 
@@ -57,5 +62,20 @@ export class CycleComponent implements OnInit {
     this.valueForm.controls["description"].patchValue(val.description);
     this.selectedValue = val;
     this.selectedValueIndex = index;
+  }
+
+  editMisionVision(title:any){
+    console.log(title);
+    this.missionVision = title;
+  }
+
+  onMissionVisionSubmit(){
+    var object = {
+      id:this.commonService.getData('org_info')['setupId']
+    }
+    object[this.missionVision] = this.missionVisionForm.value['description'];
+    this.orgSer.updateMisionVision(object).subscribe(res=>{
+      console.log(res);
+    })
   }
 }

@@ -7,38 +7,20 @@
             <div class="headertext">
               Add Department
             </div>
-
           </div>
           <div class="formHeader">
-
-
-
             <!--Body-->
             <form class="form-horizontal margin-top50" [formGroup]="newDepartment" (submit)="onSubmit()">
-              <!--<div class="form-group">
-                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-education"></span>
-
-                  </div>
-                  <select class="form-control" id="exampleSelect1" formControlName="universityId">
-          <option *ngFor="let ut of universities;let u = index;" value={{ut.id}}>{{ut.university}}</option>
-        </select>
-                </div>
-              </div>-->
-
               <div class="form-group">
                 <label class="sr-only" for="exampleSelect2">Amount (in dollars)</label>
                 <div class="input-group">
                   <div class="input-group-addon">
                     <span class="glyphicon glyphicon-education"></span>
-
                   </div>
                   <select class="form-control" id="exampleSelect2" formControlName="parentDepartmentId">
-          <option value="-1">None</option>
-          <option *ngFor="let dept of departments;let d = index;" [value]="dept.departmentId">{{dept.department}}</option>
-        </select>
+                    <option value="-1">None</option>
+                    <option *ngFor="let dept of departments;let d = index;" [value]="dept.departmentId">{{dept.department}}</option>
+                  </select>
                 </div>
               </div>
               <div class="form-group">
@@ -58,19 +40,37 @@
               </div>
             </form>
           </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="formCard">
+          <div class="cardheader center-block">
+            <div class="headertext">
+              Existing Department
+            </div>
+          </div>
+          <div class="formHeader">
+            <form class="form-horizontal margin-top50">
+              <!--<div class="form-group">
+                <label class="sr-only" for="exampleSelect1">Amount (in dollars)</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
 
+                    <span class="glyphicon glyphicon-education"></span>
 
-
-
-
-
-
-
-
-
-
-
-          
+                  </div>
+                  <select class="form-control" id="exampleSelect1">
+                    <option *ngFor="let dept of departments;let d = index;" value={{dept.id}}>{{dept.department}}</option>
+                  </select>
+                </div>
+              </div>-->
+              <ul class="list-group">
+                <li *ngFor="let dept of departments;let d = index;" class="list-group-item">
+                  {{dept.department}}
+                </li>
+              </ul>
+            </form>
+          </div>
         </div>
       </div>
     </div>

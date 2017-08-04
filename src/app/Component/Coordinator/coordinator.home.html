@@ -165,10 +165,13 @@
 																																<b>Discussion</b>
 																															</div>
 																															<div class="panel-body row">
-																																<form [formGroup]="discussionForm" (submit)="commentPost()">
+																																<form [formGroup]="discussionForm" (submit)
+																																="commentPost()">
 																																	<div class="form-group">
 																																		<div class="col-sm-10">
-																																			<textarea class="form-control" formControlName="comment" id="exampleTextarea" rows="3"></textarea>
+																																			<textarea class="form-control" 
+																																			formControlName="comment" 
+																																			id="exampleTextarea" rows="3"></textarea>
 																																		</div>
 																																		<div class="col-sm-2">
 																																			<button type="submit" class="btn btn-info 
@@ -182,7 +185,8 @@
 																																			<div class="myMsg">
 																																				<img src="http://www.clker.
 																																			com/cliparts/f/8/a/6/1376432218623075512
-																																			little%20girl%20dreaming-hi.png" class="myImg" />
+																																			little%20girl%20dreaming-hi.png" 
+																																			class="myImg" />
 																																				<div class="myText">
 																																					<span class="myText-style">
 																																					{{c.comment}}

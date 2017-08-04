@@ -7,29 +7,27 @@
             <div class="headertext">
               View Department
             </div>
-              </div>
-               <div class="formHeader">
-        <form class="margin-top50">
-
-          <div class="form-group">
-            <label class="sr-only" for="exampleSelect1">Amount (in dollars)</label>
-            <div class="input-group">
-              <div class="input-group-addon">
-
-                <span class="glyphicon glyphicon-education"></span>
-
-              </div>
-              <select class="form-control" id="exampleSelect1">
-                    <option *ngFor="let dept of departments;let d = index;" value={{dept.id}}>{{dept.department}}</option>
-              </select>
-            </div>
           </div>
-        </form>
+          <div class="formHeader">
+            <form class="margin-top50">
+
+              <div class="form-group">
+                <label class="sr-only" for="exampleSelect1">Amount (in dollars)</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+
+                    <span class="glyphicon glyphicon-education"></span>
+
+                  </div>
+                  <select class="form-control" id="exampleSelect1">
+                    <option *ngFor="let dept of departments;let d = index;" value={{dept.id}}>{{dept.department}}</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-</div>
-
-

@@ -173,6 +173,13 @@ export class OrganizationService2 {
       .catch(this.handleError);
   }
 
+  public updateMisionVision(object:any){
+    this.baseUrl = this.con.baseUrl;
+    return this.http.put(this.baseUrl + "/initialSetup", object)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     if (res.status === 204) { return res; }
     let body = res.json();
