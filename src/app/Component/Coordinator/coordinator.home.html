@@ -1,17 +1,57 @@
-<!-- new code -->
-<nav class="navbar navbar-fixed-top header milky-background">
-	<div class="container-fluid">
-		<div class="navbar-header" id="toggle-header">
-			<a class="navbar-brand nav-sp" href="">Strategic Planning</a>
-		</div>
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href=""><span class="glyphicon glyphicon-user"></span> {{cs.getData('userDetails').firstName}}</a></li>
-				<li><a href="" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
-			</ul>
-		</div>
-	</div>
+<nav class="navbar navbar-fixed-top milky-background header">
+  <div class="container">
+    <div class="navbar-header" id="toggle-header">
+    <a class="navbar-brand nav-sp" href="">Strategic Planning</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+				<li style= "cursor:pointer" (click)="displayProfile=!displayProfile"><a><span class="glyphicon glyphicon-user"></span> {{cs.getData('userDetails').firstName}}</a></li>        
+        <!-- <li><a href="" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li> -->
+      </ul>
+    </div>
+  </div>
 </nav>
+<div>
+  <div class="main-content">
+  <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+
+<!-- header end-->
+  <div class="profile-card" [hidden]="displayProfile" tabindex= '1' (blur)="displayProfile=true">
+    <div class="row">
+      <div class="col-sm-4 col-xs-4">
+        <img class="profile-card-pic" src="\images\profile.jpg">
+      </div>
+      <div class="col-sm-8 col-xs-8">
+        <div class="coloumn-middle">
+          <div class="align-middle">
+            <div class="row">
+              <div class="profile-card-name"> {{cs.getData('userDetails').firstName}}  {{cs.getData('userDetails').lastName}}</div>
+            </div>
+            <div class="row">
+              <div class="profile-card-role">software developer</div>
+            </div>
+            <div class="row">
+              <div class="profile-card-email">
+                {{cs.getData('userDetails').email}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row profile-card-footer">
+      <div class="col-sm-6 col-xs-6">
+        <a  class="btn btn-default" style="color: #333" (click) = "displayProfile=true">Account</a>
+      </div>
+      <div class="col-sm-6 col-xs-6" routerLinkActive="active" data-toggle="modal" data-target=".bs-example-modal-sm">
+        <a href="" class="btn btn-default custom-buttons" routerLinkActive="active" style="color: #333" (click)="logout()">Logout</a>
+      </div>
+    </div>
+  </div>
 <!-- Header of objectives -->
 <div class="subheader-milky milky-background header-margin">
   <div class="subheader-text">
@@ -33,19 +73,61 @@
 <!--===================================================================================old code===============================================================================
 ========================================================================================
 -->
-<nav class="navbar navbar-fixed-top header milky-background">
-	<div class="container-fluid">
-		<div class="navbar-header" id="toggle-header">
-			<a class="navbar-brand nav-sp" href="">Strategic Planning</a>
-		</div>
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href=""><span class="glyphicon glyphicon-user"></span> {{cs.getData('userDetails').firstName}}</a></li>
-				<li><a href="" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
-			</ul>
-		</div>
-	</div>
+<nav class="navbar navbar-fixed-top milky-background header">
+  <div class="container">
+    <div class="navbar-header" id="toggle-header">
+    <a class="navbar-brand nav-sp" href="">Strategic Planning</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+				<li style= "cursor:pointer" (click)="displayProfile=!displayProfile"><a><span class="glyphicon glyphicon-user"></span> {{cs.getData('userDetails').firstName}}</a></li>        
+        <!-- <li><a href="" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li> -->
+      </ul>
+    </div>
+  </div>
 </nav>
+<div>
+  <div class="main-content">
+  <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+
+<!-- header end-->
+  <div class="profile-card" [hidden]="displayProfile" tabindex= '1' (blur)="displayProfile=true">
+    <div class="row">
+      <div class="col-sm-4 col-xs-4">
+        <img class="profile-card-pic" src="\images\profile.jpg">
+      </div>
+      <div class="col-sm-8 col-xs-8">
+        <div class="coloumn-middle">
+          <div class="align-middle">
+            <div class="row">
+              <div class="profile-card-name"> {{cs.getData('userDetails').firstName}}  {{cs.getData('userDetails').lastName}}</div>
+            </div>
+            <div class="row">
+              <div class="profile-card-role">software developer</div>
+            </div>
+            <div class="row">
+              <div class="profile-card-email">
+                {{cs.getData('userDetails').email}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row profile-card-footer">
+      <div class="col-sm-6 col-xs-6">
+        <a  class="btn btn-default" style="color: #333" (click) = "displayProfile=true">Account</a>
+      </div>
+      <div class="col-sm-6 col-xs-6" routerLinkActive="active" data-toggle="modal" data-target=".bs-example-modal-sm">
+        <a href="" class="btn btn-default custom-buttons" routerLinkActive="active" style="color: #333" (click)="logout()">Logout</a>
+      </div>
+    </div>
+  </div>
+
 
 <div class="container-fluid">
 	<div class="main-content">
@@ -95,7 +177,7 @@
 																				</div>
 																				<div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k + 'dept' + dept + 'measr' + l" [ngClass]="{'in': l == 0}">
 																					<div class="panel-body no-padding panel-no-border">
-																						<label>Current Level:</label> {{measr.currentLevel}} <span class="glyphicon glyphicon-time pull-right"><label>
+																						<label class="current-level">Current Level:</label> {{measr.currentLevel}} <span class="glyphicon glyphicon-time pull-right"><label>
 																								{{measr.frequency}}</label></span>
 																						<div class="panel panel-warning">
 																							<div class="panel-heading text-center">

@@ -9,7 +9,7 @@ import { Objective } from '../CommonTamplates/objective.component';
   styleUrls: ['./../Coordinator/coordinator.home.css']
 })
 export class HodHome {
-
+   public displayProfile:boolean=true;
   public assignedActivities: any[] = [];
   public departments:any[] = [];
   constructor(private orgSer: OrganizationService2, private cs: CommonService) { 

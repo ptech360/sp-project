@@ -724,3 +724,103 @@ a{
      margin-left: 0px !important;
      margin-right: 0px !important;
  }
+.current-level{
+  padding-left: 18px;
+}
+
+/*profile card style*/
+.profile-card:after {
+    bottom: 100%;
+    left: 84%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(136, 183, 213, 0);
+    border-bottom-color: white;
+    border-width: 10px;
+    margin-left: -1px;
+}
+/*profile card style*/
+.profile-card:after {
+    bottom: 100%;
+    left: 84%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(136, 183, 213, 0);
+    border-bottom-color: white;
+    border-width: 10px;
+margin-left: -1px;
+}
+.profile-card{
+z-index:10000;
+outline: transparent;
+position: absolute;
+top: 58px;
+right: 80px;
+width:300px;
+height: 177px;
+background: white;
+/*border-style: solid;*/
+border-radius: 5px;
+border:#b1b1b1 solid 0.5px;
+
+}
+.profile-card-pic{
+/*display: block !important;*/
+margin: 10px 15px ;
+/*display: auto !important;*/
+width: 100px;
+height: 100px;
+border-style: solid;
+border-radius:100%;
+}
+.profile-card-name,.profile-card-email,.profile-card-role{
+text-align: center;
+ width: 97%;
+ white-space: pre-line;
+}
+
+
+.profile-card-role{
+font-size: 13px;
+color: grey;
+}
+
+.profile-card-email{
+font-size: 10px;
+color: grey;
+}
+.custom-buttons{
+display: block;
+margin: auto;
+width: 80px;
+}
+.profile-card-footer{
+background: #7d8886;
+margin: 0px;
+padding: 10px;
+border-top: #b1b1b1 solid 0.5px;
+}
+.coloumn-middle{
+text-align: center;
+height: 120px;
+}
+
+.coloumn-middle:before{
+content: "";
+display: inline-block;
+vertical-align: middle;
+height: 100%;
+}
+
+.align-middle{
+display: inline-block;
+vertical-align: middle;
+}
