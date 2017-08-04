@@ -308,6 +308,7 @@ padding-left{
 .green-background{
   background: #3c763d;
   border-color: #3c763d;
+  margin-top: -6px;
 }
 .green-background:hover{
   border-color: #3c763d;
@@ -711,3 +712,8 @@ a{
 .padding-text{
   padding-top: 54px;
 }
+
+.no-margin{
+     margin-left: 0px !important;
+     margin-right: 0px !important;
+ }
