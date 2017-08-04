@@ -6,6 +6,7 @@ import { CommonService } from '../../providers/common.service';
   styleUrls:['./planner.home.css']
 })
 export class PlannerHome{
+  public displayProfile:boolean=true;
   constructor(private cs:CommonService){
   }
   logout(){

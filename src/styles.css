@@ -315,6 +315,7 @@ padding-left{
 .green-background{
   background: #3c763d;
   border-color: #3c763d;
+  margin-top: -6px;
 }
 .green-background:hover{
   border-color: #3c763d;

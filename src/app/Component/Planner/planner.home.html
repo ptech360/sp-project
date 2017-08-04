@@ -5,8 +5,8 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-				<li><a href=""><span class="glyphicon glyphicon-user"></span> {{cs.getData('userDetails').firstName}}</a></li>        
-        <li><a href="" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+				<li style= "cursor:pointer" (click)="displayProfile=!displayProfile"><a><span class="glyphicon glyphicon-user"></span> {{cs.getData('userDetails').firstName}}</a></li>        
+        <!-- <li><a href="" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li> -->
       </ul>
     </div>
   </div>
@@ -16,3 +16,39 @@
   <router-outlet></router-outlet>
   </div>
 </div>
+
+
+
+<!-- header end-->
+  <div class="profile-card" [hidden]="displayProfile" tabindex= '1' (blur)="displayProfile=true">
+    <div class="row">
+      <div class="col-sm-4 col-xs-4">
+        <img class="profile-card-pic" src="\images\profile.jpg">
+      </div>
+      <div class="col-sm-8 col-xs-8">
+        <div class="coloumn-middle">
+          <div class="align-middle">
+            <div class="row">
+              <div class="profile-card-name"> {{cs.getData('userDetails').firstName}}  {{cs.getData('userDetails').lastName}}</div>
+            </div>
+            <div class="row">
+              <div class="profile-card-role">software developer</div>
+            </div>
+            <div class="row">
+              <div class="profile-card-email">
+                {{cs.getData('userDetails').email}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row profile-card-footer">
+      <div class="col-sm-6 col-xs-6">
+        <a  class="btn btn-default" style="color: #333" (click) = "displayProfile=true">Account</a>
+      </div>
+      <div class="col-sm-6 col-xs-6" routerLinkActive="active" data-toggle="modal" data-target=".bs-example-modal-sm">
+        <a href="" class="btn btn-default custom-buttons" routerLinkActive="active" style="color: #333" (click)="logout()">Logout</a>
+      </div>
+    </div>
+  </div>

@@ -2,15 +2,15 @@ import {Component} from '@angular/core';
 import {OrganizationService2} from '../../providers/organization.service2';
 import { CommonService } from '../../providers/common.service';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
-
 declare let $:any;
 
 @Component({
   selector:'coordinator-home',
   templateUrl:'./coordinator.home.html',
-  styleUrls:['./../Planner/objective/objective.css','./coordinator.home.css']
+  styleUrls:['./../Planner/objective/objective.css','./coordinator.home.css', './../Planner/planner.home.css']
 })
 export class CoordinatorHome{
+  public displayProfile:boolean=true;
   public assignedActivities:any[] = [];
   public evidencForm:FormGroup;
   public departments:any = []
