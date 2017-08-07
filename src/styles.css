@@ -235,7 +235,7 @@ panel-heading:hover{
 }
 
 .btn-subheader{
-  background: #3c763d;
+  background: #FF5722;
   width: 50px;
   height: 50px;
   padding: 6px;
@@ -260,8 +260,8 @@ panel-heading:hover{
   line-height: 1.33;
   border-radius: 25px;
   color: white;
-  border: 3px solid #0082a9;
-  background:#0082a9;
+  border: 3px solid #3c763d;
+  background:#3c763d;
   outline: none !important;
 }
 .btn-right:hover{
