@@ -29,7 +29,7 @@
     <!--<div class="panel-heading background-transparent text-center panel-no-border">-->
     <div class="panel-heading">
       <div class="dropdown pull-right">
-        <span class="glyphicon glyphicon-option-vertical dropdown-toggle" data-toggle="dropdown" (click)="editMisionVision('mission');"></span>
+        <span class="glyphicon glyphicon-option-vertical dropdown-toggle" data-toggle="dropdown" (click)="editMisionVision('mission', organizationInfo.mission);"></span>
         <ul class="dropdown-menu">
           <li><a data-toggle="modal" data-target="#missionVisionForm" >Edit</a></li>
         </ul>
@@ -45,7 +45,7 @@
     <div class="panel-heading">
       <div class="dropdown pull-right">
         <span class="glyphicon glyphicon-option-vertical dropdown-toggle" data-toggle="dropdown" 
-        (click)="editMisionVision('vision');"></span>
+        (click)="editMisionVision('vision', organizationInfo.vision);"></span>
         <ul class="dropdown-menu">
           <li><a data-toggle="modal" data-target="#missionVisionForm" >Edit</a></li>
         </ul>
@@ -132,7 +132,7 @@
         <button type="button" class="close" data-dismiss="modal">
           <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">
+        <h4 class="modal-title" id="myModalLabel" style="text-transform:capitalize;">
           {{missionVision}}
         </h4>
       </div>

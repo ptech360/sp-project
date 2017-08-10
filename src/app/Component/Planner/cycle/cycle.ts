@@ -64,18 +64,22 @@ export class CycleComponent implements OnInit {
     this.selectedValueIndex = index;
   }
 
-  editMisionVision(title:any){
-    console.log(title);
+  editMisionVision(title:any, mvDesc:any){
     this.missionVision = title;
+    this.missionVisionForm.controls["description"].patchValue(mvDesc);
   }
 
   onMissionVisionSubmit(){
+    var org_info:any = this.commonService.getData('org_info');
     var object = {
-      id:this.commonService.getData('org_info')['setupId']
+      id:org_info['setupId']
     }
     object[this.missionVision] = this.missionVisionForm.value['description'];
     this.orgSer.updateMisionVision(object).subscribe(res=>{
-      console.log(res);
+      this.organizationInfo[this.missionVision] = this.missionVisionForm.value['description'];
+      org_info[this.missionVision] = this.missionVisionForm.value['description'];
+      this.commonService.storeData('org_info',org_info);
+      $('#missionVisionForm').modal('hide');
     })
   }
 }

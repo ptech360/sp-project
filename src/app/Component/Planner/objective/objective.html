@@ -68,36 +68,35 @@
                   <div class="panel panel-danger panel-no-border" *ngFor="let act of ini.activities; let k = index;">
                     <!-- ====== Initiative Heading ====== -->
                     <div class="panel-heading background-transparent row" style="margin-top: -15px !important;">
-                      <div class="col-sm-12 col-xs-12" (click)="getActElement($event)" data-toggle="collapse" data-parent="#accordion3" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k">
+                      <div class="col-sm-10 col-xs-10" data-toggle="collapse" data-parent="#accordion3" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k">
                         <b><span class="badge">{{i+1}}.{{j+1}}.{{k+1}} Activity </span></b> {{act.activity}}
                       </div>
-                      <!-- <div class="col-sm-1 col-xs-1 activity" [ngClass]="{'hideBtn': k != 0}">
-                        <div class="ctooltip">
-                          <button class="btn btn-circle btn-right" data-toggle="modal" (click)="selectedActivity = act" data-target="#measureModal">
-                            <i class="glyphicon glyphicon-plus"></i>
-                          </button>
-                          <span class="ctooltiptext">Add Measure</span>
+                       <div class="col-sm-2 col-xs-2">
+                         <div class="dropdown pull-right">
+                          <span class="glyphicon glyphicon-option-vertical dropdown-toggle" data-toggle="dropdown"></span>
+                          <ul class="dropdown-menu">
+                            <li><a data-toggle="modal" (click)="selectedActivity = act" data-target="#measureModal" ><i class="glyphicon glyphicon-plus"></i>Add Measure</a></li>
+                            <li><a data-toggle="modal" (click)="selectedActivity = act" data-target="#assignActivityModel"><i class="glyphicon glyphicon-plus"></i>Assign Department</a></li>
+                          </ul>
                         </div>
-                      </div> -->
+                      </div> 
                     </div>
                     <!-- ====== /End of Initiative Heading ====== -->
                     <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k" [ngClass]="{'in': k == 0}">
                       <div class="panel-body panel-no-border">
                         <div class="panel panel-warning panel-no-border minus-margin" *ngIf="act.assignedDepartments.length">
-                          
-                          
                           <div class="panel-heading background-transparent row">
-                            <div class="col-sm-11 col-xs-11">
+                            <div class="col-sm-12 col-xs-12">
                               <b><span class="badge"> Assigned Departments </span></b>
                             </div>
-                             <div class="col-sm-1 col-xs-1 activity">
+                             <!--<div class="col-sm-1 col-xs-1 activity">
                               <div class="ctooltip">
                                 <button class="btn btn-circle btn-right brown-background" data-toggle="modal" (click)="selectedActivity = act" data-target="#assignActivityModel">
                                   <i class="glyphicon glyphicon-plus"></i>
                                 </button>
                                 <span class="ctooltiptext tooltip-width">Assign Department</span>
                               </div>
-                            </div> 
+                            </div> -->
                           </div>
 
                           <div class="row padding-left">
@@ -113,21 +112,21 @@
                         <p *ngIf="!act.measures">No Measure set yet for this Activities</p>
                         <div class="panel-group" id="accordion4">
                           <div class="panel panel-warning panel-no-border" *ngFor="let measr of act.measures;let l = index;">
-                            <div class="panel-heading background-transparent row" data-toggle="collapse" data-parent="#accordion4" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'measr' + l">
-                              <div class="col-sm-11 col-xs-11">
+                            <div class="panel-heading background-transparent row" >
+                              <div class="col-sm-12 col-xs-12" data-toggle="collapse" data-parent="#accordion4" [attr.data-target]="'#obj' + i + 'ini' + j + 'act' + k + 'measr' + l">
                                 <b><span class="badge"> 
                                   {{i+1}}.{{j+1}}.{{k+1}}.{{l+1}}. Measure 
                                   </span>
                                 </b> {{measr.measure}}
                               </div>
-                              <div class="col-sm-1 col-xs-1 activity" [ngClass]="{'hideBtn': k != 0}">
+                              <!--<div class="col-sm-1 col-xs-1 activity">
                                 <div class="ctooltip">
                                   <button class="btn btn-circle btn-right brown-background" data-toggle="modal" (click)="selectedActivity = act" data-target="#measureModal">
                                     <i class="glyphicon glyphicon-plus"></i>
                                   </button>
                                   <span class="ctooltiptext">Add Measure</span>
                                 </div>
-                              </div>
+                              </div>-->
                             </div>
                             <div class="panel-collapse collapse" [attr.id]="'obj' + i + 'ini' + j + 'act' + k + 'measr' + l" [ngClass]="{'in': l == 0}">
                               <div class="panel-body panel-no-border ">
