@@ -127,12 +127,11 @@ hr.style-line {
 }
 
 .cardheader {
-    background-color: red;
     width: 75%;
     height: 50px;
     position: absolute;
     margin-top: -15px;
-    box-shadow: 0 5px 12px #ff9fa6;
+    box-shadow: 0 5px 12px #9ca6a9;
 }
 
 .headertext {

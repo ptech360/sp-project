@@ -29,20 +29,8 @@
     font-size: 16px;
     margin: 14px 2px;
     cursor: pointer;
-    
-
 }
-.cardheader{
- background-color: red;
- width: 75%;
- height: 50px;
- position: absolute;
-    margin-top: -15px;
-    box-shadow: 0 5px 12px #ff9fa6;
-    
 
-
-}
 .headertext{
         color: white;
     padding: 10px;
