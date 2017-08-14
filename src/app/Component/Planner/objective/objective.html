@@ -239,8 +239,8 @@
             </div>
             <div class="panel-body" formArrayName="spis">
               <ul class="nav nav-tabs">
-                <li [ngClass]="{'active': ul == objectiveForm.controls.spis.controls.length - 1}" *ngFor="let s of objectiveForm.controls.spis.controls;let ul = index;">
-                  <a data-toggle="tab" [attr.data-target]="'#spi' + ul">Spi {{ul+1}} 
+                <li [ngClass]="{'active': ul == objectiveForm.controls.spis.controls.length - 1}" *ngFor="let s of objectiveForm.controls.spis.controls;let ul = index;"class="list-model">
+                  <a class="list-model" data-toggle="tab" [attr.data-target]="'#spi' + ul">Spi {{ul+1}} 
                   <button type="button" class="close close-button" aria-label="Close" (click)="removeSpi(objectiveForm,ul)">
                     <span aria-hidden="true">&times;</span>
                   </button>
